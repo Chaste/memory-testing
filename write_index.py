@@ -21,9 +21,6 @@ def write_index_file(list_of_logs):
 
     unique_dates = {datetime(year=date.year, month=date.month, day=1) for date in dates}
     unique_dates = sorted(list(unique_dates), reverse=True)
-    print(unique_dates)
-
-
 
     with doc.head:
         link(rel='stylesheet', href='style.css')
@@ -37,7 +34,7 @@ def write_index_file(list_of_logs):
             attr(cls='body')
             
             for unique_date in unique_dates:
-                h1(unique_date.strftime("%B %Y"))
+                h2(unique_date.strftime("%B %Y"))
 
                 with ul():
 
