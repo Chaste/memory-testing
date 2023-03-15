@@ -5,7 +5,12 @@ from datetime import datetime
 from dominate.tags import *
 
 
-def get_list_of_log_file_directories():
+def get_list_of_log_file_directories() -> list[str]:
+    """Return a sorted list of valid log file directory names.
+
+    Returns:
+        A list of strings of all valid log file directories (i.e. those that themsevles contain an index.html file).
+    """
 
     base_dir = pathlib.Path('log-files')
     dirs_list = [path.name for path in base_dir.iterdir() if path.is_dir() and (path / 'index.html').is_file()]
@@ -13,7 +18,15 @@ def get_list_of_log_file_directories():
     return sorted(dirs_list, reverse=True)
 
 
-def write_index_file(list_of_logs):
+def write_index_file(list_of_logs: list[str]) -> None:
+    """Write an index.html file containing hyperlinks to the log file directories contained in this directory.              
+
+    Args:
+        list_of_logs: A list of strings of log file directories to put in the index file.
+
+    Returns:
+        None.
+    """
 
     doc = dominate.document(title='Index of Valgrind Memcheck output')
 
@@ -37,7 +50,6 @@ def write_index_file(list_of_logs):
                 h2(unique_date.strftime("%B %Y"))
 
                 with ul():
-
 
                     for path, date in zip(list_of_logs, dates):
                         if date.year == unique_date.year and date.month == unique_date.month:
