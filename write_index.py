@@ -8,8 +8,8 @@ from dominate.tags import *
 def get_list_of_log_file_directories():
 
     base_dir = pathlib.Path('log-files')
+    dirs_list = [path.name for path in base_dir.iterdir() if path.is_dir() and (path / 'index.html').is_file()]
 
-    dirs_list = [path.name for path in base_dir.iterdir() if path.is_dir() and any(path.iterdir())]
     return sorted(dirs_list, reverse=True)
 
 
