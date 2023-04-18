@@ -1,0 +1,562 @@
+==2750756== Memcheck, a memory error detector
+==2750756== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2750756== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==2750756== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/mesh/test/TestEdge -malloc_debug -malloc_dump -memory_info
+==2750756== Parent PID: 2750297
+==2750756== 
+==2750756== WARNING: pwritev(vector[...]) is an obsolete suppression line not supported in valgrind 3.15 or later.
+==2750756== You should replace [...] by a specific index such as [0] or [1] or [2] or similar
+==2750756== 
+==2750756== Syscall param socketcall.getsockopt(optlen) points to uninitialised byte(s)
+==2750756==    at 0x7E7079E: getsockopt_syscall (getsockopt.c:29)
+==2750756==    by 0x7E7079E: getsockopt (getsockopt.c:94)
+==2750756==    by 0x107C4157: pmix_ptl_base_set_timeout (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x107CBA1A: pmix_ptl_base_make_connection (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x107D2DF3: ??? (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x106D23C1: PMIx_Init (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x1064BE4A: ext3x_client_init (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_pmix_ext3x.so)
+==2750756==    by 0xFE0AE6D: ??? (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so)
+==2750756==    by 0xB74E4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==2750756==    by 0x776A418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x7703D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x63FAD38: PetscInitialize (pinit.c:924)
+==2750756==    by 0x626A58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==2750756==    by 0x626A5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==2750756==    by 0x171B4D: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==2750756==    by 0x16A863: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==2750756==    by 0x16DD4A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756==  Address 0x1ffeffdfbc is on thread 1's stack
+==2750756==  in frame #2, created by pmix_ptl_base_make_connection (???:)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   socketcall.getsockopt(optlen)
+   fun:getsockopt_syscall
+   fun:getsockopt
+   fun:pmix_ptl_base_set_timeout
+   fun:pmix_ptl_base_make_connection
+   obj:/usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2
+   fun:PMIx_Init
+   fun:ext3x_client_init
+   obj:/usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== Syscall param socketcall.getsockopt(optlen_out) points to uninitialised byte(s)
+==2750756==    at 0x7E7079E: getsockopt_syscall (getsockopt.c:29)
+==2750756==    by 0x7E7079E: getsockopt (getsockopt.c:94)
+==2750756==    by 0x107C4157: pmix_ptl_base_set_timeout (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x107CBA1A: pmix_ptl_base_make_connection (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x107D2DF3: ??? (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x106D23C1: PMIx_Init (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x1064BE4A: ext3x_client_init (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_pmix_ext3x.so)
+==2750756==    by 0xFE0AE6D: ??? (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so)
+==2750756==    by 0xB74E4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==2750756==    by 0x776A418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x7703D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x63FAD38: PetscInitialize (pinit.c:924)
+==2750756==    by 0x626A58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==2750756==    by 0x626A5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==2750756==    by 0x171B4D: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==2750756==    by 0x16A863: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==2750756==    by 0x16DD4A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756==  Address 0x1ffeffdfbc is on thread 1's stack
+==2750756==  in frame #2, created by pmix_ptl_base_make_connection (???:)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   socketcall.getsockopt(optlen_out)
+   fun:getsockopt_syscall
+   fun:getsockopt
+   fun:pmix_ptl_base_set_timeout
+   fun:pmix_ptl_base_make_connection
+   obj:/usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2
+   fun:PMIx_Init
+   fun:ext3x_client_init
+   obj:/usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== Syscall param setsockopt(optlen) contains uninitialised byte(s)
+==2750756==    at 0x7E70C7E: setsockopt_syscall (setsockopt.c:29)
+==2750756==    by 0x7E70C7E: setsockopt (setsockopt.c:95)
+==2750756==    by 0x107CBBA9: pmix_ptl_base_make_connection (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x107D2DF3: ??? (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x106D23C1: PMIx_Init (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==2750756==    by 0x1064BE4A: ext3x_client_init (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_pmix_ext3x.so)
+==2750756==    by 0xFE0AE6D: ??? (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so)
+==2750756==    by 0xB74E4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==2750756==    by 0x776A418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x7703D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x63FAD38: PetscInitialize (pinit.c:924)
+==2750756==    by 0x626A58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==2750756==    by 0x626A5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==2750756==    by 0x171B4D: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==2750756==    by 0x16A863: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==2750756==    by 0x16DD4A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   setsockopt(optlen)
+   fun:setsockopt_syscall
+   fun:setsockopt
+   fun:pmix_ptl_base_make_connection
+   obj:/usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2
+   fun:PMIx_Init
+   fun:ext3x_client_init
+   obj:/usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== 
+==2750756== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==2750756== Open file descriptor 12:
+==2750756==    at 0x7E5E22D: pipe (pipe.c:29)
+==2750756==    by 0xFE0B07D: ???
+==2750756==    by 0xB74E4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==2750756==    by 0x776A418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x7703D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x63FAD38: PetscInitialize (pinit.c:924)
+==2750756==    by 0x626A58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==2750756==    by 0x626A5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==2750756==    by 0x171B4D: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==2750756==    by 0x16A863: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==2750756==    by 0x16DD4A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+==2750756== Open file descriptor 8: /dev/shm/open_mpi.0000
+==2750756==    at 0x7E62BCC: __open_nocancel (open64_nocancel.c:39)
+==2750756==    by 0x7DE6C4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==2750756==    by 0x62A2822: ???
+==2750756==    by 0x62A296F: ???
+==2750756==    by 0xB7F36DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==2750756==    by 0xB7F3938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==2750756==    by 0xB7A9922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==2750756==    by 0xB74E2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==2750756==    by 0x776A418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x7703D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x63FAD38: PetscInitialize (pinit.c:924)
+==2750756==    by 0x626A58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==2750756==    by 0x626A5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==2750756==    by 0x171B4D: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==2750756==    by 0x16A863: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==2750756==    by 0x16DD4A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+==2750756== Open file descriptor 117:
+==2750756==    <inherited from parent>
+==2750756== 
+==2750756== Open file descriptor 110:
+==2750756==    <inherited from parent>
+==2750756== 
+==2750756== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestEdge_valgrind.txt
+==2750756==    <inherited from parent>
+==2750756== 
+==2750756== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==2750756==    <inherited from parent>
+==2750756== 
+==2750756== 
+==2750756== HEAP SUMMARY:
+==2750756==     in use at exit: 708,343 bytes in 9,478 blocks
+==2750756==   total heap usage: 50,185 allocs, 40,707 frees, 1,353,476,350 bytes allocated
+==2750756== 
+==2750756== 96 (80 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 50 of 112
+==2750756==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2750756==    by 0x171DB1: TestEdge::TestEdgeInitialisation() (TestEdge.hpp:66)
+==2750756==    by 0x17B9FC: TestDescription_TestEdge_TestEdgeInitialisation::runTest() (TestEdge.cpp:31)
+==2750756==    by 0x169E5E: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==2750756==    by 0x16DFF8: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==2750756==    by 0x16DEDD: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==2750756==    by 0x16DD83: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN8TestEdge22TestEdgeInitialisationEv
+   fun:_ZN47TestDescription_TestEdge_TestEdgeInitialisation7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== 96 (80 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 51 of 112
+==2750756==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2750756==    by 0x174CFB: TestEdge::TestEdgeProperties() (TestEdge.hpp:153)
+==2750756==    by 0x17BA66: TestDescription_TestEdge_TestEdgeProperties::runTest() (TestEdge.cpp:37)
+==2750756==    by 0x169E5E: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==2750756==    by 0x16DFF8: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==2750756==    by 0x16DEDD: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==2750756==    by 0x16DD83: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN8TestEdge18TestEdgePropertiesEv
+   fun:_ZN43TestDescription_TestEdge_TestEdgeProperties7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== 192 bytes in 1 blocks are definitely lost in loss record 74 of 112
+==2750756==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2750756==    by 0x1A9089: boost::archive::detail::heap_allocation<Node<2u> >::doesnt_have_new_operator::invoke_new() (iserializer.hpp:241)
+==2750756==    by 0x1A8CBE: boost::archive::detail::heap_allocation<Node<2u> >::invoke_new() (iserializer.hpp:255)
+==2750756==    by 0x1A8392: boost::archive::detail::heap_allocation<Node<2u> >::heap_allocation() (iserializer.hpp:268)
+==2750756==    by 0x1A6D17: boost::archive::detail::pointer_iserializer<boost::archive::text_iarchive, Node<2u> >::heap_allocation() const (iserializer.hpp:293)
+==2750756==    by 0x62DE830: ??? (in /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0)
+==2750756==    by 0x18DBCB: void boost::archive::detail::load_pointer_type<boost::archive::text_iarchive>::invoke<Node<2u>*>(boost::archive::text_iarchive&, Node<2u>*&) (iserializer.hpp:541)
+==2750756==    by 0x18D5BC: void boost::archive::load<boost::archive::text_iarchive, Node<2u>*>(boost::archive::text_iarchive&, Node<2u>*&) (iserializer.hpp:624)
+==2750756==    by 0x18D125: void boost::archive::detail::common_iarchive<boost::archive::text_iarchive>::load_override<Node<2u>*>(Node<2u>*&) (common_iarchive.hpp:67)
+==2750756==    by 0x18CBF2: void boost::archive::basic_text_iarchive<boost::archive::text_iarchive>::load_override<Node<2u>*>(Node<2u>*&) (basic_text_iarchive.hpp:70)
+==2750756==    by 0x18C612: void boost::archive::text_iarchive_impl<boost::archive::text_iarchive>::load_override<Node<2u>*>(Node<2u>*&) (text_iarchive.hpp:82)
+==2750756==    by 0x18C025: boost::archive::text_iarchive& boost::archive::detail::interface_iarchive<boost::archive::text_iarchive>::operator>><Node<2u>*>(Node<2u>*&) (interface_iarchive.hpp:68)
+==2750756==    by 0x18B957: boost::archive::text_iarchive& boost::archive::detail::interface_iarchive<boost::archive::text_iarchive>::operator&<Node<2u>*>(Node<2u>*&) (interface_iarchive.hpp:75)
+==2750756==    by 0x18B263: void boost::serialization::load_construct_data<boost::archive::text_iarchive, 2u>(boost::archive::text_iarchive&, Edge<2u>*, unsigned int) (Edge.hpp:268)
+==2750756==    by 0x18A955: void boost::serialization::load_construct_data_adl<boost::archive::text_iarchive, Edge<2u> >(boost::archive::text_iarchive&, Edge<2u>*, unsigned int) (serialization.hpp:140)
+==2750756==    by 0x189F55: boost::archive::detail::pointer_iserializer<boost::archive::text_iarchive, Edge<2u> >::load_object_ptr(boost::archive::detail::basic_iarchive&, void*, unsigned int) const (iserializer.hpp:340)
+==2750756==    by 0x62DE9F4: ??? (in /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0)
+==2750756==    by 0x1875F4: void boost::archive::detail::load_pointer_type<boost::archive::text_iarchive>::invoke<Edge<2u>*>(boost::archive::text_iarchive&, Edge<2u>*&) (iserializer.hpp:541)
+==2750756==    by 0x18650A: void boost::archive::load<boost::archive::text_iarchive, Edge<2u>*>(boost::archive::text_iarchive&, Edge<2u>*&) (iserializer.hpp:624)
+==2750756==    by 0x184D77: void boost::archive::detail::common_iarchive<boost::archive::text_iarchive>::load_override<Edge<2u>*>(Edge<2u>*&) (common_iarchive.hpp:67)
+==2750756==    by 0x182EFC: void boost::archive::basic_text_iarchive<boost::archive::text_iarchive>::load_override<Edge<2u>*>(Edge<2u>*&) (basic_text_iarchive.hpp:70)
+==2750756==    by 0x1803E8: void boost::archive::text_iarchive_impl<boost::archive::text_iarchive>::load_override<Edge<2u>*>(Edge<2u>*&) (text_iarchive.hpp:82)
+==2750756==    by 0x17D5F7: boost::archive::text_iarchive& boost::archive::detail::interface_iarchive<boost::archive::text_iarchive>::operator>><Edge<2u>*>(Edge<2u>*&) (interface_iarchive.hpp:68)
+==2750756==    by 0x1771AE: TestEdge::TestArchiveEdge() (TestEdge.hpp:242)
+==2750756==    by 0x17BAD0: TestDescription_TestEdge_TestArchiveEdge::runTest() (TestEdge.cpp:43)
+==2750756==    by 0x169E5E: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==2750756==    by 0x16DFF8: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==2750756==    by 0x16DEDD: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==2750756==    by 0x16DD83: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN5boost7archive6detail15heap_allocationI4NodeILj2EEE24doesnt_have_new_operator10invoke_newEv
+   fun:_ZN5boost7archive6detail15heap_allocationI4NodeILj2EEE10invoke_newEv
+   fun:_ZN5boost7archive6detail15heap_allocationI4NodeILj2EEEC1Ev
+   fun:_ZNK5boost7archive6detail19pointer_iserializerINS0_13text_iarchiveE4NodeILj2EEE15heap_allocationEv
+   obj:/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0
+   fun:_ZN5boost7archive6detail17load_pointer_typeINS0_13text_iarchiveEE6invokeIP4NodeILj2EEEEvRS3_RT_
+   fun:_ZN5boost7archive4loadINS0_13text_iarchiveEP4NodeILj2EEEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_iarchiveINS0_13text_iarchiveEE13load_overrideIP4NodeILj2EEEEvRT_
+   fun:_ZN5boost7archive19basic_text_iarchiveINS0_13text_iarchiveEE13load_overrideIP4NodeILj2EEEEvRT_
+   fun:_ZN5boost7archive18text_iarchive_implINS0_13text_iarchiveEE13load_overrideIP4NodeILj2EEEEvRT_
+   fun:_ZN5boost7archive6detail18interface_iarchiveINS0_13text_iarchiveEErsIP4NodeILj2EEEERS3_RT_
+   fun:_ZN5boost7archive6detail18interface_iarchiveINS0_13text_iarchiveEEanIP4NodeILj2EEEERS3_RT_
+   fun:_ZN5boost13serialization19load_construct_dataINS_7archive13text_iarchiveELj2EEEvRT_P4EdgeIXT0_EEj
+   fun:_ZN5boost13serialization23load_construct_data_adlINS_7archive13text_iarchiveE4EdgeILj2EEEEvRT_PT0_j
+   fun:_ZNK5boost7archive6detail19pointer_iserializerINS0_13text_iarchiveE4EdgeILj2EEE15load_object_ptrERNS1_14basic_iarchiveEPvj
+   obj:/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0
+   fun:_ZN5boost7archive6detail17load_pointer_typeINS0_13text_iarchiveEE6invokeIP4EdgeILj2EEEEvRS3_RT_
+   fun:_ZN5boost7archive4loadINS0_13text_iarchiveEP4EdgeILj2EEEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_iarchiveINS0_13text_iarchiveEE13load_overrideIP4EdgeILj2EEEEvRT_
+   fun:_ZN5boost7archive19basic_text_iarchiveINS0_13text_iarchiveEE13load_overrideIP4EdgeILj2EEEEvRT_
+   fun:_ZN5boost7archive18text_iarchive_implINS0_13text_iarchiveEE13load_overrideIP4EdgeILj2EEEEvRT_
+   fun:_ZN5boost7archive6detail18interface_iarchiveINS0_13text_iarchiveEErsIP4EdgeILj2EEEERS3_RT_
+   fun:_ZN8TestEdge15TestArchiveEdgeEv
+   fun:_ZN40TestDescription_TestEdge_TestArchiveEdge7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== 192 bytes in 1 blocks are definitely lost in loss record 75 of 112
+==2750756==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2750756==    by 0x1A9089: boost::archive::detail::heap_allocation<Node<2u> >::doesnt_have_new_operator::invoke_new() (iserializer.hpp:241)
+==2750756==    by 0x1A8CBE: boost::archive::detail::heap_allocation<Node<2u> >::invoke_new() (iserializer.hpp:255)
+==2750756==    by 0x1A8392: boost::archive::detail::heap_allocation<Node<2u> >::heap_allocation() (iserializer.hpp:268)
+==2750756==    by 0x1A6D17: boost::archive::detail::pointer_iserializer<boost::archive::text_iarchive, Node<2u> >::heap_allocation() const (iserializer.hpp:293)
+==2750756==    by 0x62DE830: ??? (in /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0)
+==2750756==    by 0x18DBCB: void boost::archive::detail::load_pointer_type<boost::archive::text_iarchive>::invoke<Node<2u>*>(boost::archive::text_iarchive&, Node<2u>*&) (iserializer.hpp:541)
+==2750756==    by 0x18D5BC: void boost::archive::load<boost::archive::text_iarchive, Node<2u>*>(boost::archive::text_iarchive&, Node<2u>*&) (iserializer.hpp:624)
+==2750756==    by 0x18D125: void boost::archive::detail::common_iarchive<boost::archive::text_iarchive>::load_override<Node<2u>*>(Node<2u>*&) (common_iarchive.hpp:67)
+==2750756==    by 0x18CBF2: void boost::archive::basic_text_iarchive<boost::archive::text_iarchive>::load_override<Node<2u>*>(Node<2u>*&) (basic_text_iarchive.hpp:70)
+==2750756==    by 0x18C612: void boost::archive::text_iarchive_impl<boost::archive::text_iarchive>::load_override<Node<2u>*>(Node<2u>*&) (text_iarchive.hpp:82)
+==2750756==    by 0x18C025: boost::archive::text_iarchive& boost::archive::detail::interface_iarchive<boost::archive::text_iarchive>::operator>><Node<2u>*>(Node<2u>*&) (interface_iarchive.hpp:68)
+==2750756==    by 0x18B957: boost::archive::text_iarchive& boost::archive::detail::interface_iarchive<boost::archive::text_iarchive>::operator&<Node<2u>*>(Node<2u>*&) (interface_iarchive.hpp:75)
+==2750756==    by 0x18B276: void boost::serialization::load_construct_data<boost::archive::text_iarchive, 2u>(boost::archive::text_iarchive&, Edge<2u>*, unsigned int) (Edge.hpp:270)
+==2750756==    by 0x18A955: void boost::serialization::load_construct_data_adl<boost::archive::text_iarchive, Edge<2u> >(boost::archive::text_iarchive&, Edge<2u>*, unsigned int) (serialization.hpp:140)
+==2750756==    by 0x189F55: boost::archive::detail::pointer_iserializer<boost::archive::text_iarchive, Edge<2u> >::load_object_ptr(boost::archive::detail::basic_iarchive&, void*, unsigned int) const (iserializer.hpp:340)
+==2750756==    by 0x62DE9F4: ??? (in /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0)
+==2750756==    by 0x1875F4: void boost::archive::detail::load_pointer_type<boost::archive::text_iarchive>::invoke<Edge<2u>*>(boost::archive::text_iarchive&, Edge<2u>*&) (iserializer.hpp:541)
+==2750756==    by 0x18650A: void boost::archive::load<boost::archive::text_iarchive, Edge<2u>*>(boost::archive::text_iarchive&, Edge<2u>*&) (iserializer.hpp:624)
+==2750756==    by 0x184D77: void boost::archive::detail::common_iarchive<boost::archive::text_iarchive>::load_override<Edge<2u>*>(Edge<2u>*&) (common_iarchive.hpp:67)
+==2750756==    by 0x182EFC: void boost::archive::basic_text_iarchive<boost::archive::text_iarchive>::load_override<Edge<2u>*>(Edge<2u>*&) (basic_text_iarchive.hpp:70)
+==2750756==    by 0x1803E8: void boost::archive::text_iarchive_impl<boost::archive::text_iarchive>::load_override<Edge<2u>*>(Edge<2u>*&) (text_iarchive.hpp:82)
+==2750756==    by 0x17D5F7: boost::archive::text_iarchive& boost::archive::detail::interface_iarchive<boost::archive::text_iarchive>::operator>><Edge<2u>*>(Edge<2u>*&) (interface_iarchive.hpp:68)
+==2750756==    by 0x1771AE: TestEdge::TestArchiveEdge() (TestEdge.hpp:242)
+==2750756==    by 0x17BAD0: TestDescription_TestEdge_TestArchiveEdge::runTest() (TestEdge.cpp:43)
+==2750756==    by 0x169E5E: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==2750756==    by 0x16DFF8: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==2750756==    by 0x16DEDD: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==2750756==    by 0x16DD83: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN5boost7archive6detail15heap_allocationI4NodeILj2EEE24doesnt_have_new_operator10invoke_newEv
+   fun:_ZN5boost7archive6detail15heap_allocationI4NodeILj2EEE10invoke_newEv
+   fun:_ZN5boost7archive6detail15heap_allocationI4NodeILj2EEEC1Ev
+   fun:_ZNK5boost7archive6detail19pointer_iserializerINS0_13text_iarchiveE4NodeILj2EEE15heap_allocationEv
+   obj:/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0
+   fun:_ZN5boost7archive6detail17load_pointer_typeINS0_13text_iarchiveEE6invokeIP4NodeILj2EEEEvRS3_RT_
+   fun:_ZN5boost7archive4loadINS0_13text_iarchiveEP4NodeILj2EEEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_iarchiveINS0_13text_iarchiveEE13load_overrideIP4NodeILj2EEEEvRT_
+   fun:_ZN5boost7archive19basic_text_iarchiveINS0_13text_iarchiveEE13load_overrideIP4NodeILj2EEEEvRT_
+   fun:_ZN5boost7archive18text_iarchive_implINS0_13text_iarchiveEE13load_overrideIP4NodeILj2EEEEvRT_
+   fun:_ZN5boost7archive6detail18interface_iarchiveINS0_13text_iarchiveEErsIP4NodeILj2EEEERS3_RT_
+   fun:_ZN5boost7archive6detail18interface_iarchiveINS0_13text_iarchiveEEanIP4NodeILj2EEEERS3_RT_
+   fun:_ZN5boost13serialization19load_construct_dataINS_7archive13text_iarchiveELj2EEEvRT_P4EdgeIXT0_EEj
+   fun:_ZN5boost13serialization23load_construct_data_adlINS_7archive13text_iarchiveE4EdgeILj2EEEEvRT_PT0_j
+   fun:_ZNK5boost7archive6detail19pointer_iserializerINS0_13text_iarchiveE4EdgeILj2EEE15load_object_ptrERNS1_14basic_iarchiveEPvj
+   obj:/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0
+   fun:_ZN5boost7archive6detail17load_pointer_typeINS0_13text_iarchiveEE6invokeIP4EdgeILj2EEEEvRS3_RT_
+   fun:_ZN5boost7archive4loadINS0_13text_iarchiveEP4EdgeILj2EEEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_iarchiveINS0_13text_iarchiveEE13load_overrideIP4EdgeILj2EEEEvRT_
+   fun:_ZN5boost7archive19basic_text_iarchiveINS0_13text_iarchiveEE13load_overrideIP4EdgeILj2EEEEvRT_
+   fun:_ZN5boost7archive18text_iarchive_implINS0_13text_iarchiveEE13load_overrideIP4EdgeILj2EEEEvRT_
+   fun:_ZN5boost7archive6detail18interface_iarchiveINS0_13text_iarchiveEErsIP4EdgeILj2EEEERS3_RT_
+   fun:_ZN8TestEdge15TestArchiveEdgeEv
+   fun:_ZN40TestDescription_TestEdge_TestArchiveEdge7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== 552 bytes in 1 blocks are definitely lost in loss record 86 of 112
+==2750756==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2750756==    by 0x106D9C13: ???
+==2750756==    by 0x106DA22C: ???
+==2750756==    by 0x1064D4B7: ???
+==2750756==    by 0x76D015A: ompi_proc_complete_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x776AA97: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x7703D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x63FAD38: PetscInitialize (pinit.c:924)
+==2750756==    by 0x626A58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==2750756==    by 0x626A5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==2750756==    by 0x171B4D: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==2750756==    by 0x16A863: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==2750756==    by 0x16DD4A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   fun:ompi_proc_complete_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== 3,456 (304 direct, 3,152 indirect) bytes in 1 blocks are definitely lost in loss record 107 of 112
+==2750756==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2750756==    by 0x172593: TestEdge::TestEdgeInitialisation() (TestEdge.hpp:103)
+==2750756==    by 0x17B9FC: TestDescription_TestEdge_TestEdgeInitialisation::runTest() (TestEdge.cpp:31)
+==2750756==    by 0x169E5E: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==2750756==    by 0x16DFF8: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==2750756==    by 0x16DEDD: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==2750756==    by 0x16DD83: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN8TestEdge22TestEdgeInitialisationEv
+   fun:_ZN47TestDescription_TestEdge_TestEdgeInitialisation7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== 3,664 (144 direct, 3,520 indirect) bytes in 1 blocks are definitely lost in loss record 108 of 112
+==2750756==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2750756==    by 0x17548E: TestEdge::TestEdgeProperties() (TestEdge.hpp:196)
+==2750756==    by 0x17BA66: TestDescription_TestEdge_TestEdgeProperties::runTest() (TestEdge.cpp:37)
+==2750756==    by 0x169E5E: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==2750756==    by 0x16DFF8: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==2750756==    by 0x16DEDD: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==2750756==    by 0x16DD83: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN8TestEdge18TestEdgePropertiesEv
+   fun:_ZN43TestDescription_TestEdge_TestEdgeProperties7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== 685,285 (136 direct, 685,149 indirect) bytes in 1 blocks are definitely lost in loss record 112 of 112
+==2750756==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2750756==    by 0x1184C74E: ???
+==2750756==    by 0x1184CE0B: ???
+==2750756==    by 0x1184FF56: ???
+==2750756==    by 0x1184565D: ???
+==2750756==    by 0x11845FA3: ???
+==2750756==    by 0xB85FF05: ??? (in /usr/lib/x86_64-linux-gnu/libhwloc.so.15.5.2)
+==2750756==    by 0xB83BAE8: hwloc_topology_load (in /usr/lib/x86_64-linux-gnu/libhwloc.so.15.5.2)
+==2750756==    by 0xB7ECCB5: opal_hwloc_base_get_topology (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==2750756==    by 0xB719EF6: orte_ess_base_proc_binding (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==2750756==    by 0xFE0BF03: ???
+==2750756==    by 0xB74E4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==2750756==    by 0x776A418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x7703D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==2750756==    by 0x63FAD38: PetscInitialize (pinit.c:924)
+==2750756==    by 0x626A58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==2750756==    by 0x626A5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==2750756==    by 0x171B4D: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==2750756==    by 0x16A863: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==2750756==    by 0x16DD4A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==2750756==    by 0x16DBEA: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==2750756==    by 0x16E281: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==2750756==    by 0x168B50: main (TestEdge.cpp:19)
+==2750756== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:/usr/lib/x86_64-linux-gnu/libhwloc.so.15.5.2
+   fun:hwloc_topology_load
+   fun:opal_hwloc_base_get_topology
+   fun:orte_ess_base_proc_binding
+   obj:*
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==2750756== LEAK SUMMARY:
+==2750756==    definitely lost: 1,680 bytes in 8 blocks
+==2750756==    indirectly lost: 8,464 bytes in 111 blocks
+==2750756==      possibly lost: 0 bytes in 0 blocks
+==2750756==    still reachable: 1,531 bytes in 6 blocks
+==2750756==         suppressed: 696,668 bytes in 9,353 blocks
+==2750756== Reachable blocks (those to which a pointer was found) are not shown.
+==2750756== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==2750756== 
+==2750756== Use --track-origins=yes to see where uninitialised values come from
+==2750756== For lists of detected and suppressed errors, rerun with: -s
+==2750756== ERROR SUMMARY: 11 errors from 11 contexts (suppressed: 29 from 29)
