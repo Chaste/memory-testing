@@ -1,0 +1,426 @@
+==395708== Memcheck, a memory error detector
+==395708== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==395708== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==395708== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/heart/test/TestNeumannStimulus -malloc_debug -malloc_dump -memory_info
+==395708== Parent PID: 368214
+==395708== 
+==395708== WARNING: pwritev(vector[...]) is an obsolete suppression line not supported in valgrind 3.15 or later.
+==395708== You should replace [...] by a specific index such as [0] or [1] or [2] or similar
+==395708== 
+==395708== Syscall param socketcall.getsockopt(optlen) points to uninitialised byte(s)
+==395708==    at 0xA90379E: getsockopt_syscall (getsockopt.c:29)
+==395708==    by 0xA90379E: getsockopt (getsockopt.c:94)
+==395708==    by 0x14AA3157: pmix_ptl_base_set_timeout (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x14AAAA1A: pmix_ptl_base_make_connection (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x14AB1DF3: ??? (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x149B13C1: PMIx_Init (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x1492AE4A: ext3x_client_init (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_pmix_ext3x.so)
+==395708==    by 0x140E9E6D: ??? (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so)
+==395708==    by 0xF8EF4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==395708==    by 0xC004418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xBF9DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xAC92D38: PetscInitialize (pinit.c:924)
+==395708==    by 0xA1DA58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==395708==    by 0xA1DA5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==395708==    by 0x12BB50: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==395708==    by 0x12549D: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==395708==    by 0x127A14: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==395708==    by 0x127910: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==395708==    by 0x127F23: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==395708==    by 0x123CA0: main (TestNeumannStimulus.cpp:18)
+==395708==  Address 0x1ffeffdfbc is on thread 1's stack
+==395708==  in frame #2, created by pmix_ptl_base_make_connection (???:)
+==395708== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   socketcall.getsockopt(optlen)
+   fun:getsockopt_syscall
+   fun:getsockopt
+   fun:pmix_ptl_base_set_timeout
+   fun:pmix_ptl_base_make_connection
+   obj:/usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2
+   fun:PMIx_Init
+   fun:ext3x_client_init
+   obj:/usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==395708== Syscall param socketcall.getsockopt(optlen_out) points to uninitialised byte(s)
+==395708==    at 0xA90379E: getsockopt_syscall (getsockopt.c:29)
+==395708==    by 0xA90379E: getsockopt (getsockopt.c:94)
+==395708==    by 0x14AA3157: pmix_ptl_base_set_timeout (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x14AAAA1A: pmix_ptl_base_make_connection (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x14AB1DF3: ??? (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x149B13C1: PMIx_Init (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x1492AE4A: ext3x_client_init (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_pmix_ext3x.so)
+==395708==    by 0x140E9E6D: ??? (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so)
+==395708==    by 0xF8EF4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==395708==    by 0xC004418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xBF9DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xAC92D38: PetscInitialize (pinit.c:924)
+==395708==    by 0xA1DA58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==395708==    by 0xA1DA5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==395708==    by 0x12BB50: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==395708==    by 0x12549D: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==395708==    by 0x127A14: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==395708==    by 0x127910: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==395708==    by 0x127F23: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==395708==    by 0x123CA0: main (TestNeumannStimulus.cpp:18)
+==395708==  Address 0x1ffeffdfbc is on thread 1's stack
+==395708==  in frame #2, created by pmix_ptl_base_make_connection (???:)
+==395708== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   socketcall.getsockopt(optlen_out)
+   fun:getsockopt_syscall
+   fun:getsockopt
+   fun:pmix_ptl_base_set_timeout
+   fun:pmix_ptl_base_make_connection
+   obj:/usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2
+   fun:PMIx_Init
+   fun:ext3x_client_init
+   obj:/usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==395708== Syscall param setsockopt(optlen) contains uninitialised byte(s)
+==395708==    at 0xA903C7E: setsockopt_syscall (setsockopt.c:29)
+==395708==    by 0xA903C7E: setsockopt (setsockopt.c:95)
+==395708==    by 0x14AAABA9: pmix_ptl_base_make_connection (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x14AB1DF3: ??? (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x149B13C1: PMIx_Init (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==395708==    by 0x1492AE4A: ext3x_client_init (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_pmix_ext3x.so)
+==395708==    by 0x140E9E6D: ??? (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so)
+==395708==    by 0xF8EF4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==395708==    by 0xC004418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xBF9DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xAC92D38: PetscInitialize (pinit.c:924)
+==395708==    by 0xA1DA58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==395708==    by 0xA1DA5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==395708==    by 0x12BB50: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==395708==    by 0x12549D: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==395708==    by 0x127A14: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==395708==    by 0x127910: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==395708==    by 0x127F23: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==395708==    by 0x123CA0: main (TestNeumannStimulus.cpp:18)
+==395708== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   setsockopt(optlen)
+   fun:setsockopt_syscall
+   fun:setsockopt
+   fun:pmix_ptl_base_make_connection
+   obj:/usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2
+   fun:PMIx_Init
+   fun:ext3x_client_init
+   obj:/usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==395708== Syscall param pwrite64(buf) points to uninitialised byte(s)
+==395708==    at 0xA8EE9EF: __libc_pwrite64 (pwrite64.c:25)
+==395708==    by 0xA8EE9EF: pwrite (pwrite64.c:23)
+==395708==    by 0x17F209D2: mca_fbtl_posix_pwritev (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_fbtl_posix.so)
+==395708==    by 0x17F30419: mca_common_ompio_file_write (in /usr/lib/x86_64-linux-gnu/libmca_common_ompio.so.41.29.2)
+==395708==    by 0x17F3079A: mca_common_ompio_file_write_at (in /usr/lib/x86_64-linux-gnu/libmca_common_ompio.so.41.29.2)
+==395708==    by 0x17E1B89A: mca_io_ompio_file_write_at (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_io_ompio.so)
+==395708==    by 0xBF916A7: PMPI_File_write_at (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xC873FEB: ??? (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC6B34ED: H5FD_write (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC696313: H5F__accum_write (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC791442: H5PB_write (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC69DDEA: H5F_block_write (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC627E98: H5C__flush_single_entry (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC8673F9: H5C_apply_candidate_list (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC8689CA: H5AC__run_sync_point (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC86947E: H5AC__flush_entries (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC60454C: H5AC_flush (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC69C936: ??? (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC69D3FE: H5F__dest (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC6A0BB2: H5F_try_close (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC6A0EFB: H5F__close_cb (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC71051F: H5I_dec_ref (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC7105EA: H5I_dec_app_ref (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC69D831: H5F__close (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC692881: H5Fclose (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC547967: Hdf5DataWriter::Close() (Hdf5DataWriter.cpp:1100)
+==395708==    by 0xC542647: Hdf5DataWriter::~Hdf5DataWriter() (Hdf5DataWriter.cpp:273)
+==395708==    by 0xC5426ED: Hdf5DataWriter::~Hdf5DataWriter() (Hdf5DataWriter.cpp:283)
+==395708==    by 0x685835B: AbstractCardiacProblem<1u, 1u, 1u>::CloseFilesAndPostProcess() (AbstractCardiacProblem.cpp:597)
+==395708==    by 0x6857EFB: AbstractCardiacProblem<1u, 1u, 1u>::Solve() (AbstractCardiacProblem.cpp:582)
+==395708==    by 0x12C059: TestNeumannStimulus::TestMonodomainConstantStimulus() (TestNeumannStimulus.hpp:103)
+==395708==    by 0x12CEFE: TestDescription_TestNeumannStimulus_TestMonodomainConstantStimulus::runTest() (TestNeumannStimulus.cpp:30)
+==395708==    by 0x124CD4: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==395708==    by 0x127CC2: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==395708==    by 0x127BA7: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==395708==    by 0x127A4D: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==395708==    by 0x127910: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==395708==    by 0x127F23: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==395708==    by 0x123CA0: main (TestNeumannStimulus.cpp:18)
+==395708==  Address 0x15ec26ce is 62 bytes inside a block of size 320 alloc'd
+==395708==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==395708==    by 0xC627E26: H5C__flush_single_entry (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC8673F9: H5C_apply_candidate_list (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC8689CA: H5AC__run_sync_point (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC86947E: H5AC__flush_entries (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC60454C: H5AC_flush (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC69C936: ??? (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC69D3FE: H5F__dest (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC6A0BB2: H5F_try_close (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC6A0EFB: H5F__close_cb (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC71051F: H5I_dec_ref (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC7105EA: H5I_dec_app_ref (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC69D831: H5F__close (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC692881: H5Fclose (in /usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0)
+==395708==    by 0xC547967: Hdf5DataWriter::Close() (Hdf5DataWriter.cpp:1100)
+==395708==    by 0xC542647: Hdf5DataWriter::~Hdf5DataWriter() (Hdf5DataWriter.cpp:273)
+==395708==    by 0xC5426ED: Hdf5DataWriter::~Hdf5DataWriter() (Hdf5DataWriter.cpp:283)
+==395708==    by 0x685835B: AbstractCardiacProblem<1u, 1u, 1u>::CloseFilesAndPostProcess() (AbstractCardiacProblem.cpp:597)
+==395708==    by 0x6857EFB: AbstractCardiacProblem<1u, 1u, 1u>::Solve() (AbstractCardiacProblem.cpp:582)
+==395708==    by 0x12C059: TestNeumannStimulus::TestMonodomainConstantStimulus() (TestNeumannStimulus.hpp:103)
+==395708==    by 0x12CEFE: TestDescription_TestNeumannStimulus_TestMonodomainConstantStimulus::runTest() (TestNeumannStimulus.cpp:30)
+==395708==    by 0x124CD4: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==395708==    by 0x127CC2: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==395708==    by 0x127BA7: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==395708==    by 0x127A4D: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==395708==    by 0x127910: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==395708==    by 0x127F23: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==395708==    by 0x123CA0: main (TestNeumannStimulus.cpp:18)
+==395708== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   pwrite64(buf)
+   fun:__libc_pwrite64
+   fun:pwrite
+   fun:mca_fbtl_posix_pwritev
+   fun:mca_common_ompio_file_write
+   fun:mca_common_ompio_file_write_at
+   fun:mca_io_ompio_file_write_at
+   fun:PMPI_File_write_at
+   obj:/usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0
+   fun:H5FD_write
+   fun:H5F__accum_write
+   fun:H5PB_write
+   fun:H5F_block_write
+   fun:H5C__flush_single_entry
+   fun:H5C_apply_candidate_list
+   fun:H5AC__run_sync_point
+   fun:H5AC__flush_entries
+   fun:H5AC_flush
+   obj:/usr/lib/x86_64-linux-gnu/libhdf5_openmpi.so.103.3.0
+   fun:H5F__dest
+   fun:H5F_try_close
+   fun:H5F__close_cb
+   fun:H5I_dec_ref
+   fun:H5I_dec_app_ref
+   fun:H5F__close
+   fun:H5Fclose
+   fun:_ZN14Hdf5DataWriter5CloseEv
+   fun:_ZN14Hdf5DataWriterD1Ev
+   fun:_ZN14Hdf5DataWriterD0Ev
+   fun:_ZN22AbstractCardiacProblemILj1ELj1ELj1EE24CloseFilesAndPostProcessEv
+   fun:_ZN22AbstractCardiacProblemILj1ELj1ELj1EE5SolveEv
+   fun:_ZN19TestNeumannStimulus30TestMonodomainConstantStimulusEv
+   fun:_ZN66TestDescription_TestNeumannStimulus_TestMonodomainConstantStimulus7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==395708== 
+==395708== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==395708== Open file descriptor 12:
+==395708==    at 0xA8F122D: pipe (pipe.c:29)
+==395708==    by 0x140EA07D: ???
+==395708==    by 0xF8EF4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==395708==    by 0xC004418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xBF9DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xAC92D38: PetscInitialize (pinit.c:924)
+==395708==    by 0xA1DA58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==395708==    by 0xA1DA5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==395708==    by 0x12BB50: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==395708==    by 0x12549D: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==395708==    by 0x127A14: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==395708==    by 0x127910: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==395708==    by 0x127F23: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==395708==    by 0x123CA0: main (TestNeumannStimulus.cpp:18)
+==395708== 
+==395708== Open file descriptor 8: /dev/shm/open_mpi.0000
+==395708==    at 0xA8F5BCC: __open_nocancel (open64_nocancel.c:39)
+==395708==    by 0xA879C4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==395708==    by 0xA212822: ???
+==395708==    by 0xA21296F: ???
+==395708==    by 0xF9946DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==395708==    by 0xF994938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==395708==    by 0xF94A922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==395708==    by 0xF8EF2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==395708==    by 0xC004418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xBF9DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xAC92D38: PetscInitialize (pinit.c:924)
+==395708==    by 0xA1DA58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==395708==    by 0xA1DA5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==395708==    by 0x12BB50: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==395708==    by 0x12549D: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==395708==    by 0x127A14: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==395708==    by 0x127910: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==395708==    by 0x127F23: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==395708==    by 0x123CA0: main (TestNeumannStimulus.cpp:18)
+==395708== 
+==395708== Open file descriptor 116:
+==395708==    <inherited from parent>
+==395708== 
+==395708== Open file descriptor 111:
+==395708==    <inherited from parent>
+==395708== 
+==395708== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestNeumannStimulus_valgrind.txt
+==395708==    <inherited from parent>
+==395708== 
+==395708== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==395708==    <inherited from parent>
+==395708== 
+==395708== 
+==395708== HEAP SUMMARY:
+==395708==     in use at exit: 701,234 bytes in 9,387 blocks
+==395708==   total heap usage: 102,730 allocs, 93,343 frees, 1,365,809,027 bytes allocated
+==395708== 
+==395708== 552 bytes in 1 blocks are definitely lost in loss record 43 of 69
+==395708==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==395708==    by 0x149B8C13: ???
+==395708==    by 0x149B922C: ???
+==395708==    by 0x1492C4B7: ???
+==395708==    by 0xBF6A15A: ompi_proc_complete_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xC004A97: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xBF9DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xAC92D38: PetscInitialize (pinit.c:924)
+==395708==    by 0xA1DA58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==395708==    by 0xA1DA5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==395708==    by 0x12BB50: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==395708==    by 0x12549D: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==395708==    by 0x127A14: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==395708==    by 0x127910: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==395708==    by 0x127F23: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==395708==    by 0x123CA0: main (TestNeumannStimulus.cpp:18)
+==395708== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   fun:ompi_proc_complete_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==395708== 84,459 (136 direct, 84,323 indirect) bytes in 1 blocks are definitely lost in loss record 66 of 69
+==395708==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==395708==    by 0x15B2B74E: ???
+==395708==    by 0x15B2BE0B: ???
+==395708==    by 0x15B2EF56: ???
+==395708==    by 0x15B2465D: ???
+==395708==    by 0x15B24FA3: ???
+==395708==    by 0xFA00F05: ??? (in /usr/lib/x86_64-linux-gnu/libhwloc.so.15.5.2)
+==395708==    by 0xF9DCAE8: hwloc_topology_load (in /usr/lib/x86_64-linux-gnu/libhwloc.so.15.5.2)
+==395708==    by 0xF98DCB5: opal_hwloc_base_get_topology (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==395708==    by 0xF8BAEF6: orte_ess_base_proc_binding (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==395708==    by 0x140EAF03: ???
+==395708==    by 0xF8EF4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==395708==    by 0xC004418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xBF9DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==395708==    by 0xAC92D38: PetscInitialize (pinit.c:924)
+==395708==    by 0xA1DA58B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==395708==    by 0xA1DA5D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==395708==    by 0x12BB50: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==395708==    by 0x12549D: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==395708==    by 0x127A14: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==395708==    by 0x127910: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==395708==    by 0x127F23: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==395708==    by 0x123CA0: main (TestNeumannStimulus.cpp:18)
+==395708== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:/usr/lib/x86_64-linux-gnu/libhwloc.so.15.5.2
+   fun:hwloc_topology_load
+   fun:opal_hwloc_base_get_topology
+   fun:orte_ess_base_proc_binding
+   obj:*
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==395708== LEAK SUMMARY:
+==395708==    definitely lost: 688 bytes in 2 blocks
+==395708==    indirectly lost: 1,760 bytes in 16 blocks
+==395708==      possibly lost: 0 bytes in 0 blocks
+==395708==    still reachable: 1,531 bytes in 6 blocks
+==395708==         suppressed: 697,255 bytes in 9,363 blocks
+==395708== Reachable blocks (those to which a pointer was found) are not shown.
+==395708== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==395708== 
+==395708== Use --track-origins=yes to see where uninitialised values come from
+==395708== For lists of detected and suppressed errors, rerun with: -s
+==395708== ERROR SUMMARY: 11 errors from 6 contexts (suppressed: 32 from 32)
