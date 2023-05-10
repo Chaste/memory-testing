@@ -1,0 +1,524 @@
+==602587== Memcheck, a memory error detector
+==602587== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==602587== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==602587== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/crypt/test/TestCryptSimulation2dWithMeshBasedCellPopulation -malloc_debug -malloc_dump -memory_info
+==602587== Parent PID: 582436
+==602587== 
+==602587== WARNING: pwritev(vector[...]) is an obsolete suppression line not supported in valgrind 3.15 or later.
+==602587== You should replace [...] by a specific index such as [0] or [1] or [2] or similar
+==602587== 
+==602587== Syscall param socketcall.getsockopt(optlen) points to uninitialised byte(s)
+==602587==    at 0x1041979E: getsockopt_syscall (getsockopt.c:29)
+==602587==    by 0x1041979E: getsockopt (getsockopt.c:94)
+==602587==    by 0x1ABAE157: pmix_ptl_base_set_timeout (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1ABB5A1A: pmix_ptl_base_make_connection (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1ABBCDF3: ??? (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1AABC3C1: PMIx_Init (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1AA35E4A: ext3x_client_init (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_pmix_ext3x.so)
+==602587==    by 0x1A1F4E6D: ??? (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so)
+==602587==    by 0x157F74CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==602587==    by 0x120A3418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x1203CD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x10D33D38: PetscInitialize (pinit.c:924)
+==602587==    by 0xFBE158B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==602587==    by 0xFBE15D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==602587==    by 0x24AE20: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==602587==    by 0x23F9F3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==602587==    by 0x2441E0: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==602587==    by 0x244080: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==602587==    by 0x244717: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==602587==    by 0x23DCE0: main (TestCryptSimulation2dWithMeshBasedCellPopulation.cpp:19)
+==602587==  Address 0x1ffeffdf7c is on thread 1's stack
+==602587==  in frame #2, created by pmix_ptl_base_make_connection (???:)
+==602587== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   socketcall.getsockopt(optlen)
+   fun:getsockopt_syscall
+   fun:getsockopt
+   fun:pmix_ptl_base_set_timeout
+   fun:pmix_ptl_base_make_connection
+   obj:/usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2
+   fun:PMIx_Init
+   fun:ext3x_client_init
+   obj:/usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==602587== Syscall param socketcall.getsockopt(optlen_out) points to uninitialised byte(s)
+==602587==    at 0x1041979E: getsockopt_syscall (getsockopt.c:29)
+==602587==    by 0x1041979E: getsockopt (getsockopt.c:94)
+==602587==    by 0x1ABAE157: pmix_ptl_base_set_timeout (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1ABB5A1A: pmix_ptl_base_make_connection (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1ABBCDF3: ??? (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1AABC3C1: PMIx_Init (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1AA35E4A: ext3x_client_init (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_pmix_ext3x.so)
+==602587==    by 0x1A1F4E6D: ??? (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so)
+==602587==    by 0x157F74CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==602587==    by 0x120A3418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x1203CD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x10D33D38: PetscInitialize (pinit.c:924)
+==602587==    by 0xFBE158B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==602587==    by 0xFBE15D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==602587==    by 0x24AE20: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==602587==    by 0x23F9F3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==602587==    by 0x2441E0: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==602587==    by 0x244080: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==602587==    by 0x244717: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==602587==    by 0x23DCE0: main (TestCryptSimulation2dWithMeshBasedCellPopulation.cpp:19)
+==602587==  Address 0x1ffeffdf7c is on thread 1's stack
+==602587==  in frame #2, created by pmix_ptl_base_make_connection (???:)
+==602587== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   socketcall.getsockopt(optlen_out)
+   fun:getsockopt_syscall
+   fun:getsockopt
+   fun:pmix_ptl_base_set_timeout
+   fun:pmix_ptl_base_make_connection
+   obj:/usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2
+   fun:PMIx_Init
+   fun:ext3x_client_init
+   obj:/usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==602587== Syscall param setsockopt(optlen) contains uninitialised byte(s)
+==602587==    at 0x10419C7E: setsockopt_syscall (setsockopt.c:29)
+==602587==    by 0x10419C7E: setsockopt (setsockopt.c:95)
+==602587==    by 0x1ABB5BA9: pmix_ptl_base_make_connection (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1ABBCDF3: ??? (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1AABC3C1: PMIx_Init (in /usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2)
+==602587==    by 0x1AA35E4A: ext3x_client_init (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_pmix_ext3x.so)
+==602587==    by 0x1A1F4E6D: ??? (in /usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so)
+==602587==    by 0x157F74CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==602587==    by 0x120A3418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x1203CD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x10D33D38: PetscInitialize (pinit.c:924)
+==602587==    by 0xFBE158B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==602587==    by 0xFBE15D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==602587==    by 0x24AE20: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==602587==    by 0x23F9F3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==602587==    by 0x2441E0: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==602587==    by 0x244080: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==602587==    by 0x244717: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==602587==    by 0x23DCE0: main (TestCryptSimulation2dWithMeshBasedCellPopulation.cpp:19)
+==602587== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   setsockopt(optlen)
+   fun:setsockopt_syscall
+   fun:setsockopt
+   fun:pmix_ptl_base_make_connection
+   obj:/usr/lib/x86_64-linux-gnu/pmix2/lib/libpmix.so.2.5.2
+   fun:PMIx_Init
+   fun:ext3x_client_init
+   obj:/usr/lib/x86_64-linux-gnu/openmpi/lib/openmpi3/mca_ess_singleton.so
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==602587== Use of uninitialised value of size 8
+==602587==    at 0xFDC881B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==602587==    by 0xFDC8F99: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==602587==    by 0xFDD7399: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==602587==    by 0x2A9144: void boost::archive::basic_text_oprimitive<std::ostream>::save_impl<unsigned int>(unsigned int const&, mpl_::bool_<false>&) (basic_text_oprimitive.hpp:130)
+==602587==    by 0x2A79FF: void boost::archive::basic_text_oprimitive<std::ostream>::save<unsigned int>(unsigned int const&) (basic_text_oprimitive.hpp:180)
+==602587==    by 0x2A5D36: void boost::archive::text_oarchive_impl<boost::archive::text_oarchive>::save<unsigned int>(unsigned int const&) (text_oarchive.hpp:65)
+==602587==    by 0x2A3F87: void boost::archive::save_access::save_primitive<boost::archive::text_oarchive, unsigned int>(boost::archive::text_oarchive&, unsigned int const&) (oserializer.hpp:93)
+==602587==    by 0x2A1DA6: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::save_primitive::invoke<unsigned int>(boost::archive::text_oarchive&, unsigned int const&) (oserializer.hpp:237)
+==602587==    by 0x2A01E4: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::invoke<unsigned int>(boost::archive::text_oarchive&, unsigned int const&) (oserializer.hpp:315)
+==602587==    by 0x29E820: void boost::archive::save<boost::archive::text_oarchive, unsigned int const>(boost::archive::text_oarchive&, unsigned int const&) (oserializer.hpp:539)
+==602587==    by 0x29D79F: void boost::archive::detail::common_oarchive<boost::archive::text_oarchive>::save_override<unsigned int const>(unsigned int const&) (common_oarchive.hpp:71)
+==602587==    by 0x29CD52: void boost::archive::basic_text_oarchive<boost::archive::text_oarchive>::save_override<unsigned int const>(unsigned int const&) (basic_text_oarchive.hpp:83)
+==602587==    by 0x29C355: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator<< <unsigned int>(unsigned int const&) (interface_oarchive.hpp:70)
+==602587==    by 0x29B8A7: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator&<unsigned int>(unsigned int const&) (interface_oarchive.hpp:77)
+==602587==    by 0xB53A5ED: void AbstractSrnModel::serialize<boost::archive::text_oarchive>(boost::archive::text_oarchive&, unsigned int) (AbstractSrnModel.hpp:83)
+==602587==    by 0xB539772: void boost::serialization::access::serialize<boost::archive::text_oarchive, AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel&, unsigned int) (access.hpp:116)
+==602587==    by 0xB53848C: void boost::serialization::serialize<boost::archive::text_oarchive, AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel&, unsigned int) (serialization.hpp:68)
+==602587==    by 0xB537682: void boost::serialization::serialize_adl<boost::archive::text_oarchive, AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel&, unsigned int) (serialization.hpp:118)
+==602587==    by 0xB536FAD: boost::archive::detail::oserializer<boost::archive::text_oarchive, AbstractSrnModel>::save_object_data(boost::archive::detail::basic_oarchive&, void const*) const (oserializer.hpp:153)
+==602587==    by 0xB536A3D: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::save_standard::invoke<AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel const&) (oserializer.hpp:258)
+==602587==    by 0xB536607: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::invoke<AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel const&) (oserializer.hpp:315)
+==602587==    by 0xB5361D8: void boost::archive::save<boost::archive::text_oarchive, AbstractSrnModel const>(boost::archive::text_oarchive&, AbstractSrnModel const&) (oserializer.hpp:539)
+==602587==    by 0xB535E77: void boost::archive::detail::common_oarchive<boost::archive::text_oarchive>::save_override<AbstractSrnModel const>(AbstractSrnModel const&) (common_oarchive.hpp:71)
+==602587==    by 0xB535B06: void boost::archive::basic_text_oarchive<boost::archive::text_oarchive>::save_override<AbstractSrnModel const>(AbstractSrnModel const&) (basic_text_oarchive.hpp:83)
+==602587==    by 0xB5356E1: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator<< <AbstractSrnModel>(AbstractSrnModel const&) (interface_oarchive.hpp:70)
+==602587==    by 0xB53536B: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator&<AbstractSrnModel>(AbstractSrnModel const&) (interface_oarchive.hpp:77)
+==602587==    by 0xB656156: void NullSrnModel::serialize<boost::archive::text_oarchive>(boost::archive::text_oarchive&, unsigned int) (NullSrnModel.hpp:67)
+==602587==    by 0xB655DAE: void boost::serialization::access::serialize<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel&, unsigned int) (access.hpp:116)
+==602587==    by 0xB65573E: void boost::serialization::serialize<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel&, unsigned int) (serialization.hpp:68)
+==602587==    by 0xB654F8E: void boost::serialization::serialize_adl<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel&, unsigned int) (serialization.hpp:118)
+==602587==    by 0xB654915: boost::archive::detail::oserializer<boost::archive::text_oarchive, NullSrnModel>::save_object_data(boost::archive::detail::basic_oarchive&, void const*) const (oserializer.hpp:153)
+==602587==    by 0xB656ED5: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::save_standard::invoke<NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel const&) (oserializer.hpp:258)
+==602587==    by 0xB656DBA: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::invoke<NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel const&) (oserializer.hpp:315)
+==602587==    by 0xB656BDE: void boost::archive::save<boost::archive::text_oarchive, NullSrnModel const>(boost::archive::text_oarchive&, NullSrnModel const&) (oserializer.hpp:539)
+==602587==    by 0xB656A25: void boost::archive::detail::common_oarchive<boost::archive::text_oarchive>::save_override<NullSrnModel const>(NullSrnModel const&) (common_oarchive.hpp:71)
+==602587==    by 0xB656840: void boost::archive::basic_text_oarchive<boost::archive::text_oarchive>::save_override<NullSrnModel const>(NullSrnModel const&) (basic_text_oarchive.hpp:83)
+==602587==    by 0xB656735: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator<< <NullSrnModel>(NullSrnModel const&) (interface_oarchive.hpp:70)
+==602587==    by 0xB6565B4: void boost::serialization::save<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&, unsigned int) (nvp.hpp:48)
+==602587==    by 0xB65646A: boost::serialization::free_saver<boost::archive::text_oarchive, boost::serialization::nvp<NullSrnModel> >::invoke(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&, unsigned int) (split_free.hpp:45)
+==602587==    by 0xB65635C: void boost::serialization::split_free<boost::archive::text_oarchive, boost::serialization::nvp<NullSrnModel> >(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel>&, unsigned int) (split_free.hpp:74)
+==602587==    by 0xB656186: void boost::serialization::serialize<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel>&, unsigned int) (nvp.hpp:65)
+==602587==    by 0xB655E0B: void boost::serialization::serialize_adl<boost::archive::text_oarchive, boost::serialization::nvp<NullSrnModel> >(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel>&, unsigned int) (serialization.hpp:118)
+==602587==    by 0xB655778: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::save_only::invoke<boost::serialization::nvp<NullSrnModel> >(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&) (oserializer.hpp:246)
+==602587==    by 0xB654FD1: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::invoke<boost::serialization::nvp<NullSrnModel> >(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&) (oserializer.hpp:315)
+==602587==    by 0xB654957: void boost::archive::save<boost::archive::text_oarchive, boost::serialization::nvp<NullSrnModel> const>(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&) (oserializer.hpp:539)
+==602587==    by 0xB6544FF: void boost::archive::detail::common_oarchive<boost::archive::text_oarchive>::save_override<boost::serialization::nvp<NullSrnModel> const>(boost::serialization::nvp<NullSrnModel> const&) (common_oarchive.hpp:71)
+==602587==    by 0xB653F52: void boost::archive::basic_text_oarchive<boost::archive::text_oarchive>::save_override<boost::serialization::nvp<NullSrnModel> const>(boost::serialization::nvp<NullSrnModel> const&) (basic_text_oarchive.hpp:83)
+==602587==    by 0xB6538ED: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator<< <boost::serialization::nvp<NullSrnModel> >(boost::serialization::nvp<NullSrnModel> const&) (interface_oarchive.hpp:70)
+==602587==    by 0xB653358: boost::archive::detail::pointer_oserializer<boost::archive::text_oarchive, NullSrnModel>::save_object_ptr(boost::archive::detail::basic_oarchive&, void const*) const (oserializer.hpp:206)
+==602587==    by 0xFC51389: ??? (in /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0)
+==602587== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   obj:/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30
+   fun:_ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE13_M_insert_intImEES3_S3_RSt8ios_basecT_
+   fun:_ZNSo9_M_insertImEERSoT_
+   fun:_ZN5boost7archive21basic_text_oprimitiveISoE9save_implIjEEvRKT_RN4mpl_5bool_ILb0EEE
+   fun:_ZN5boost7archive21basic_text_oprimitiveISoE4saveIjEEvRKT_
+   fun:_ZN5boost7archive18text_oarchive_implINS0_13text_oarchiveEE4saveIjEEvRKT_
+   fun:_ZN5boost7archive11save_access14save_primitiveINS0_13text_oarchiveEjEEvRT_RKT0_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE14save_primitive6invokeIjEEvRS3_RKT_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE6invokeIjEEvRS3_RKT_
+   fun:_ZN5boost7archive4saveINS0_13text_oarchiveEKjEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_oarchiveINS0_13text_oarchiveEE13save_overrideIKjEEvRT_
+   fun:_ZN5boost7archive19basic_text_oarchiveINS0_13text_oarchiveEE13save_overrideIKjEEvRT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEElsIjEERS3_RKT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEEanIjEERS3_RKT_
+   fun:_ZN16AbstractSrnModel9serializeIN5boost7archive13text_oarchiveEEEvRT_j
+   fun:_ZN5boost13serialization6access9serializeINS_7archive13text_oarchiveE16AbstractSrnModelEEvRT_RT0_j
+   fun:_ZN5boost13serialization9serializeINS_7archive13text_oarchiveE16AbstractSrnModelEEvRT_RT0_j
+   fun:_ZN5boost13serialization13serialize_adlINS_7archive13text_oarchiveE16AbstractSrnModelEEvRT_RT0_j
+   fun:_ZNK5boost7archive6detail11oserializerINS0_13text_oarchiveE16AbstractSrnModelE16save_object_dataERNS1_14basic_oarchiveEPKv
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE13save_standard6invokeI16AbstractSrnModelEEvRS3_RKT_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE6invokeI16AbstractSrnModelEEvRS3_RKT_
+   fun:_ZN5boost7archive4saveINS0_13text_oarchiveEK16AbstractSrnModelEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_oarchiveINS0_13text_oarchiveEE13save_overrideIK16AbstractSrnModelEEvRT_
+   fun:_ZN5boost7archive19basic_text_oarchiveINS0_13text_oarchiveEE13save_overrideIK16AbstractSrnModelEEvRT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEElsI16AbstractSrnModelEERS3_RKT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEEanI16AbstractSrnModelEERS3_RKT_
+   fun:_ZN12NullSrnModel9serializeIN5boost7archive13text_oarchiveEEEvRT_j
+   fun:_ZN5boost13serialization6access9serializeINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RT0_j
+   fun:_ZN5boost13serialization9serializeINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RT0_j
+   fun:_ZN5boost13serialization13serialize_adlINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RT0_j
+   fun:_ZNK5boost7archive6detail11oserializerINS0_13text_oarchiveE12NullSrnModelE16save_object_dataERNS1_14basic_oarchiveEPKv
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE13save_standard6invokeI12NullSrnModelEEvRS3_RKT_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE6invokeI12NullSrnModelEEvRS3_RKT_
+   fun:_ZN5boost7archive4saveINS0_13text_oarchiveEK12NullSrnModelEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_oarchiveINS0_13text_oarchiveEE13save_overrideIK12NullSrnModelEEvRT_
+   fun:_ZN5boost7archive19basic_text_oarchiveINS0_13text_oarchiveEE13save_overrideIK12NullSrnModelEEvRT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEElsI12NullSrnModelEERS3_RKT_
+   fun:_ZN5boost13serialization4saveINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RKNS0_3nvpIT0_EEj
+   fun:_ZN5boost13serialization10free_saverINS_7archive13text_oarchiveENS0_3nvpI12NullSrnModelEEE6invokeERS3_RKS6_j
+   fun:_ZN5boost13serialization10split_freeINS_7archive13text_oarchiveENS0_3nvpI12NullSrnModelEEEEvRT_RT0_j
+   fun:_ZN5boost13serialization9serializeINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RNS0_3nvpIT0_EEj
+   fun:_ZN5boost13serialization13serialize_adlINS_7archive13text_oarchiveENS0_3nvpI12NullSrnModelEEEEvRT_RT0_j
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE9save_only6invokeINS_13serialization3nvpI12NullSrnModelEEEEvRS3_RKT_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE6invokeINS_13serialization3nvpI12NullSrnModelEEEEvRS3_RKT_
+   fun:_ZN5boost7archive4saveINS0_13text_oarchiveEKNS_13serialization3nvpI12NullSrnModelEEEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_oarchiveINS0_13text_oarchiveEE13save_overrideIKNS_13serialization3nvpI12NullSrnModelEEEEvRT_
+   fun:_ZN5boost7archive19basic_text_oarchiveINS0_13text_oarchiveEE13save_overrideIKNS_13serialization3nvpI12NullSrnModelEEEEvRT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEElsINS_13serialization3nvpI12NullSrnModelEEEERS3_RKT_
+   fun:_ZNK5boost7archive6detail19pointer_oserializerINS0_13text_oarchiveE12NullSrnModelE15save_object_ptrERNS1_14basic_oarchiveEPKv
+   obj:/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0
+}
+==602587== Conditional jump or move depends on uninitialised value(s)
+==602587==    at 0xFDC882D: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==602587==    by 0xFDC8F99: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==602587==    by 0xFDD7399: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==602587==    by 0x2A9144: void boost::archive::basic_text_oprimitive<std::ostream>::save_impl<unsigned int>(unsigned int const&, mpl_::bool_<false>&) (basic_text_oprimitive.hpp:130)
+==602587==    by 0x2A79FF: void boost::archive::basic_text_oprimitive<std::ostream>::save<unsigned int>(unsigned int const&) (basic_text_oprimitive.hpp:180)
+==602587==    by 0x2A5D36: void boost::archive::text_oarchive_impl<boost::archive::text_oarchive>::save<unsigned int>(unsigned int const&) (text_oarchive.hpp:65)
+==602587==    by 0x2A3F87: void boost::archive::save_access::save_primitive<boost::archive::text_oarchive, unsigned int>(boost::archive::text_oarchive&, unsigned int const&) (oserializer.hpp:93)
+==602587==    by 0x2A1DA6: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::save_primitive::invoke<unsigned int>(boost::archive::text_oarchive&, unsigned int const&) (oserializer.hpp:237)
+==602587==    by 0x2A01E4: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::invoke<unsigned int>(boost::archive::text_oarchive&, unsigned int const&) (oserializer.hpp:315)
+==602587==    by 0x29E820: void boost::archive::save<boost::archive::text_oarchive, unsigned int const>(boost::archive::text_oarchive&, unsigned int const&) (oserializer.hpp:539)
+==602587==    by 0x29D79F: void boost::archive::detail::common_oarchive<boost::archive::text_oarchive>::save_override<unsigned int const>(unsigned int const&) (common_oarchive.hpp:71)
+==602587==    by 0x29CD52: void boost::archive::basic_text_oarchive<boost::archive::text_oarchive>::save_override<unsigned int const>(unsigned int const&) (basic_text_oarchive.hpp:83)
+==602587==    by 0x29C355: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator<< <unsigned int>(unsigned int const&) (interface_oarchive.hpp:70)
+==602587==    by 0x29B8A7: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator&<unsigned int>(unsigned int const&) (interface_oarchive.hpp:77)
+==602587==    by 0xB53A5ED: void AbstractSrnModel::serialize<boost::archive::text_oarchive>(boost::archive::text_oarchive&, unsigned int) (AbstractSrnModel.hpp:83)
+==602587==    by 0xB539772: void boost::serialization::access::serialize<boost::archive::text_oarchive, AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel&, unsigned int) (access.hpp:116)
+==602587==    by 0xB53848C: void boost::serialization::serialize<boost::archive::text_oarchive, AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel&, unsigned int) (serialization.hpp:68)
+==602587==    by 0xB537682: void boost::serialization::serialize_adl<boost::archive::text_oarchive, AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel&, unsigned int) (serialization.hpp:118)
+==602587==    by 0xB536FAD: boost::archive::detail::oserializer<boost::archive::text_oarchive, AbstractSrnModel>::save_object_data(boost::archive::detail::basic_oarchive&, void const*) const (oserializer.hpp:153)
+==602587==    by 0xB536A3D: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::save_standard::invoke<AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel const&) (oserializer.hpp:258)
+==602587==    by 0xB536607: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::invoke<AbstractSrnModel>(boost::archive::text_oarchive&, AbstractSrnModel const&) (oserializer.hpp:315)
+==602587==    by 0xB5361D8: void boost::archive::save<boost::archive::text_oarchive, AbstractSrnModel const>(boost::archive::text_oarchive&, AbstractSrnModel const&) (oserializer.hpp:539)
+==602587==    by 0xB535E77: void boost::archive::detail::common_oarchive<boost::archive::text_oarchive>::save_override<AbstractSrnModel const>(AbstractSrnModel const&) (common_oarchive.hpp:71)
+==602587==    by 0xB535B06: void boost::archive::basic_text_oarchive<boost::archive::text_oarchive>::save_override<AbstractSrnModel const>(AbstractSrnModel const&) (basic_text_oarchive.hpp:83)
+==602587==    by 0xB5356E1: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator<< <AbstractSrnModel>(AbstractSrnModel const&) (interface_oarchive.hpp:70)
+==602587==    by 0xB53536B: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator&<AbstractSrnModel>(AbstractSrnModel const&) (interface_oarchive.hpp:77)
+==602587==    by 0xB656156: void NullSrnModel::serialize<boost::archive::text_oarchive>(boost::archive::text_oarchive&, unsigned int) (NullSrnModel.hpp:67)
+==602587==    by 0xB655DAE: void boost::serialization::access::serialize<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel&, unsigned int) (access.hpp:116)
+==602587==    by 0xB65573E: void boost::serialization::serialize<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel&, unsigned int) (serialization.hpp:68)
+==602587==    by 0xB654F8E: void boost::serialization::serialize_adl<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel&, unsigned int) (serialization.hpp:118)
+==602587==    by 0xB654915: boost::archive::detail::oserializer<boost::archive::text_oarchive, NullSrnModel>::save_object_data(boost::archive::detail::basic_oarchive&, void const*) const (oserializer.hpp:153)
+==602587==    by 0xB656ED5: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::save_standard::invoke<NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel const&) (oserializer.hpp:258)
+==602587==    by 0xB656DBA: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::invoke<NullSrnModel>(boost::archive::text_oarchive&, NullSrnModel const&) (oserializer.hpp:315)
+==602587==    by 0xB656BDE: void boost::archive::save<boost::archive::text_oarchive, NullSrnModel const>(boost::archive::text_oarchive&, NullSrnModel const&) (oserializer.hpp:539)
+==602587==    by 0xB656A25: void boost::archive::detail::common_oarchive<boost::archive::text_oarchive>::save_override<NullSrnModel const>(NullSrnModel const&) (common_oarchive.hpp:71)
+==602587==    by 0xB656840: void boost::archive::basic_text_oarchive<boost::archive::text_oarchive>::save_override<NullSrnModel const>(NullSrnModel const&) (basic_text_oarchive.hpp:83)
+==602587==    by 0xB656735: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator<< <NullSrnModel>(NullSrnModel const&) (interface_oarchive.hpp:70)
+==602587==    by 0xB6565B4: void boost::serialization::save<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&, unsigned int) (nvp.hpp:48)
+==602587==    by 0xB65646A: boost::serialization::free_saver<boost::archive::text_oarchive, boost::serialization::nvp<NullSrnModel> >::invoke(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&, unsigned int) (split_free.hpp:45)
+==602587==    by 0xB65635C: void boost::serialization::split_free<boost::archive::text_oarchive, boost::serialization::nvp<NullSrnModel> >(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel>&, unsigned int) (split_free.hpp:74)
+==602587==    by 0xB656186: void boost::serialization::serialize<boost::archive::text_oarchive, NullSrnModel>(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel>&, unsigned int) (nvp.hpp:65)
+==602587==    by 0xB655E0B: void boost::serialization::serialize_adl<boost::archive::text_oarchive, boost::serialization::nvp<NullSrnModel> >(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel>&, unsigned int) (serialization.hpp:118)
+==602587==    by 0xB655778: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::save_only::invoke<boost::serialization::nvp<NullSrnModel> >(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&) (oserializer.hpp:246)
+==602587==    by 0xB654FD1: void boost::archive::detail::save_non_pointer_type<boost::archive::text_oarchive>::invoke<boost::serialization::nvp<NullSrnModel> >(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&) (oserializer.hpp:315)
+==602587==    by 0xB654957: void boost::archive::save<boost::archive::text_oarchive, boost::serialization::nvp<NullSrnModel> const>(boost::archive::text_oarchive&, boost::serialization::nvp<NullSrnModel> const&) (oserializer.hpp:539)
+==602587==    by 0xB6544FF: void boost::archive::detail::common_oarchive<boost::archive::text_oarchive>::save_override<boost::serialization::nvp<NullSrnModel> const>(boost::serialization::nvp<NullSrnModel> const&) (common_oarchive.hpp:71)
+==602587==    by 0xB653F52: void boost::archive::basic_text_oarchive<boost::archive::text_oarchive>::save_override<boost::serialization::nvp<NullSrnModel> const>(boost::serialization::nvp<NullSrnModel> const&) (basic_text_oarchive.hpp:83)
+==602587==    by 0xB6538ED: boost::archive::text_oarchive& boost::archive::detail::interface_oarchive<boost::archive::text_oarchive>::operator<< <boost::serialization::nvp<NullSrnModel> >(boost::serialization::nvp<NullSrnModel> const&) (interface_oarchive.hpp:70)
+==602587==    by 0xB653358: boost::archive::detail::pointer_oserializer<boost::archive::text_oarchive, NullSrnModel>::save_object_ptr(boost::archive::detail::basic_oarchive&, void const*) const (oserializer.hpp:206)
+==602587==    by 0xFC51389: ??? (in /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0)
+==602587== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30
+   fun:_ZNKSt7num_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE13_M_insert_intImEES3_S3_RSt8ios_basecT_
+   fun:_ZNSo9_M_insertImEERSoT_
+   fun:_ZN5boost7archive21basic_text_oprimitiveISoE9save_implIjEEvRKT_RN4mpl_5bool_ILb0EEE
+   fun:_ZN5boost7archive21basic_text_oprimitiveISoE4saveIjEEvRKT_
+   fun:_ZN5boost7archive18text_oarchive_implINS0_13text_oarchiveEE4saveIjEEvRKT_
+   fun:_ZN5boost7archive11save_access14save_primitiveINS0_13text_oarchiveEjEEvRT_RKT0_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE14save_primitive6invokeIjEEvRS3_RKT_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE6invokeIjEEvRS3_RKT_
+   fun:_ZN5boost7archive4saveINS0_13text_oarchiveEKjEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_oarchiveINS0_13text_oarchiveEE13save_overrideIKjEEvRT_
+   fun:_ZN5boost7archive19basic_text_oarchiveINS0_13text_oarchiveEE13save_overrideIKjEEvRT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEElsIjEERS3_RKT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEEanIjEERS3_RKT_
+   fun:_ZN16AbstractSrnModel9serializeIN5boost7archive13text_oarchiveEEEvRT_j
+   fun:_ZN5boost13serialization6access9serializeINS_7archive13text_oarchiveE16AbstractSrnModelEEvRT_RT0_j
+   fun:_ZN5boost13serialization9serializeINS_7archive13text_oarchiveE16AbstractSrnModelEEvRT_RT0_j
+   fun:_ZN5boost13serialization13serialize_adlINS_7archive13text_oarchiveE16AbstractSrnModelEEvRT_RT0_j
+   fun:_ZNK5boost7archive6detail11oserializerINS0_13text_oarchiveE16AbstractSrnModelE16save_object_dataERNS1_14basic_oarchiveEPKv
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE13save_standard6invokeI16AbstractSrnModelEEvRS3_RKT_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE6invokeI16AbstractSrnModelEEvRS3_RKT_
+   fun:_ZN5boost7archive4saveINS0_13text_oarchiveEK16AbstractSrnModelEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_oarchiveINS0_13text_oarchiveEE13save_overrideIK16AbstractSrnModelEEvRT_
+   fun:_ZN5boost7archive19basic_text_oarchiveINS0_13text_oarchiveEE13save_overrideIK16AbstractSrnModelEEvRT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEElsI16AbstractSrnModelEERS3_RKT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEEanI16AbstractSrnModelEERS3_RKT_
+   fun:_ZN12NullSrnModel9serializeIN5boost7archive13text_oarchiveEEEvRT_j
+   fun:_ZN5boost13serialization6access9serializeINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RT0_j
+   fun:_ZN5boost13serialization9serializeINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RT0_j
+   fun:_ZN5boost13serialization13serialize_adlINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RT0_j
+   fun:_ZNK5boost7archive6detail11oserializerINS0_13text_oarchiveE12NullSrnModelE16save_object_dataERNS1_14basic_oarchiveEPKv
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE13save_standard6invokeI12NullSrnModelEEvRS3_RKT_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE6invokeI12NullSrnModelEEvRS3_RKT_
+   fun:_ZN5boost7archive4saveINS0_13text_oarchiveEK12NullSrnModelEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_oarchiveINS0_13text_oarchiveEE13save_overrideIK12NullSrnModelEEvRT_
+   fun:_ZN5boost7archive19basic_text_oarchiveINS0_13text_oarchiveEE13save_overrideIK12NullSrnModelEEvRT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEElsI12NullSrnModelEERS3_RKT_
+   fun:_ZN5boost13serialization4saveINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RKNS0_3nvpIT0_EEj
+   fun:_ZN5boost13serialization10free_saverINS_7archive13text_oarchiveENS0_3nvpI12NullSrnModelEEE6invokeERS3_RKS6_j
+   fun:_ZN5boost13serialization10split_freeINS_7archive13text_oarchiveENS0_3nvpI12NullSrnModelEEEEvRT_RT0_j
+   fun:_ZN5boost13serialization9serializeINS_7archive13text_oarchiveE12NullSrnModelEEvRT_RNS0_3nvpIT0_EEj
+   fun:_ZN5boost13serialization13serialize_adlINS_7archive13text_oarchiveENS0_3nvpI12NullSrnModelEEEEvRT_RT0_j
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE9save_only6invokeINS_13serialization3nvpI12NullSrnModelEEEEvRS3_RKT_
+   fun:_ZN5boost7archive6detail21save_non_pointer_typeINS0_13text_oarchiveEE6invokeINS_13serialization3nvpI12NullSrnModelEEEEvRS3_RKT_
+   fun:_ZN5boost7archive4saveINS0_13text_oarchiveEKNS_13serialization3nvpI12NullSrnModelEEEEvRT_RT0_
+   fun:_ZN5boost7archive6detail15common_oarchiveINS0_13text_oarchiveEE13save_overrideIKNS_13serialization3nvpI12NullSrnModelEEEEvRT_
+   fun:_ZN5boost7archive19basic_text_oarchiveINS0_13text_oarchiveEE13save_overrideIKNS_13serialization3nvpI12NullSrnModelEEEEvRT_
+   fun:_ZN5boost7archive6detail18interface_oarchiveINS0_13text_oarchiveEElsINS_13serialization3nvpI12NullSrnModelEEEERS3_RKT_
+   fun:_ZNK5boost7archive6detail19pointer_oserializerINS0_13text_oarchiveE12NullSrnModelE15save_object_ptrERNS1_14basic_oarchiveEPKv
+   obj:/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0
+}
+==602587== 
+==602587== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==602587== Open file descriptor 12:
+==602587==    at 0x1040722D: pipe (pipe.c:29)
+==602587==    by 0x1A1F507D: ???
+==602587==    by 0x157F74CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==602587==    by 0x120A3418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x1203CD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x10D33D38: PetscInitialize (pinit.c:924)
+==602587==    by 0xFBE158B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==602587==    by 0xFBE15D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==602587==    by 0x24AE20: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==602587==    by 0x23F9F3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==602587==    by 0x2441E0: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==602587==    by 0x244080: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==602587==    by 0x244717: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==602587==    by 0x23DCE0: main (TestCryptSimulation2dWithMeshBasedCellPopulation.cpp:19)
+==602587== 
+==602587== Open file descriptor 8: /dev/shm/open_mpi.0000
+==602587==    at 0x1040BBCC: __open_nocancel (open64_nocancel.c:39)
+==602587==    by 0x1038FC4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==602587==    by 0xFC19822: ???
+==602587==    by 0xFC1996F: ???
+==602587==    by 0x1589C6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==602587==    by 0x1589C938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==602587==    by 0x15852922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==602587==    by 0x157F72DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==602587==    by 0x120A3418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x1203CD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x10D33D38: PetscInitialize (pinit.c:924)
+==602587==    by 0xFBE158B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==602587==    by 0xFBE15D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==602587==    by 0x24AE20: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==602587==    by 0x23F9F3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==602587==    by 0x2441E0: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==602587==    by 0x244080: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==602587==    by 0x244717: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==602587==    by 0x23DCE0: main (TestCryptSimulation2dWithMeshBasedCellPopulation.cpp:19)
+==602587== 
+==602587== Open file descriptor 116:
+==602587==    <inherited from parent>
+==602587== 
+==602587== Open file descriptor 111:
+==602587==    <inherited from parent>
+==602587== 
+==602587== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestCryptSimulation2dWithMeshBasedCellPopulation_valgrind.txt
+==602587==    <inherited from parent>
+==602587== 
+==602587== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==602587==    <inherited from parent>
+==602587== 
+==602587== 
+==602587== HEAP SUMMARY:
+==602587==     in use at exit: 700,718 bytes in 9,374 blocks
+==602587==   total heap usage: 6,298,660 allocs, 6,289,286 frees, 2,079,270,848 bytes allocated
+==602587== 
+==602587== 552 bytes in 1 blocks are definitely lost in loss record 36 of 62
+==602587==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==602587==    by 0x1AAC3C13: ???
+==602587==    by 0x1AAC422C: ???
+==602587==    by 0x1AA374B7: ???
+==602587==    by 0x1200915A: ompi_proc_complete_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x120A3A97: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x1203CD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x10D33D38: PetscInitialize (pinit.c:924)
+==602587==    by 0xFBE158B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==602587==    by 0xFBE15D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==602587==    by 0x24AE20: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==602587==    by 0x23F9F3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==602587==    by 0x2441E0: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==602587==    by 0x244080: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==602587==    by 0x244717: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==602587==    by 0x23DCE0: main (TestCryptSimulation2dWithMeshBasedCellPopulation.cpp:19)
+==602587== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   fun:ompi_proc_complete_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==602587== 84,459 (136 direct, 84,323 indirect) bytes in 1 blocks are definitely lost in loss record 59 of 62
+==602587==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==602587==    by 0x1C03674E: ???
+==602587==    by 0x1C036E0B: ???
+==602587==    by 0x1C039F56: ???
+==602587==    by 0x1C02F65D: ???
+==602587==    by 0x1C02FFA3: ???
+==602587==    by 0x15908F05: ??? (in /usr/lib/x86_64-linux-gnu/libhwloc.so.15.5.2)
+==602587==    by 0x158E4AE8: hwloc_topology_load (in /usr/lib/x86_64-linux-gnu/libhwloc.so.15.5.2)
+==602587==    by 0x15895CB5: opal_hwloc_base_get_topology (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==602587==    by 0x157C2EF6: orte_ess_base_proc_binding (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==602587==    by 0x1A1F5F03: ???
+==602587==    by 0x157F74CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==602587==    by 0x120A3418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x1203CD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==602587==    by 0x10D33D38: PetscInitialize (pinit.c:924)
+==602587==    by 0xFBE158B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==602587==    by 0xFBE15D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==602587==    by 0x24AE20: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==602587==    by 0x23F9F3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==602587==    by 0x2441E0: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==602587==    by 0x244080: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==602587==    by 0x244717: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==602587==    by 0x23DCE0: main (TestCryptSimulation2dWithMeshBasedCellPopulation.cpp:19)
+==602587== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:/usr/lib/x86_64-linux-gnu/libhwloc.so.15.5.2
+   fun:hwloc_topology_load
+   fun:opal_hwloc_base_get_topology
+   fun:orte_ess_base_proc_binding
+   obj:*
+   fun:orte_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==602587== LEAK SUMMARY:
+==602587==    definitely lost: 688 bytes in 2 blocks
+==602587==    indirectly lost: 1,760 bytes in 16 blocks
+==602587==      possibly lost: 0 bytes in 0 blocks
+==602587==    still reachable: 1,563 bytes in 7 blocks
+==602587==         suppressed: 696,707 bytes in 9,349 blocks
+==602587== Reachable blocks (those to which a pointer was found) are not shown.
+==602587== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==602587== 
+==602587== Use --track-origins=yes to see where uninitialised values come from
+==602587== For lists of detected and suppressed errors, rerun with: -s
+==602587== ERROR SUMMARY: 1781 errors from 7 contexts (suppressed: 28 from 28)
