@@ -1,0 +1,112 @@
+==1236372== Memcheck, a memory error detector
+==1236372== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1236372== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1236372== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/mesh/test/TestVertexMeshWriter -malloc_debug -malloc_dump -memory_info
+==1236372== Parent PID: 1235700
+==1236372== 
+==1236372== 
+==1236372== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==1236372== Open file descriptor 12:
+==1236372==    at 0x7F0222D: pipe (pipe.c:29)
+==1236372==    by 0xFE0B07D: ???
+==1236372==    by 0xB74E4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1236372==    by 0x7727418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1236372==    by 0x76C0D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1236372==    by 0x6395D38: PetscInitialize (pinit.c:924)
+==1236372==    by 0x626958B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1236372==    by 0x62695D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1236372==    by 0x13855F: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1236372==    by 0x13022F: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1236372==    by 0x132F5C: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1236372==    by 0x132DFC: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1236372==    by 0x133493: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1236372==    by 0x12E560: main (TestVertexMeshWriter.cpp:19)
+==1236372== 
+==1236372== Open file descriptor 8: /dev/shm/open_mpi.0000
+==1236372==    at 0x7F06BCC: __open_nocancel (open64_nocancel.c:39)
+==1236372==    by 0x7E8AC4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==1236372==    by 0x761F822: ???
+==1236372==    by 0x761F96F: ???
+==1236372==    by 0xB7F36DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1236372==    by 0xB7F3938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1236372==    by 0xB7A9922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1236372==    by 0xB74E2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1236372==    by 0x7727418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1236372==    by 0x76C0D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1236372==    by 0x6395D38: PetscInitialize (pinit.c:924)
+==1236372==    by 0x626958B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1236372==    by 0x62695D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1236372==    by 0x13855F: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1236372==    by 0x13022F: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1236372==    by 0x132F5C: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1236372==    by 0x132DFC: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1236372==    by 0x133493: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1236372==    by 0x12E560: main (TestVertexMeshWriter.cpp:19)
+==1236372== 
+==1236372== Open file descriptor 116:
+==1236372==    <inherited from parent>
+==1236372== 
+==1236372== Open file descriptor 111:
+==1236372==    <inherited from parent>
+==1236372== 
+==1236372== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestVertexMeshWriter_valgrind.txt
+==1236372==    <inherited from parent>
+==1236372== 
+==1236372== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1236372==    <inherited from parent>
+==1236372== 
+==1236372== 
+==1236372== HEAP SUMMARY:
+==1236372==     in use at exit: 720,727 bytes in 9,410 blocks
+==1236372==   total heap usage: 65,647 allocs, 56,237 frees, 1,356,758,196 bytes allocated
+==1236372== 
+==1236372== 20,080 (64 direct, 20,016 indirect) bytes in 1 blocks are definitely lost in loss record 92 of 96
+==1236372==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1236372==    by 0x8EE1371: vtkDataSet::vtkDataSet() (in /usr/lib/x86_64-linux-gnu/libvtkCommonDataModel-7.1.so.7.1p.1)
+==1236372==    by 0x8FEDA0C: vtkPointSet::vtkPointSet() (in /usr/lib/x86_64-linux-gnu/libvtkCommonDataModel-7.1.so.7.1p.1)
+==1236372==    by 0x907AA5C: vtkUnstructuredGridBase::vtkUnstructuredGridBase() (in /usr/lib/x86_64-linux-gnu/libvtkCommonDataModel-7.1.so.7.1p.1)
+==1236372==    by 0x9075782: vtkUnstructuredGrid::vtkUnstructuredGrid() (in /usr/lib/x86_64-linux-gnu/libvtkCommonDataModel-7.1.so.7.1p.1)
+==1236372==    by 0x90759FF: vtkUnstructuredGrid::New() (in /usr/lib/x86_64-linux-gnu/libvtkCommonDataModel-7.1.so.7.1p.1)
+==1236372==    by 0x5BB2A60: TrapezoidEdgeVertexMeshWriter<2u, 2u>::TrapezoidEdgeVertexMeshWriter(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) (TrapezoidEdgeVertexMeshWriter.cpp:49)
+==1236372==    by 0x1436FE: TestVertexMeshWriter::TestTrapezoidEdgeVertexMeshWriter() (TestVertexMeshWriter.hpp:493)
+==1236372==    by 0x143C06: TestDescription_TestVertexMeshWriter_TestTrapezoidEdgeVertexMeshWriter::runTest() (TestVertexMeshWriter.cpp:79)
+==1236372==    by 0x12F82A: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==1236372==    by 0x13320A: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==1236372==    by 0x1330EF: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==1236372==    by 0x132F95: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==1236372==    by 0x132DFC: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1236372==    by 0x133493: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1236372==    by 0x12E560: main (TestVertexMeshWriter.cpp:19)
+==1236372== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN10vtkDataSetC1Ev
+   fun:_ZN11vtkPointSetC1Ev
+   fun:_ZN23vtkUnstructuredGridBaseC1Ev
+   fun:_ZN19vtkUnstructuredGridC1Ev
+   fun:_ZN19vtkUnstructuredGrid3NewEv
+   fun:_ZN29TrapezoidEdgeVertexMeshWriterILj2ELj2EEC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_b
+   fun:_ZN20TestVertexMeshWriter33TestTrapezoidEdgeVertexMeshWriterEv
+   fun:_ZN70TestDescription_TestVertexMeshWriter_TestTrapezoidEdgeVertexMeshWriter7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==1236372== LEAK SUMMARY:
+==1236372==    definitely lost: 64 bytes in 1 blocks
+==1236372==    indirectly lost: 20,016 bytes in 32 blocks
+==1236372==      possibly lost: 0 bytes in 0 blocks
+==1236372==    still reachable: 24 bytes in 2 blocks
+==1236372==         suppressed: 700,623 bytes in 9,375 blocks
+==1236372== Reachable blocks (those to which a pointer was found) are not shown.
+==1236372== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1236372== 
+==1236372== For lists of detected and suppressed errors, rerun with: -s
+==1236372== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 35 from 35)
