@@ -1,0 +1,73 @@
+==801507== Memcheck, a memory error detector
+==801507== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==801507== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==801507== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/heart/test/TestConductivityTensors -malloc_debug -malloc_dump -memory_info
+==801507== Parent PID: 778752
+==801507== 
+==801507== 
+==801507== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==801507== Open file descriptor 12:
+==801507==    at 0xA3C322D: pipe (pipe.c:29)
+==801507==    by 0x140D007D: ???
+==801507==    by 0xF8DA4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==801507==    by 0xBAD4418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==801507==    by 0xBA6DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==801507==    by 0xA764D38: PetscInitialize (pinit.c:924)
+==801507==    by 0x9BC558B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==801507==    by 0x9BC55D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==801507==    by 0x13213E: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==801507==    by 0x12BCAF: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==801507==    by 0x12E9A0: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==801507==    by 0x12E840: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==801507==    by 0x12EED7: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==801507==    by 0x129FE0: main (TestConductivityTensors.cpp:19)
+==801507== 
+==801507== Open file descriptor 8: /dev/shm/open_mpi.0000
+==801507==    at 0xA3C7BCC: __open_nocancel (open64_nocancel.c:39)
+==801507==    by 0xA34BC4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==801507==    by 0x9BFD822: ???
+==801507==    by 0x9BFD96F: ???
+==801507==    by 0xF97F6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==801507==    by 0xF97F938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==801507==    by 0xF935922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==801507==    by 0xF8DA2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==801507==    by 0xBAD4418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==801507==    by 0xBA6DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==801507==    by 0xA764D38: PetscInitialize (pinit.c:924)
+==801507==    by 0x9BC558B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==801507==    by 0x9BC55D9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==801507==    by 0x13213E: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==801507==    by 0x12BCAF: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==801507==    by 0x12E9A0: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==801507==    by 0x12E840: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==801507==    by 0x12EED7: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==801507==    by 0x129FE0: main (TestConductivityTensors.cpp:19)
+==801507== 
+==801507== Open file descriptor 116:
+==801507==    <inherited from parent>
+==801507== 
+==801507== Open file descriptor 112:
+==801507==    <inherited from parent>
+==801507== 
+==801507== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestConductivityTensors_valgrind.txt
+==801507==    <inherited from parent>
+==801507== 
+==801507== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==801507==    <inherited from parent>
+==801507== 
+==801507== 
+==801507== HEAP SUMMARY:
+==801507==     in use at exit: 700,754 bytes in 9,377 blocks
+==801507==   total heap usage: 60,656 allocs, 51,279 frees, 1,354,502,780 bytes allocated
+==801507== 
+==801507== LEAK SUMMARY:
+==801507==    definitely lost: 0 bytes in 0 blocks
+==801507==    indirectly lost: 0 bytes in 0 blocks
+==801507==      possibly lost: 0 bytes in 0 blocks
+==801507==    still reachable: 24 bytes in 2 blocks
+==801507==         suppressed: 700,730 bytes in 9,375 blocks
+==801507== Reachable blocks (those to which a pointer was found) are not shown.
+==801507== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==801507== 
+==801507== For lists of detected and suppressed errors, rerun with: -s
+==801507== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 37 from 37)
