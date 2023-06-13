@@ -1,0 +1,73 @@
+==1155946== Memcheck, a memory error detector
+==1155946== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1155946== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1155946== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/heart/test/TestSteadyStateRunner -malloc_debug -malloc_dump -memory_info
+==1155946== Parent PID: 1133807
+==1155946== 
+==1155946== 
+==1155946== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==1155946== Open file descriptor 12:
+==1155946==    at 0x9C8722D: pipe (pipe.c:29)
+==1155946==    by 0x1401507D: ???
+==1155946==    by 0xEB0B4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1155946==    by 0x98BC418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1155946==    by 0x9855D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1155946==    by 0x852CD38: PetscInitialize (pinit.c:924)
+==1155946==    by 0x840068F: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1155946==    by 0x84006DD: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1155946==    by 0x120A77: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1155946==    by 0x11A7EF: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1155946==    by 0x11D1FE: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1155946==    by 0x11D09E: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1155946==    by 0x11D735: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1155946==    by 0x118B20: main (TestSteadyStateRunner.cpp:19)
+==1155946== 
+==1155946== Open file descriptor 8: /dev/shm/open_mpi.0000
+==1155946==    at 0x9C8BBCC: __open_nocancel (open64_nocancel.c:39)
+==1155946==    by 0x9C0FC4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==1155946==    by 0x97B6822: ???
+==1155946==    by 0x97B696F: ???
+==1155946==    by 0xEBB06DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1155946==    by 0xEBB0938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1155946==    by 0xEB66922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1155946==    by 0xEB0B2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1155946==    by 0x98BC418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1155946==    by 0x9855D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1155946==    by 0x852CD38: PetscInitialize (pinit.c:924)
+==1155946==    by 0x840068F: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1155946==    by 0x84006DD: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1155946==    by 0x120A77: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1155946==    by 0x11A7EF: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1155946==    by 0x11D1FE: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1155946==    by 0x11D09E: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1155946==    by 0x11D735: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1155946==    by 0x118B20: main (TestSteadyStateRunner.cpp:19)
+==1155946== 
+==1155946== Open file descriptor 116:
+==1155946==    <inherited from parent>
+==1155946== 
+==1155946== Open file descriptor 112:
+==1155946==    <inherited from parent>
+==1155946== 
+==1155946== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestSteadyStateRunner_valgrind.txt
+==1155946==    <inherited from parent>
+==1155946== 
+==1155946== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1155946==    <inherited from parent>
+==1155946== 
+==1155946== 
+==1155946== HEAP SUMMARY:
+==1155946==     in use at exit: 700,688 bytes in 9,373 blocks
+==1155946==   total heap usage: 52,612 allocs, 43,239 frees, 1,353,883,116 bytes allocated
+==1155946== 
+==1155946== LEAK SUMMARY:
+==1155946==    definitely lost: 0 bytes in 0 blocks
+==1155946==    indirectly lost: 0 bytes in 0 blocks
+==1155946==      possibly lost: 0 bytes in 0 blocks
+==1155946==    still reachable: 24 bytes in 2 blocks
+==1155946==         suppressed: 700,664 bytes in 9,371 blocks
+==1155946== Reachable blocks (those to which a pointer was found) are not shown.
+==1155946== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1155946== 
+==1155946== For lists of detected and suppressed errors, rerun with: -s
+==1155946== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 33 from 33)
