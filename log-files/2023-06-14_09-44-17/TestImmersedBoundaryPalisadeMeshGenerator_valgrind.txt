@@ -1,0 +1,137 @@
+==1241270== Memcheck, a memory error detector
+==1241270== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1241270== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1241270== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/mesh/test/TestImmersedBoundaryPalisadeMeshGenerator -malloc_debug -malloc_dump -memory_info
+==1241270== Parent PID: 1240504
+==1241270== 
+==1241270== 
+==1241270== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==1241270== Open file descriptor 12:
+==1241270==    at 0x819822D: pipe (pipe.c:29)
+==1241270==    by 0x1018607D: ???
+==1241270==    by 0xBABF4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1241270==    by 0x7AA4418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1241270==    by 0x7A3DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1241270==    by 0x6712D38: PetscInitialize (pinit.c:924)
+==1241270==    by 0x65E6717: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1241270==    by 0x65E6765: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1241270==    by 0x11E407: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1241270==    by 0x1185AF: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1241270==    by 0x11AF30: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1241270==    by 0x11ADD0: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1241270==    by 0x11B467: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1241270==    by 0x1168E0: main (TestImmersedBoundaryPalisadeMeshGenerator.cpp:19)
+==1241270== 
+==1241270== Open file descriptor 8: /dev/shm/open_mpi.0000
+==1241270==    at 0x819CBCC: __open_nocancel (open64_nocancel.c:39)
+==1241270==    by 0x8120C4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==1241270==    by 0x799C822: ???
+==1241270==    by 0x799C96F: ???
+==1241270==    by 0xBB646DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1241270==    by 0xBB64938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1241270==    by 0xBB1A922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1241270==    by 0xBABF2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1241270==    by 0x7AA4418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1241270==    by 0x7A3DD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1241270==    by 0x6712D38: PetscInitialize (pinit.c:924)
+==1241270==    by 0x65E6717: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1241270==    by 0x65E6765: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1241270==    by 0x11E407: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1241270==    by 0x1185AF: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1241270==    by 0x11AF30: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1241270==    by 0x11ADD0: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1241270==    by 0x11B467: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1241270==    by 0x1168E0: main (TestImmersedBoundaryPalisadeMeshGenerator.cpp:19)
+==1241270== 
+==1241270== Open file descriptor 116:
+==1241270==    <inherited from parent>
+==1241270== 
+==1241270== Open file descriptor 112:
+==1241270==    <inherited from parent>
+==1241270== 
+==1241270== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestImmersedBoundaryPalisadeMeshGenerator_valgrind.txt
+==1241270==    <inherited from parent>
+==1241270== 
+==1241270== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1241270==    <inherited from parent>
+==1241270== 
+==1241270== 
+==1241270== HEAP SUMMARY:
+==1241270==     in use at exit: 730,183 bytes in 9,658 blocks
+==1241270==   total heap usage: 57,701 allocs, 48,043 frees, 1,368,982,769 bytes allocated
+==1241270== 
+==1241270== 448 bytes in 8 blocks are definitely lost in loss record 51 of 81
+==1241270==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1241270==    by 0x57978A5: OpenSimplex2S::initLatticePoints() (OpenSimplex2S.cpp:442)
+==1241270==    by 0x5795B3E: OpenSimplex2S::Initializer::Initializer() (OpenSimplex2S.cpp:14)
+==1241270==    by 0x5798AE4: __static_initialization_and_destruction_0(int, int) (OpenSimplex2S.cpp:18)
+==1241270==    by 0x5798B09: _GLOBAL__sub_I_OpenSimplex2S.cpp (OpenSimplex2S.cpp:1064)
+==1241270==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==1241270==    by 0x4006567: call_init (dl-init.c:33)
+==1241270==    by 0x4006567: _dl_init (dl-init.c:117)
+==1241270==    by 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==1241270==    by 0x3: ???
+==1241270==    by 0x1FFF0002FE: ???
+==1241270==    by 0x1FFF00037A: ???
+==1241270==    by 0x1FFF000388: ???
+==1241270==    by 0x1FFF000395: ???
+==1241270== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN13OpenSimplex2S17initLatticePointsEv
+   fun:_ZN13OpenSimplex2S11InitializerC1Ev
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__sub_I_OpenSimplex2S.cpp
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+==1241270== 20,712 (128 direct, 20,584 indirect) bytes in 1 blocks are definitely lost in loss record 77 of 81
+==1241270==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1241270==    by 0x5C0F908: ImmersedBoundaryPalisadeMeshGenerator::ImmersedBoundaryPalisadeMeshGenerator(unsigned int, unsigned int, double, double, double, bool, bool, bool, unsigned int, double) (ImmersedBoundaryPalisadeMeshGenerator.cpp:224)
+==1241270==    by 0x11EC7D: TestImmersedBoundaryPalisadeMeshGenerator::TestCellGenerationExceptions() (TestImmersedBoundaryPalisadeMeshGenerator.hpp:79)
+==1241270==    by 0x11EE96: TestDescription_TestImmersedBoundaryPalisadeMeshGenerator_TestCellGenerationExceptions::runTest() (TestImmersedBoundaryPalisadeMeshGenerator.cpp:43)
+==1241270==    by 0x117BAA: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==1241270==    by 0x11B1DE: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==1241270==    by 0x11B0C3: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==1241270==    by 0x11AF69: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==1241270==    by 0x11ADD0: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1241270==    by 0x11B467: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1241270==    by 0x1168E0: main (TestImmersedBoundaryPalisadeMeshGenerator.cpp:19)
+==1241270== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN37ImmersedBoundaryPalisadeMeshGeneratorC1Ejjdddbbbjd
+   fun:_ZN41TestImmersedBoundaryPalisadeMeshGenerator28TestCellGenerationExceptionsEv
+   fun:_ZN86TestDescription_TestImmersedBoundaryPalisadeMeshGenerator_TestCellGenerationExceptions7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==1241270== LEAK SUMMARY:
+==1241270==    definitely lost: 576 bytes in 9 blocks
+==1241270==    indirectly lost: 20,584 bytes in 167 blocks
+==1241270==      possibly lost: 0 bytes in 0 blocks
+==1241270==    still reachable: 8,400 bytes in 107 blocks
+==1241270==         suppressed: 700,623 bytes in 9,375 blocks
+==1241270== Reachable blocks (those to which a pointer was found) are not shown.
+==1241270== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1241270== 
+==1241270== For lists of detected and suppressed errors, rerun with: -s
+==1241270== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 34 from 34)

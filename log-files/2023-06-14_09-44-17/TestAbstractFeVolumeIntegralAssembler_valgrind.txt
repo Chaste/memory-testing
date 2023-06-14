@@ -1,0 +1,108 @@
+==1241529== Memcheck, a memory error detector
+==1241529== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1241529== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1241529== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/pde/test/TestAbstractFeVolumeIntegralAssembler -malloc_debug -malloc_dump -memory_info
+==1241529== Parent PID: 1240504
+==1241529== 
+==1241529== 
+==1241529== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==1241529== Open file descriptor 12:
+==1241529==    at 0x859922D: pipe (pipe.c:29)
+==1241529==    by 0x1063E07D: ???
+==1241529==    by 0xC44F4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1241529==    by 0x8C13418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1241529==    by 0x8BACD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1241529==    by 0x6B63D38: PetscInitialize (pinit.c:924)
+==1241529==    by 0x6A37717: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1241529==    by 0x6A37765: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1241529==    by 0x167F64: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==1241529==    by 0x16136F: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1241529==    by 0x1646AE: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1241529==    by 0x16454E: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1241529==    by 0x164BE5: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1241529==    by 0x15F6A0: main (TestAbstractFeVolumeIntegralAssembler.cpp:19)
+==1241529== 
+==1241529== Open file descriptor 8: /dev/shm/open_mpi.0000
+==1241529==    at 0x859DBCC: __open_nocancel (open64_nocancel.c:39)
+==1241529==    by 0x8521C4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==1241529==    by 0x7DED822: ???
+==1241529==    by 0x7DED96F: ???
+==1241529==    by 0xC4F46DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1241529==    by 0xC4F4938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1241529==    by 0xC4AA922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1241529==    by 0xC44F2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1241529==    by 0x8C13418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1241529==    by 0x8BACD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1241529==    by 0x6B63D38: PetscInitialize (pinit.c:924)
+==1241529==    by 0x6A37717: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1241529==    by 0x6A37765: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1241529==    by 0x167F64: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==1241529==    by 0x16136F: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1241529==    by 0x1646AE: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1241529==    by 0x16454E: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1241529==    by 0x164BE5: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1241529==    by 0x15F6A0: main (TestAbstractFeVolumeIntegralAssembler.cpp:19)
+==1241529== 
+==1241529== Open file descriptor 116:
+==1241529==    <inherited from parent>
+==1241529== 
+==1241529== Open file descriptor 112:
+==1241529==    <inherited from parent>
+==1241529== 
+==1241529== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestAbstractFeVolumeIntegralAssembler_valgrind.txt
+==1241529==    <inherited from parent>
+==1241529== 
+==1241529== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1241529==    <inherited from parent>
+==1241529== 
+==1241529== 
+==1241529== HEAP SUMMARY:
+==1241529==     in use at exit: 706,951 bytes in 9,489 blocks
+==1241529==   total heap usage: 59,039 allocs, 49,550 frees, 1,354,691,476 bytes allocated
+==1241529== 
+==1241529== 448 bytes in 8 blocks are definitely lost in loss record 52 of 77
+==1241529==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1241529==    by 0x5B478A5: OpenSimplex2S::initLatticePoints() (OpenSimplex2S.cpp:442)
+==1241529==    by 0x5B45B3E: OpenSimplex2S::Initializer::Initializer() (OpenSimplex2S.cpp:14)
+==1241529==    by 0x5B48AE4: __static_initialization_and_destruction_0(int, int) (OpenSimplex2S.cpp:18)
+==1241529==    by 0x5B48B09: _GLOBAL__sub_I_OpenSimplex2S.cpp (OpenSimplex2S.cpp:1064)
+==1241529==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==1241529==    by 0x4006567: call_init (dl-init.c:33)
+==1241529==    by 0x4006567: _dl_init (dl-init.c:117)
+==1241529==    by 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==1241529==    by 0x3: ???
+==1241529==    by 0x1FFF000306: ???
+==1241529==    by 0x1FFF00037D: ???
+==1241529==    by 0x1FFF00038B: ???
+==1241529==    by 0x1FFF000398: ???
+==1241529== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN13OpenSimplex2S17initLatticePointsEv
+   fun:_ZN13OpenSimplex2S11InitializerC1Ev
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__sub_I_OpenSimplex2S.cpp
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+==1241529== LEAK SUMMARY:
+==1241529==    definitely lost: 448 bytes in 8 blocks
+==1241529==    indirectly lost: 0 bytes in 0 blocks
+==1241529==      possibly lost: 0 bytes in 0 blocks
+==1241529==    still reachable: 5,848 bytes in 106 blocks
+==1241529==         suppressed: 700,655 bytes in 9,375 blocks
+==1241529== Reachable blocks (those to which a pointer was found) are not shown.
+==1241529== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1241529== 
+==1241529== For lists of detected and suppressed errors, rerun with: -s
+==1241529== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 35 from 35)
