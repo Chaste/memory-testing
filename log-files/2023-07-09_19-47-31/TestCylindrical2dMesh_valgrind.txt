@@ -1,0 +1,108 @@
+==1419535== Memcheck, a memory error detector
+==1419535== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1419535== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1419535== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/mesh/test/TestCylindrical2dMesh -malloc_debug -malloc_dump -memory_info
+==1419535== Parent PID: 1419039
+==1419535== 
+==1419535== 
+==1419535== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==1419535== Open file descriptor 12:
+==1419535==    at 0x821422D: pipe (pipe.c:29)
+==1419535==    by 0x100A807D: ???
+==1419535==    by 0xB9E14CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1419535==    by 0x7A37418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1419535==    by 0x79D0D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1419535==    by 0x66C7D38: PetscInitialize (pinit.c:924)
+==1419535==    by 0x653A15B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1419535==    by 0x653A1A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1419535==    by 0x126F8B: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1419535==    by 0x121FB5: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1419535==    by 0x124B18: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1419535==    by 0x1249B9: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1419535==    by 0x12504F: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1419535==    by 0x1202E5: main (TestCylindrical2dMesh.cpp:19)
+==1419535== 
+==1419535== Open file descriptor 8: /dev/shm/open_mpi.0000
+==1419535==    at 0x8218BCC: __open_nocancel (open64_nocancel.c:39)
+==1419535==    by 0x819CC4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==1419535==    by 0x656F822: ???
+==1419535==    by 0x656F96F: ???
+==1419535==    by 0xBA866DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1419535==    by 0xBA86938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1419535==    by 0xBA3C922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1419535==    by 0xB9E12DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1419535==    by 0x7A37418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1419535==    by 0x79D0D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1419535==    by 0x66C7D38: PetscInitialize (pinit.c:924)
+==1419535==    by 0x653A15B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1419535==    by 0x653A1A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1419535==    by 0x126F8B: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1419535==    by 0x121FB5: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1419535==    by 0x124B18: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1419535==    by 0x1249B9: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1419535==    by 0x12504F: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1419535==    by 0x1202E5: main (TestCylindrical2dMesh.cpp:19)
+==1419535== 
+==1419535== Open file descriptor 116:
+==1419535==    <inherited from parent>
+==1419535== 
+==1419535== Open file descriptor 112:
+==1419535==    <inherited from parent>
+==1419535== 
+==1419535== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestCylindrical2dMesh_valgrind.txt
+==1419535==    <inherited from parent>
+==1419535== 
+==1419535== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1419535==    <inherited from parent>
+==1419535== 
+==1419535== 
+==1419535== HEAP SUMMARY:
+==1419535==     in use at exit: 706,903 bytes in 9,489 blocks
+==1419535==   total heap usage: 163,240 allocs, 153,751 frees, 1,370,901,963 bytes allocated
+==1419535== 
+==1419535== 448 bytes in 8 blocks are definitely lost in loss record 51 of 79
+==1419535==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1419535==    by 0x5751095: OpenSimplex2S::initLatticePoints() (OpenSimplex2S.cpp:442)
+==1419535==    by 0x574F32E: OpenSimplex2S::Initializer::Initializer() (OpenSimplex2S.cpp:14)
+==1419535==    by 0x57522D4: __static_initialization_and_destruction_0(int, int) (OpenSimplex2S.cpp:18)
+==1419535==    by 0x57522F9: _GLOBAL__sub_I_OpenSimplex2S.cpp (OpenSimplex2S.cpp:1064)
+==1419535==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==1419535==    by 0x4006567: call_init (dl-init.c:33)
+==1419535==    by 0x4006567: _dl_init (dl-init.c:117)
+==1419535==    by 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==1419535==    by 0x3: ???
+==1419535==    by 0x1FFF0002FE: ???
+==1419535==    by 0x1FFF000366: ???
+==1419535==    by 0x1FFF000374: ???
+==1419535==    by 0x1FFF000381: ???
+==1419535== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN13OpenSimplex2S17initLatticePointsEv
+   fun:_ZN13OpenSimplex2S11InitializerC1Ev
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__sub_I_OpenSimplex2S.cpp
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+==1419535== LEAK SUMMARY:
+==1419535==    definitely lost: 448 bytes in 8 blocks
+==1419535==    indirectly lost: 0 bytes in 0 blocks
+==1419535==      possibly lost: 0 bytes in 0 blocks
+==1419535==    still reachable: 5,848 bytes in 106 blocks
+==1419535==         suppressed: 700,607 bytes in 9,375 blocks
+==1419535== Reachable blocks (those to which a pointer was found) are not shown.
+==1419535== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1419535== 
+==1419535== For lists of detected and suppressed errors, rerun with: -s
+==1419535== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 37 from 37)

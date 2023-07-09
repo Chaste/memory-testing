@@ -1,0 +1,108 @@
+==1434906== Memcheck, a memory error detector
+==1434906== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1434906== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1434906== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/crypt/test/TestArchiveFormat -malloc_debug -malloc_dump -memory_info
+==1434906== Parent PID: 1419039
+==1434906== 
+==1434906== 
+==1434906== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==1434906== Open file descriptor 12:
+==1434906==    at 0x1268122D: pipe (pipe.c:29)
+==1434906==    by 0x1B43E07D: ???
+==1434906==    by 0x165A04CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1434906==    by 0x11F8B418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1434906==    by 0x11F24D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1434906==    by 0x10C1BD38: PetscInitialize (pinit.c:924)
+==1434906==    by 0x10A9015B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1434906==    by 0x10A901A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1434906==    by 0x1C0D95: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1434906==    by 0x1BBAD7: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1434906==    by 0x1BE6F2: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1434906==    by 0x1BE5EE: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1434906==    by 0x1BEC01: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1434906==    by 0x1BA295: main (TestArchiveFormat.cpp:18)
+==1434906== 
+==1434906== Open file descriptor 8: /dev/shm/open_mpi.0000
+==1434906==    at 0x12685BCC: __open_nocancel (open64_nocancel.c:39)
+==1434906==    by 0x12609C4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==1434906==    by 0x10AC5822: ???
+==1434906==    by 0x10AC596F: ???
+==1434906==    by 0x166476DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1434906==    by 0x16647938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1434906==    by 0x165FD922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1434906==    by 0x165A02DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1434906==    by 0x11F8B418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1434906==    by 0x11F24D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1434906==    by 0x10C1BD38: PetscInitialize (pinit.c:924)
+==1434906==    by 0x10A9015B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1434906==    by 0x10A901A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1434906==    by 0x1C0D95: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1434906==    by 0x1BBAD7: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1434906==    by 0x1BE6F2: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1434906==    by 0x1BE5EE: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1434906==    by 0x1BEC01: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1434906==    by 0x1BA295: main (TestArchiveFormat.cpp:18)
+==1434906== 
+==1434906== Open file descriptor 116:
+==1434906==    <inherited from parent>
+==1434906== 
+==1434906== Open file descriptor 112:
+==1434906==    <inherited from parent>
+==1434906== 
+==1434906== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestArchiveFormat_valgrind.txt
+==1434906==    <inherited from parent>
+==1434906== 
+==1434906== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1434906==    <inherited from parent>
+==1434906== 
+==1434906== 
+==1434906== HEAP SUMMARY:
+==1434906==     in use at exit: 707,095 bytes in 9,490 blocks
+==1434906==   total heap usage: 140,110 allocs, 130,620 frees, 1,360,522,077 bytes allocated
+==1434906== 
+==1434906== 448 bytes in 8 blocks are definitely lost in loss record 52 of 80
+==1434906==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1434906==    by 0xFCA7095: OpenSimplex2S::initLatticePoints() (OpenSimplex2S.cpp:442)
+==1434906==    by 0xFCA532E: OpenSimplex2S::Initializer::Initializer() (OpenSimplex2S.cpp:14)
+==1434906==    by 0xFCA82D4: __static_initialization_and_destruction_0(int, int) (OpenSimplex2S.cpp:18)
+==1434906==    by 0xFCA82F9: _GLOBAL__sub_I_OpenSimplex2S.cpp (OpenSimplex2S.cpp:1064)
+==1434906==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==1434906==    by 0x4006567: call_init (dl-init.c:33)
+==1434906==    by 0x4006567: _dl_init (dl-init.c:117)
+==1434906==    by 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==1434906==    by 0x3: ???
+==1434906==    by 0x1FFF000302: ???
+==1434906==    by 0x1FFF000367: ???
+==1434906==    by 0x1FFF000375: ???
+==1434906==    by 0x1FFF000382: ???
+==1434906== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN13OpenSimplex2S17initLatticePointsEv
+   fun:_ZN13OpenSimplex2S11InitializerC1Ev
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__sub_I_OpenSimplex2S.cpp
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+==1434906== LEAK SUMMARY:
+==1434906==    definitely lost: 448 bytes in 8 blocks
+==1434906==    indirectly lost: 0 bytes in 0 blocks
+==1434906==      possibly lost: 0 bytes in 0 blocks
+==1434906==    still reachable: 5,928 bytes in 107 blocks
+==1434906==         suppressed: 700,719 bytes in 9,375 blocks
+==1434906== Reachable blocks (those to which a pointer was found) are not shown.
+==1434906== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1434906== 
+==1434906== For lists of detected and suppressed errors, rerun with: -s
+==1434906== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 37 from 37)
