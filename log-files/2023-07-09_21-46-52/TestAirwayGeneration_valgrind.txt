@@ -1,0 +1,71 @@
+==1473909== Memcheck, a memory error detector
+==1473909== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1473909== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1473909== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/lung/test/TestAirwayGeneration -malloc_debug -malloc_dump -memory_info
+==1473909== Parent PID: 1457562
+==1473909== 
+==1473909== 
+==1473909== FILE DESCRIPTORS: 7 open (3 std) at exit.
+==1473909== Open file descriptor 116:
+==1473909==    <inherited from parent>
+==1473909== 
+==1473909== Open file descriptor 112:
+==1473909==    <inherited from parent>
+==1473909== 
+==1473909== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestAirwayGeneration_valgrind.txt
+==1473909==    <inherited from parent>
+==1473909== 
+==1473909== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1473909==    <inherited from parent>
+==1473909== 
+==1473909== 
+==1473909== HEAP SUMMARY:
+==1473909==     in use at exit: 6,296 bytes in 114 blocks
+==1473909==   total heap usage: 7,378 allocs, 7,264 frees, 935,164 bytes allocated
+==1473909== 
+==1473909== 448 bytes in 8 blocks are definitely lost in loss record 16 of 16
+==1473909==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1473909==    by 0x7A53095: OpenSimplex2S::initLatticePoints() (OpenSimplex2S.cpp:442)
+==1473909==    by 0x7A5132E: OpenSimplex2S::Initializer::Initializer() (OpenSimplex2S.cpp:14)
+==1473909==    by 0x7A542D4: __static_initialization_and_destruction_0(int, int) (OpenSimplex2S.cpp:18)
+==1473909==    by 0x7A542F9: _GLOBAL__sub_I_OpenSimplex2S.cpp (OpenSimplex2S.cpp:1064)
+==1473909==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==1473909==    by 0x4006567: call_init (dl-init.c:33)
+==1473909==    by 0x4006567: _dl_init (dl-init.c:117)
+==1473909==    by 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==1473909==    by 0x3: ???
+==1473909==    by 0x1FFF0002FE: ???
+==1473909==    by 0x1FFF000365: ???
+==1473909==    by 0x1FFF000373: ???
+==1473909==    by 0x1FFF000380: ???
+==1473909== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN13OpenSimplex2S17initLatticePointsEv
+   fun:_ZN13OpenSimplex2S11InitializerC1Ev
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__sub_I_OpenSimplex2S.cpp
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+==1473909== LEAK SUMMARY:
+==1473909==    definitely lost: 448 bytes in 8 blocks
+==1473909==    indirectly lost: 0 bytes in 0 blocks
+==1473909==      possibly lost: 0 bytes in 0 blocks
+==1473909==    still reachable: 5,848 bytes in 106 blocks
+==1473909==         suppressed: 0 bytes in 0 blocks
+==1473909== Reachable blocks (those to which a pointer was found) are not shown.
+==1473909== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1473909== 
+==1473909== For lists of detected and suppressed errors, rerun with: -s
+==1473909== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

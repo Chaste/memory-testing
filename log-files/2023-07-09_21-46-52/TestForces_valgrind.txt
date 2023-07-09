@@ -1,0 +1,108 @@
+==1459328== Memcheck, a memory error detector
+==1459328== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1459328== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1459328== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/cell_based/test/TestForces -malloc_debug -malloc_dump -memory_info
+==1459328== Parent PID: 1457562
+==1459328== 
+==1459328== 
+==1459328== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==1459328== Open file descriptor 12:
+==1459328==    at 0xF9F422D: pipe (pipe.c:29)
+==1459328==    by 0x1977E07D: ???
+==1459328==    by 0x14D854CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1459328==    by 0x1164F418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1459328==    by 0x115E8D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1459328==    by 0x102DFD38: PetscInitialize (pinit.c:924)
+==1459328==    by 0xF1D115B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1459328==    by 0xF1D11A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1459328==    by 0x14EDCC: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==1459328==    by 0x1470F5: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1459328==    by 0x14A2F8: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1459328==    by 0x14A198: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1459328==    by 0x14A82F: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1459328==    by 0x145425: main (TestForces.cpp:19)
+==1459328== 
+==1459328== Open file descriptor 8: /dev/shm/open_mpi.0000
+==1459328==    at 0xF9F8BCC: __open_nocancel (open64_nocancel.c:39)
+==1459328==    by 0xF97CC4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==1459328==    by 0xF206822: ???
+==1459328==    by 0xF20696F: ???
+==1459328==    by 0x14E2A6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1459328==    by 0x14E2A938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1459328==    by 0x14DE0922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1459328==    by 0x14D852DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1459328==    by 0x1164F418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1459328==    by 0x115E8D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1459328==    by 0x102DFD38: PetscInitialize (pinit.c:924)
+==1459328==    by 0xF1D115B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1459328==    by 0xF1D11A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1459328==    by 0x14EDCC: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==1459328==    by 0x1470F5: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1459328==    by 0x14A2F8: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1459328==    by 0x14A198: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1459328==    by 0x14A82F: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1459328==    by 0x145425: main (TestForces.cpp:19)
+==1459328== 
+==1459328== Open file descriptor 116:
+==1459328==    <inherited from parent>
+==1459328== 
+==1459328== Open file descriptor 112:
+==1459328==    <inherited from parent>
+==1459328== 
+==1459328== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestForces_valgrind.txt
+==1459328==    <inherited from parent>
+==1459328== 
+==1459328== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1459328==    <inherited from parent>
+==1459328== 
+==1459328== 
+==1459328== HEAP SUMMARY:
+==1459328==     in use at exit: 707,031 bytes in 9,490 blocks
+==1459328==   total heap usage: 102,403 allocs, 92,913 frees, 1,359,168,346 bytes allocated
+==1459328== 
+==1459328== 448 bytes in 8 blocks are definitely lost in loss record 52 of 80
+==1459328==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1459328==    by 0xE3E5095: OpenSimplex2S::initLatticePoints() (OpenSimplex2S.cpp:442)
+==1459328==    by 0xE3E332E: OpenSimplex2S::Initializer::Initializer() (OpenSimplex2S.cpp:14)
+==1459328==    by 0xE3E62D4: __static_initialization_and_destruction_0(int, int) (OpenSimplex2S.cpp:18)
+==1459328==    by 0xE3E62F9: _GLOBAL__sub_I_OpenSimplex2S.cpp (OpenSimplex2S.cpp:1064)
+==1459328==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==1459328==    by 0x4006567: call_init (dl-init.c:33)
+==1459328==    by 0x4006567: _dl_init (dl-init.c:117)
+==1459328==    by 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==1459328==    by 0x3: ???
+==1459328==    by 0x1FFF000306: ???
+==1459328==    by 0x1FFF000369: ???
+==1459328==    by 0x1FFF000377: ???
+==1459328==    by 0x1FFF000384: ???
+==1459328== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN13OpenSimplex2S17initLatticePointsEv
+   fun:_ZN13OpenSimplex2S11InitializerC1Ev
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__sub_I_OpenSimplex2S.cpp
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+==1459328== LEAK SUMMARY:
+==1459328==    definitely lost: 448 bytes in 8 blocks
+==1459328==    indirectly lost: 0 bytes in 0 blocks
+==1459328==      possibly lost: 0 bytes in 0 blocks
+==1459328==    still reachable: 5,880 bytes in 107 blocks
+==1459328==         suppressed: 700,703 bytes in 9,375 blocks
+==1459328== Reachable blocks (those to which a pointer was found) are not shown.
+==1459328== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1459328== 
+==1459328== For lists of detected and suppressed errors, rerun with: -s
+==1459328== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 37 from 37)
