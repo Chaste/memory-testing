@@ -1,0 +1,108 @@
+==1711147== Memcheck, a memory error detector
+==1711147== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1711147== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1711147== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/mesh/test/TestVoronoiVertexMeshGenerator -malloc_debug -malloc_dump -memory_info
+==1711147== Parent PID: 1710456
+==1711147== 
+==1711147== 
+==1711147== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==1711147== Open file descriptor 12:
+==1711147==    at 0x6D0822D: pipe (pipe.c:29)
+==1711147==    by 0x1009207D: ???
+==1711147==    by 0xBA1C4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1711147==    by 0x8353418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1711147==    by 0x82ECD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1711147==    by 0x6FE3D38: PetscInitialize (pinit.c:924)
+==1711147==    by 0x652715B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1711147==    by 0x65271A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1711147==    by 0x1216C4: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==1711147==    by 0x11C7C5: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1711147==    by 0x11F372: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1711147==    by 0x11F212: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1711147==    by 0x11F8A9: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1711147==    by 0x11AAF5: main (TestVoronoiVertexMeshGenerator.cpp:19)
+==1711147== 
+==1711147== Open file descriptor 8: /dev/shm/open_mpi.0000
+==1711147==    at 0x6D0CBCC: __open_nocancel (open64_nocancel.c:39)
+==1711147==    by 0x6C90C4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==1711147==    by 0x655C822: ???
+==1711147==    by 0x655C96F: ???
+==1711147==    by 0xBAC16DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1711147==    by 0xBAC1938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1711147==    by 0xBA77922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1711147==    by 0xBA1C2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1711147==    by 0x8353418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1711147==    by 0x82ECD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1711147==    by 0x6FE3D38: PetscInitialize (pinit.c:924)
+==1711147==    by 0x652715B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1711147==    by 0x65271A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1711147==    by 0x1216C4: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==1711147==    by 0x11C7C5: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1711147==    by 0x11F372: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1711147==    by 0x11F212: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1711147==    by 0x11F8A9: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1711147==    by 0x11AAF5: main (TestVoronoiVertexMeshGenerator.cpp:19)
+==1711147== 
+==1711147== Open file descriptor 116:
+==1711147==    <inherited from parent>
+==1711147== 
+==1711147== Open file descriptor 112:
+==1711147==    <inherited from parent>
+==1711147== 
+==1711147== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestVoronoiVertexMeshGenerator_valgrind.txt
+==1711147==    <inherited from parent>
+==1711147== 
+==1711147== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1711147==    <inherited from parent>
+==1711147== 
+==1711147== 
+==1711147== HEAP SUMMARY:
+==1711147==     in use at exit: 709,455 bytes in 9,490 blocks
+==1711147==   total heap usage: 449,250 allocs, 439,760 frees, 1,396,823,310 bytes allocated
+==1711147== 
+==1711147== 448 bytes in 8 blocks are definitely lost in loss record 51 of 80
+==1711147==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1711147==    by 0x5746975: OpenSimplex2S::initLatticePoints() (OpenSimplex2S.cpp:462)
+==1711147==    by 0x5744C0E: OpenSimplex2S::Initializer::Initializer() (OpenSimplex2S.cpp:34)
+==1711147==    by 0x5747BB4: __static_initialization_and_destruction_0(int, int) (OpenSimplex2S.cpp:38)
+==1711147==    by 0x5747BD9: _GLOBAL__sub_I_OpenSimplex2S.cpp (OpenSimplex2S.cpp:1084)
+==1711147==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==1711147==    by 0x4006567: call_init (dl-init.c:33)
+==1711147==    by 0x4006567: _dl_init (dl-init.c:117)
+==1711147==    by 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==1711147==    by 0x3: ???
+==1711147==    by 0x1FFF0002EA: ???
+==1711147==    by 0x1FFF00035B: ???
+==1711147==    by 0x1FFF000369: ???
+==1711147==    by 0x1FFF000376: ???
+==1711147== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN13OpenSimplex2S17initLatticePointsEv
+   fun:_ZN13OpenSimplex2S11InitializerC1Ev
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__sub_I_OpenSimplex2S.cpp
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+==1711147== LEAK SUMMARY:
+==1711147==    definitely lost: 448 bytes in 8 blocks
+==1711147==    indirectly lost: 0 bytes in 0 blocks
+==1711147==      possibly lost: 0 bytes in 0 blocks
+==1711147==    still reachable: 8,400 bytes in 107 blocks
+==1711147==         suppressed: 700,607 bytes in 9,375 blocks
+==1711147== Reachable blocks (those to which a pointer was found) are not shown.
+==1711147== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1711147== 
+==1711147== For lists of detected and suppressed errors, rerun with: -s
+==1711147== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 37 from 37)
