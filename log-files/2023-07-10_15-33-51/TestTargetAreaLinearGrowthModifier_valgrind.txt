@@ -1,0 +1,108 @@
+==1689850== Memcheck, a memory error detector
+==1689850== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1689850== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1689850== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/cell_based/test/TestTargetAreaLinearGrowthModifier -malloc_debug -malloc_dump -memory_info
+==1689850== Parent PID: 1674817
+==1689850== 
+==1689850== 
+==1689850== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==1689850== Open file descriptor 12:
+==1689850==    at 0x10D9D22D: pipe (pipe.c:29)
+==1689850==    by 0x1975907D: ???
+==1689850==    by 0x14CD24CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1689850==    by 0x106A7418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1689850==    by 0x10640D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1689850==    by 0xF337D38: PetscInitialize (pinit.c:924)
+==1689850==    by 0xF1AC15B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1689850==    by 0xF1AC1A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1689850==    by 0x13A121: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1689850==    by 0x132655: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1689850==    by 0x135954: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1689850==    by 0x1357F4: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1689850==    by 0x135E8B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1689850==    by 0x130985: main (TestTargetAreaLinearGrowthModifier.cpp:19)
+==1689850== 
+==1689850== Open file descriptor 8: /dev/shm/open_mpi.0000
+==1689850==    at 0x10DA1BCC: __open_nocancel (open64_nocancel.c:39)
+==1689850==    by 0x10D25C4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==1689850==    by 0xF1E1822: ???
+==1689850==    by 0xF1E196F: ???
+==1689850==    by 0x14D776DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1689850==    by 0x14D77938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1689850==    by 0x14D2D922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==1689850==    by 0x14CD22DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==1689850==    by 0x106A7418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1689850==    by 0x10640D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==1689850==    by 0xF337D38: PetscInitialize (pinit.c:924)
+==1689850==    by 0xF1AC15B: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==1689850==    by 0xF1AC1A9: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==1689850==    by 0x13A121: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==1689850==    by 0x132655: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==1689850==    by 0x135954: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==1689850==    by 0x1357F4: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==1689850==    by 0x135E8B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==1689850==    by 0x130985: main (TestTargetAreaLinearGrowthModifier.cpp:19)
+==1689850== 
+==1689850== Open file descriptor 116:
+==1689850==    <inherited from parent>
+==1689850== 
+==1689850== Open file descriptor 112:
+==1689850==    <inherited from parent>
+==1689850== 
+==1689850== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestTargetAreaLinearGrowthModifier_valgrind.txt
+==1689850==    <inherited from parent>
+==1689850== 
+==1689850== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1689850==    <inherited from parent>
+==1689850== 
+==1689850== 
+==1689850== HEAP SUMMARY:
+==1689850==     in use at exit: 707,031 bytes in 9,490 blocks
+==1689850==   total heap usage: 591,067 allocs, 581,577 frees, 1,453,134,623 bytes allocated
+==1689850== 
+==1689850== 448 bytes in 8 blocks are definitely lost in loss record 52 of 80
+==1689850==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1689850==    by 0xE3C9975: OpenSimplex2S::initLatticePoints() (OpenSimplex2S.cpp:462)
+==1689850==    by 0xE3C7C0E: OpenSimplex2S::Initializer::Initializer() (OpenSimplex2S.cpp:34)
+==1689850==    by 0xE3CABB4: __static_initialization_and_destruction_0(int, int) (OpenSimplex2S.cpp:38)
+==1689850==    by 0xE3CABD9: _GLOBAL__sub_I_OpenSimplex2S.cpp (OpenSimplex2S.cpp:1084)
+==1689850==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==1689850==    by 0x4006567: call_init (dl-init.c:33)
+==1689850==    by 0x4006567: _dl_init (dl-init.c:117)
+==1689850==    by 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==1689850==    by 0x3: ???
+==1689850==    by 0x1FFF0002D6: ???
+==1689850==    by 0x1FFF000351: ???
+==1689850==    by 0x1FFF00035F: ???
+==1689850==    by 0x1FFF00036C: ???
+==1689850== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN13OpenSimplex2S17initLatticePointsEv
+   fun:_ZN13OpenSimplex2S11InitializerC1Ev
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__sub_I_OpenSimplex2S.cpp
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+==1689850== LEAK SUMMARY:
+==1689850==    definitely lost: 448 bytes in 8 blocks
+==1689850==    indirectly lost: 0 bytes in 0 blocks
+==1689850==      possibly lost: 0 bytes in 0 blocks
+==1689850==    still reachable: 5,880 bytes in 107 blocks
+==1689850==         suppressed: 700,703 bytes in 9,375 blocks
+==1689850== Reachable blocks (those to which a pointer was found) are not shown.
+==1689850== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1689850== 
+==1689850== For lists of detected and suppressed errors, rerun with: -s
+==1689850== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 37 from 37)
