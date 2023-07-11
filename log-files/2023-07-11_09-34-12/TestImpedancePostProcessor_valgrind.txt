@@ -1,0 +1,71 @@
+==1866317== Memcheck, a memory error detector
+==1866317== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1866317== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1866317== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/lung/test/TestImpedancePostProcessor -malloc_debug -malloc_dump -memory_info
+==1866317== Parent PID: 1849946
+==1866317== 
+==1866317== 
+==1866317== FILE DESCRIPTORS: 7 open (3 std) at exit.
+==1866317== Open file descriptor 116:
+==1866317==    <inherited from parent>
+==1866317== 
+==1866317== Open file descriptor 112:
+==1866317==    <inherited from parent>
+==1866317== 
+==1866317== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestImpedancePostProcessor_valgrind.txt
+==1866317==    <inherited from parent>
+==1866317== 
+==1866317== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==1866317==    <inherited from parent>
+==1866317== 
+==1866317== 
+==1866317== HEAP SUMMARY:
+==1866317==     in use at exit: 6,296 bytes in 114 blocks
+==1866317==   total heap usage: 5,748 allocs, 5,634 frees, 612,703 bytes allocated
+==1866317== 
+==1866317== 448 bytes in 8 blocks are definitely lost in loss record 16 of 16
+==1866317==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1866317==    by 0x7369975: OpenSimplex2S::initLatticePoints() (OpenSimplex2S.cpp:462)
+==1866317==    by 0x7367C0E: OpenSimplex2S::Initializer::Initializer() (OpenSimplex2S.cpp:34)
+==1866317==    by 0x736ABB4: __static_initialization_and_destruction_0(int, int) (OpenSimplex2S.cpp:38)
+==1866317==    by 0x736ABD9: _GLOBAL__sub_I_OpenSimplex2S.cpp (OpenSimplex2S.cpp:1084)
+==1866317==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==1866317==    by 0x4006567: call_init (dl-init.c:33)
+==1866317==    by 0x4006567: _dl_init (dl-init.c:117)
+==1866317==    by 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==1866317==    by 0x3: ???
+==1866317==    by 0x1FFF0002F2: ???
+==1866317==    by 0x1FFF00035F: ???
+==1866317==    by 0x1FFF00036D: ???
+==1866317==    by 0x1FFF00037A: ???
+==1866317== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN13OpenSimplex2S17initLatticePointsEv
+   fun:_ZN13OpenSimplex2S11InitializerC1Ev
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__sub_I_OpenSimplex2S.cpp
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+==1866317== LEAK SUMMARY:
+==1866317==    definitely lost: 448 bytes in 8 blocks
+==1866317==    indirectly lost: 0 bytes in 0 blocks
+==1866317==      possibly lost: 0 bytes in 0 blocks
+==1866317==    still reachable: 5,848 bytes in 106 blocks
+==1866317==         suppressed: 0 bytes in 0 blocks
+==1866317== Reachable blocks (those to which a pointer was found) are not shown.
+==1866317== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1866317== 
+==1866317== For lists of detected and suppressed errors, rerun with: -s
+==1866317== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
