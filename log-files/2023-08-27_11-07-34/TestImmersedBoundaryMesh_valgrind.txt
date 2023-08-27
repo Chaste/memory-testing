@@ -1,0 +1,100 @@
+==50069== Memcheck, a memory error detector
+==50069== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==50069== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==50069== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/mesh/test/TestImmersedBoundaryMesh -malloc_debug -malloc_dump -memory_info
+==50069== Parent PID: 49310
+==50069== 
+==50069== Conditional jump or move depends on uninitialised value(s)
+==50069==    at 0x182F24: void CxxTest::doAssertEquals<double, double>(char const*, unsigned int, char const*, double, char const*, double, char const*) (TestSuite.h:58)
+==50069==    by 0x1645EE: TestImmersedBoundaryMesh::TestSetAndGetMethods() (TestImmersedBoundaryMesh.hpp:235)
+==50069==    by 0x18044E: TestDescription_TestImmersedBoundaryMesh_TestSetAndGetMethods::runTest() (TestImmersedBoundaryMesh.cpp:61)
+==50069==    by 0x15B31D: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==50069==    by 0x15F06C: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==50069==    by 0x15EF51: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==50069==    by 0x15EDF7: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==50069==    by 0x15EC5F: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==50069==    by 0x15F2F5: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==50069==    by 0x15A055: main (TestImmersedBoundaryMesh.cpp:19)
+==50069== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_ZN7CxxTest14doAssertEqualsIddEEvPKcjS2_T_S2_T0_S2_
+   fun:_ZN24TestImmersedBoundaryMesh20TestSetAndGetMethodsEv
+   fun:_ZN61TestDescription_TestImmersedBoundaryMesh_TestSetAndGetMethods7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==50069== 
+==50069== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==50069== Open file descriptor 12:
+==50069==    at 0x82A822D: pipe (pipe.c:29)
+==50069==    by 0x100AC07D: ???
+==50069==    by 0xB9E34CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==50069==    by 0x7AC9418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==50069==    by 0x7A62D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==50069==    by 0x6759D38: PetscInitialize (pinit.c:924)
+==50069==    by 0x65CC2DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==50069==    by 0x65CC32D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==50069==    by 0x161431: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==50069==    by 0x15BC39: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==50069==    by 0x15EDBE: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==50069==    by 0x15EC5F: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==50069==    by 0x15F2F5: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==50069==    by 0x15A055: main (TestImmersedBoundaryMesh.cpp:19)
+==50069== 
+==50069== Open file descriptor 8: /dev/shm/open_mpi.0000
+==50069==    at 0x82ACBCC: __open_nocancel (open64_nocancel.c:39)
+==50069==    by 0x8230C4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==50069==    by 0x6601822: ???
+==50069==    by 0x660196F: ???
+==50069==    by 0xBA886DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==50069==    by 0xBA88938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==50069==    by 0xBA3E922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==50069==    by 0xB9E32DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==50069==    by 0x7AC9418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==50069==    by 0x7A62D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==50069==    by 0x6759D38: PetscInitialize (pinit.c:924)
+==50069==    by 0x65CC2DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==50069==    by 0x65CC32D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==50069==    by 0x161431: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==50069==    by 0x15BC39: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==50069==    by 0x15EDBE: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==50069==    by 0x15EC5F: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==50069==    by 0x15F2F5: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==50069==    by 0x15A055: main (TestImmersedBoundaryMesh.cpp:19)
+==50069== 
+==50069== Open file descriptor 115:
+==50069==    <inherited from parent>
+==50069== 
+==50069== Open file descriptor 112:
+==50069==    <inherited from parent>
+==50069== 
+==50069== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestImmersedBoundaryMesh_valgrind.txt
+==50069==    <inherited from parent>
+==50069== 
+==50069== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==50069==    <inherited from parent>
+==50069== 
+==50069== 
+==50069== HEAP SUMMARY:
+==50069==     in use at exit: 703,173 bytes in 9,378 blocks
+==50069==   total heap usage: 97,043 allocs, 87,665 frees, 1,385,869,397 bytes allocated
+==50069== 
+==50069== LEAK SUMMARY:
+==50069==    definitely lost: 0 bytes in 0 blocks
+==50069==    indirectly lost: 0 bytes in 0 blocks
+==50069==      possibly lost: 0 bytes in 0 blocks
+==50069==    still reachable: 2,576 bytes in 3 blocks
+==50069==         suppressed: 700,597 bytes in 9,375 blocks
+==50069== Reachable blocks (those to which a pointer was found) are not shown.
+==50069== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==50069== 
+==50069== Use --track-origins=yes to see where uninitialised values come from
+==50069== For lists of detected and suppressed errors, rerun with: -s
+==50069== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 37 from 37)
