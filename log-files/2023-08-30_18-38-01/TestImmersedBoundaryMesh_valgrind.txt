@@ -1,0 +1,100 @@
+==548404== Memcheck, a memory error detector
+==548404== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==548404== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==548404== Command: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/mesh/test/TestImmersedBoundaryMesh -malloc_debug -malloc_dump -memory_info
+==548404== Parent PID: 547643
+==548404== 
+==548404== Conditional jump or move depends on uninitialised value(s)
+==548404==    at 0x182F24: void CxxTest::doAssertEquals<double, double>(char const*, unsigned int, char const*, double, char const*, double, char const*) (TestSuite.h:58)
+==548404==    by 0x1645EE: TestImmersedBoundaryMesh::TestSetAndGetMethods() (TestImmersedBoundaryMesh.hpp:235)
+==548404==    by 0x18044E: TestDescription_TestImmersedBoundaryMesh_TestSetAndGetMethods::runTest() (TestImmersedBoundaryMesh.cpp:61)
+==548404==    by 0x15B31D: CxxTest::RealTestDescription::run() (RealDescriptions.cpp:96)
+==548404==    by 0x15F06C: CxxTest::TestRunner::runTest(CxxTest::TestDescription&) (TestRunner.h:74)
+==548404==    by 0x15EF51: CxxTest::TestRunner::runSuite(CxxTest::SuiteDescription&) (TestRunner.h:61)
+==548404==    by 0x15EDF7: CxxTest::TestRunner::runWorld() (TestRunner.h:46)
+==548404==    by 0x15EC5F: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==548404==    by 0x15F2F5: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==548404==    by 0x15A055: main (TestImmersedBoundaryMesh.cpp:19)
+==548404== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_ZN7CxxTest14doAssertEqualsIddEEvPKcjS2_T_S2_T0_S2_
+   fun:_ZN24TestImmersedBoundaryMesh20TestSetAndGetMethodsEv
+   fun:_ZN61TestDescription_TestImmersedBoundaryMesh_TestSetAndGetMethods7runTestEv
+   fun:_ZN7CxxTest19RealTestDescription3runEv
+   fun:_ZN7CxxTest10TestRunner7runTestERNS_15TestDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runSuiteERNS_16SuiteDescriptionE
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==548404== 
+==548404== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==548404== Open file descriptor 12:
+==548404==    at 0x82B722D: pipe (pipe.c:29)
+==548404==    by 0x100BB07D: ???
+==548404==    by 0xB9F24CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==548404==    by 0x7AD8418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==548404==    by 0x7A71D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==548404==    by 0x6768D38: PetscInitialize (pinit.c:924)
+==548404==    by 0x65DB2DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==548404==    by 0x65DB32D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==548404==    by 0x161431: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==548404==    by 0x15BC39: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==548404==    by 0x15EDBE: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==548404==    by 0x15EC5F: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==548404==    by 0x15F2F5: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==548404==    by 0x15A055: main (TestImmersedBoundaryMesh.cpp:19)
+==548404== 
+==548404== Open file descriptor 8: /dev/shm/open_mpi.0000
+==548404==    at 0x82BBBCC: __open_nocancel (open64_nocancel.c:39)
+==548404==    by 0x823FC4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==548404==    by 0x6610822: ???
+==548404==    by 0x661096F: ???
+==548404==    by 0xBA976DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==548404==    by 0xBA97938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==548404==    by 0xBA4D922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==548404==    by 0xB9F22DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==548404==    by 0x7AD8418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==548404==    by 0x7A71D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==548404==    by 0x6768D38: PetscInitialize (pinit.c:924)
+==548404==    by 0x65DB2DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==548404==    by 0x65DB32D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==548404==    by 0x161431: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==548404==    by 0x15BC39: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==548404==    by 0x15EDBE: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==548404==    by 0x15EC5F: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==548404==    by 0x15F2F5: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==548404==    by 0x15A055: main (TestImmersedBoundaryMesh.cpp:19)
+==548404== 
+==548404== Open file descriptor 115:
+==548404==    <inherited from parent>
+==548404== 
+==548404== Open file descriptor 112:
+==548404==    <inherited from parent>
+==548404== 
+==548404== Open file descriptor 4: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestImmersedBoundaryMesh_valgrind.txt
+==548404==    <inherited from parent>
+==548404== 
+==548404== Open file descriptor 3: /home/github/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==548404==    <inherited from parent>
+==548404== 
+==548404== 
+==548404== HEAP SUMMARY:
+==548404==     in use at exit: 703,178 bytes in 9,378 blocks
+==548404==   total heap usage: 97,053 allocs, 87,675 frees, 1,385,879,708 bytes allocated
+==548404== 
+==548404== LEAK SUMMARY:
+==548404==    definitely lost: 0 bytes in 0 blocks
+==548404==    indirectly lost: 0 bytes in 0 blocks
+==548404==      possibly lost: 0 bytes in 0 blocks
+==548404==    still reachable: 2,576 bytes in 3 blocks
+==548404==         suppressed: 700,602 bytes in 9,375 blocks
+==548404== Reachable blocks (those to which a pointer was found) are not shown.
+==548404== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==548404== 
+==548404== Use --track-origins=yes to see where uninitialised values come from
+==548404== For lists of detected and suppressed errors, rerun with: -s
+==548404== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 35 from 35)
