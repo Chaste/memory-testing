@@ -1,5 +1,6 @@
-import pathlib
 import dominate
+import pathlib
+import re
 
 from datetime import datetime
 from dominate.tags import *
@@ -9,7 +10,7 @@ def get_list_of_log_file_directories() -> list[str]:
     """Return a sorted list of valid log file directory names.
 
     Returns:
-        A list of strings of all valid log file directories (i.e. those that themsevles contain an index.html file).
+        A list of strings of all valid log file directories (i.e. those that themselves contain an index.html file).
     """
 
     base_dir = pathlib.Path('log-files')
@@ -28,12 +29,16 @@ def write_index_file(list_of_logs: list[str]) -> None:
         None.
     """
 
-    doc = dominate.document(title='Index of Valgrind Memcheck output')
+    doc = dominate.document(title='Index of Valgrind Memcheck output', lang='en')
 
     dates = [datetime.strptime(x, '%Y-%m-%d_%H-%M-%S') for x in list_of_logs]
 
     unique_dates = {datetime(year=date.year, month=date.month, day=1) for date in dates}
     unique_dates = sorted(list(unique_dates), reverse=True)
+
+    # Regex to find the branch name and commit hash for this memtest output
+    pattern = r'<h2>Memtest output for commit <a href="https:\/\/github\.com\/Chaste\/Chaste\/commit\/(\w+)">\1<\/a> on branch (\w+)<\/h2>'
+    regex = re.compile(pattern)
 
     with doc.head:
         link(rel='stylesheet', href='style.css')
@@ -49,12 +54,22 @@ def write_index_file(list_of_logs: list[str]) -> None:
             for unique_date in unique_dates:
                 h2(unique_date.strftime("%B %Y"))
 
-                with ul():
-
+                with table().add(tbody()):
                     for path, date in zip(list_of_logs, dates):
                         if date.year == unique_date.year and date.month == unique_date.month:
-                            li(a(path, href=f'{path}/index.html'))
-    
+
+                            with open(f'log-files/{path}/index.html', 'r') as index_file:
+                                match = regex.search(index_file.read())
+
+                            with tr() as table_row:
+                                table_row.add(td(a(path, href=f'{path}/index.html')))
+                                if match:
+                                    table_row.add(td(match.group(2)))
+                                    table_row.add(td(a(match.group(1), href=f'https://github.com/Chaste/Chaste/commit/{match.group(1)}')))
+                                else:
+                                    table_row.add(td("unknown branch"))
+                                    table_row.add(td("unknown commit"))
+
     with open('log-files/index.html', 'w') as html_file:
         html_file.write(doc.render())
 
