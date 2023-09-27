@@ -88,7 +88,7 @@ def write_index_file(list_of_logs: list[str]) -> None:
     unique_dates = sorted(list(unique_dates), reverse=True)
 
     # Regex to find the branch name and commit hash for this memtest output
-    header_pattern = r'<h2>Memtest output for commit <a href="https:\/\/github\.com\/Chaste\/Chaste\/commit\/(\w+)">\1<\/a> on branch (\w+)<\/h2>'
+    header_pattern = r'([0-9a-fA-F]{40})">\1<\/a> on branch ([a-zA-Z0-9\-\_\/\.]+)<\/h2>'
     header_regex = re.compile(header_pattern)
 
     # Regex to find the number of green, orange and red tests in a given file
