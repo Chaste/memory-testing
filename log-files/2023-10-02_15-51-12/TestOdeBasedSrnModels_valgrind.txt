@@ -1,0 +1,73 @@
+==62031== Memcheck, a memory error detector
+==62031== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==62031== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==62031== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/cell_based/test/TestOdeBasedSrnModels -malloc_debug -malloc_dump -memory_info
+==62031== Parent PID: 60806
+==62031== 
+==62031== 
+==62031== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==62031== Open file descriptor 12:
+==62031==    at 0xE45F22D: pipe (pipe.c:29)
+==62031==    by 0x18A1D07D: ???
+==62031==    by 0x12F7D4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==62031==    by 0xE0AE418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==62031==    by 0xE047D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==62031==    by 0xCD3ED38: PetscInitialize (pinit.c:924)
+==62031==    by 0xCBA4153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==62031==    by 0xCBA41A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==62031==    by 0x12E3B1: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==62031==    by 0x1272FD: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==62031==    by 0x129E8A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==62031==    by 0x129D2A: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==62031==    by 0x12A3C1: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==62031==    by 0x125725: main (TestOdeBasedSrnModels.cpp:19)
+==62031== 
+==62031== Open file descriptor 8: /dev/shm/open_mpi.0000
+==62031==    at 0xE463BCC: __open_nocancel (open64_nocancel.c:39)
+==62031==    by 0xE3E7C4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==62031==    by 0xCBDE822: ???
+==62031==    by 0xCBDE96F: ???
+==62031==    by 0x130226DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==62031==    by 0x13022938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==62031==    by 0x12FD8922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==62031==    by 0x12F7D2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==62031==    by 0xE0AE418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==62031==    by 0xE047D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==62031==    by 0xCD3ED38: PetscInitialize (pinit.c:924)
+==62031==    by 0xCBA4153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==62031==    by 0xCBA41A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==62031==    by 0x12E3B1: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==62031==    by 0x1272FD: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==62031==    by 0x129E8A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==62031==    by 0x129D2A: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==62031==    by 0x12A3C1: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==62031==    by 0x125725: main (TestOdeBasedSrnModels.cpp:19)
+==62031== 
+==62031== Open file descriptor 115:
+==62031==    <inherited from parent>
+==62031== 
+==62031== Open file descriptor 112:
+==62031==    <inherited from parent>
+==62031== 
+==62031== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestOdeBasedSrnModels_valgrind.txt
+==62031==    <inherited from parent>
+==62031== 
+==62031== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==62031==    <inherited from parent>
+==62031== 
+==62031== 
+==62031== HEAP SUMMARY:
+==62031==     in use at exit: 835,639 bytes in 11,678 blocks
+==62031==   total heap usage: 65,067 allocs, 53,389 frees, 1,541,176,902 bytes allocated
+==62031== 
+==62031== LEAK SUMMARY:
+==62031==    definitely lost: 0 bytes in 0 blocks
+==62031==    indirectly lost: 0 bytes in 0 blocks
+==62031==      possibly lost: 0 bytes in 0 blocks
+==62031==    still reachable: 72 bytes in 4 blocks
+==62031==         suppressed: 835,567 bytes in 11,674 blocks
+==62031== Reachable blocks (those to which a pointer was found) are not shown.
+==62031== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==62031== 
+==62031== For lists of detected and suppressed errors, rerun with: -s
+==62031== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 37 from 37)
