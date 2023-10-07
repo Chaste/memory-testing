@@ -1,0 +1,73 @@
+==278279== Memcheck, a memory error detector
+==278279== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==278279== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==278279== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/heart/test/TestConductivityTensors -malloc_debug -malloc_dump -memory_info
+==278279== Parent PID: 266982
+==278279== 
+==278279== 
+==278279== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==278279== Open file descriptor 12:
+==278279==    at 0xA33722D: pipe (pipe.c:29)
+==278279==    by 0x143E607D: ???
+==278279==    by 0xFB8D4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==278279==    by 0xBA2F418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==278279==    by 0xB9C8D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==278279==    by 0xA6BFD38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==278279==    by 0x9E7C2DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==278279==    by 0x9E7C32D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==278279==    by 0x128832: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==278279==    by 0x123ACD: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==278279==    by 0x1265BA: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==278279==    by 0x12645A: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==278279==    by 0x126AF1: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==278279==    by 0x121EF5: main (TestConductivityTensors.cpp:19)
+==278279== 
+==278279== Open file descriptor 8: /dev/shm/open_mpi.0000
+==278279==    at 0xA33BBCC: __open_nocancel (open64_nocancel.c:39)
+==278279==    by 0xA2BFC4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==278279==    by 0x9EB1822: ???
+==278279==    by 0x9EB196F: ???
+==278279==    by 0xFC326DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==278279==    by 0xFC32938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==278279==    by 0xFBE8922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==278279==    by 0xFB8D2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==278279==    by 0xBA2F418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==278279==    by 0xB9C8D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==278279==    by 0xA6BFD38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==278279==    by 0x9E7C2DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==278279==    by 0x9E7C32D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==278279==    by 0x128832: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==278279==    by 0x123ACD: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==278279==    by 0x1265BA: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==278279==    by 0x12645A: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==278279==    by 0x126AF1: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==278279==    by 0x121EF5: main (TestConductivityTensors.cpp:19)
+==278279== 
+==278279== Open file descriptor 116:
+==278279==    <inherited from parent>
+==278279== 
+==278279== Open file descriptor 113:
+==278279==    <inherited from parent>
+==278279== 
+==278279== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestConductivityTensors_valgrind.txt
+==278279==    <inherited from parent>
+==278279== 
+==278279== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==278279==    <inherited from parent>
+==278279== 
+==278279== 
+==278279== HEAP SUMMARY:
+==278279==     in use at exit: 858,003 bytes in 12,112 blocks
+==278279==   total heap usage: 67,364 allocs, 55,252 frees, 1,544,001,151 bytes allocated
+==278279== 
+==278279== LEAK SUMMARY:
+==278279==    definitely lost: 0 bytes in 0 blocks
+==278279==    indirectly lost: 0 bytes in 0 blocks
+==278279==      possibly lost: 0 bytes in 0 blocks
+==278279==    still reachable: 24 bytes in 2 blocks
+==278279==         suppressed: 857,979 bytes in 12,110 blocks
+==278279== Reachable blocks (those to which a pointer was found) are not shown.
+==278279== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==278279== 
+==278279== For lists of detected and suppressed errors, rerun with: -s
+==278279== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 23 from 23)
