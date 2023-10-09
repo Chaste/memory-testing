@@ -1,0 +1,73 @@
+==311831== Memcheck, a memory error detector
+==311831== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==311831== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==311831== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/heart/test/TestAbstractContractionCellFactory -malloc_debug -malloc_dump -memory_info
+==311831== Parent PID: 300230
+==311831== 
+==311831== 
+==311831== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==311831== Open file descriptor 12:
+==311831==    at 0xA58422D: pipe (pipe.c:29)
+==311831==    by 0x143E407D: ???
+==311831==    by 0xFB8D4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==311831==    by 0xBAFC418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==311831==    by 0xBA95D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==311831==    by 0xA78CD38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==311831==    by 0xA1B02DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==311831==    by 0xA1B032D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==311831==    by 0x11F6EA: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==311831==    by 0x11A513: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==311831==    by 0x11C8D4: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==311831==    by 0x11C7CF: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==311831==    by 0x11CDE3: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==311831==    by 0x118D15: main (TestAbstractContractionCellFactory.cpp:18)
+==311831== 
+==311831== Open file descriptor 8: /dev/shm/open_mpi.0000
+==311831==    at 0xA588BCC: __open_nocancel (open64_nocancel.c:39)
+==311831==    by 0xA50CC4F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==311831==    by 0xA1E5822: ???
+==311831==    by 0xA1E596F: ???
+==311831==    by 0xFC326DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==311831==    by 0xFC32938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==311831==    by 0xFBE8922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==311831==    by 0xFB8D2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==311831==    by 0xBAFC418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==311831==    by 0xBA95D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==311831==    by 0xA78CD38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==311831==    by 0xA1B02DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==311831==    by 0xA1B032D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==311831==    by 0x11F6EA: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==311831==    by 0x11A513: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==311831==    by 0x11C8D4: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==311831==    by 0x11C7CF: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==311831==    by 0x11CDE3: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==311831==    by 0x118D15: main (TestAbstractContractionCellFactory.cpp:18)
+==311831== 
+==311831== Open file descriptor 116:
+==311831==    <inherited from parent>
+==311831== 
+==311831== Open file descriptor 113:
+==311831==    <inherited from parent>
+==311831== 
+==311831== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestAbstractContractionCellFactory_valgrind.txt
+==311831==    <inherited from parent>
+==311831== 
+==311831== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==311831==    <inherited from parent>
+==311831== 
+==311831== 
+==311831== HEAP SUMMARY:
+==311831==     in use at exit: 858,483 bytes in 12,122 blocks
+==311831==   total heap usage: 178,499 allocs, 166,377 frees, 1,567,908,407 bytes allocated
+==311831== 
+==311831== LEAK SUMMARY:
+==311831==    definitely lost: 0 bytes in 0 blocks
+==311831==    indirectly lost: 0 bytes in 0 blocks
+==311831==      possibly lost: 0 bytes in 0 blocks
+==311831==    still reachable: 24 bytes in 2 blocks
+==311831==         suppressed: 858,459 bytes in 12,120 blocks
+==311831== Reachable blocks (those to which a pointer was found) are not shown.
+==311831== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==311831== 
+==311831== For lists of detected and suppressed errors, rerun with: -s
+==311831== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 29 from 24)
