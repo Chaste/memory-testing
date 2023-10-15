@@ -1,0 +1,73 @@
+==50691== Memcheck, a memory error detector
+==50691== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==50691== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==50691== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/linalg/test/TestPetscVecTools -malloc_debug -malloc_dump -memory_info
+==50691== Parent PID: 50368
+==50691== 
+==50691== 
+==50691== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==50691== Open file descriptor 12:
+==50691==    at 0x60CC26D: pipe (pipe.c:29)
+==50691==    by 0xAF3707D: ???
+==50691==    by 0x8A554CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==50691==    by 0x63F1418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==50691==    by 0x638AD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==50691==    by 0x4AB2D38: PetscInitialize (pinit.c:924)
+==50691==    by 0x49892DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==50691==    by 0x498932D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==50691==    by 0x1121EE: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==50691==    by 0x10DD73: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==50691==    by 0x11016A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==50691==    by 0x110065: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==50691==    by 0x110679: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==50691==    by 0x10C575: main (TestPetscVecTools.cpp:18)
+==50691== 
+==50691== Open file descriptor 8: /dev/shm/open_mpi.0000
+==50691==    at 0x60D0C0C: __open_nocancel (open64_nocancel.c:39)
+==50691==    by 0x6054BCF: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==50691==    by 0x5D42822: ???
+==50691==    by 0x5D4296F: ???
+==50691==    by 0x8AFC6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==50691==    by 0x8AFC938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==50691==    by 0x8AB2922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==50691==    by 0x8A552DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==50691==    by 0x63F1418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==50691==    by 0x638AD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==50691==    by 0x4AB2D38: PetscInitialize (pinit.c:924)
+==50691==    by 0x49892DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==50691==    by 0x498932D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==50691==    by 0x1121EE: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==50691==    by 0x10DD73: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==50691==    by 0x11016A: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==50691==    by 0x110065: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==50691==    by 0x110679: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==50691==    by 0x10C575: main (TestPetscVecTools.cpp:18)
+==50691== 
+==50691== Open file descriptor 115:
+==50691==    <inherited from parent>
+==50691== 
+==50691== Open file descriptor 112:
+==50691==    <inherited from parent>
+==50691== 
+==50691== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestPetscVecTools_valgrind.txt
+==50691==    <inherited from parent>
+==50691== 
+==50691== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==50691==    <inherited from parent>
+==50691== 
+==50691== 
+==50691== HEAP SUMMARY:
+==50691==     in use at exit: 835,143 bytes in 11,676 blocks
+==50691==   total heap usage: 53,821 allocs, 42,145 frees, 1,540,001,371 bytes allocated
+==50691== 
+==50691== LEAK SUMMARY:
+==50691==    definitely lost: 0 bytes in 0 blocks
+==50691==    indirectly lost: 0 bytes in 0 blocks
+==50691==      possibly lost: 0 bytes in 0 blocks
+==50691==    still reachable: 24 bytes in 2 blocks
+==50691==         suppressed: 835,119 bytes in 11,674 blocks
+==50691== Reachable blocks (those to which a pointer was found) are not shown.
+==50691== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==50691== 
+==50691== For lists of detected and suppressed errors, rerun with: -s
+==50691== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 34 from 34)
