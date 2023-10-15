@@ -1,0 +1,73 @@
+==422205== Memcheck, a memory error detector
+==422205== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==422205== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==422205== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/crypt/test/TestSingleOdeWntCellCycleModel -malloc_debug -malloc_dump -memory_info
+==422205== Parent PID: 413147
+==422205== 
+==422205== 
+==422205== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==422205== Open file descriptor 12:
+==422205==    at 0x1061126D: pipe (pipe.c:29)
+==422205==    by 0x1B43407D: ???
+==422205==    by 0x1517A4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==422205==    by 0x1025E418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==422205==    by 0x101F7D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==422205==    by 0xEEEED38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==422205==    by 0xED602DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==422205==    by 0xED6032D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==422205==    by 0x18BA7F: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==422205==    by 0x184119: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==422205==    by 0x1873C4: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==422205==    by 0x1872BF: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==422205==    by 0x1878D3: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==422205==    by 0x181D55: main (TestSingleOdeWntCellCycleModel.cpp:18)
+==422205== 
+==422205== Open file descriptor 8: /dev/shm/open_mpi.0000
+==422205==    at 0x10615C0C: __open_nocancel (open64_nocancel.c:39)
+==422205==    by 0x10599BCF: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==422205==    by 0xED95822: ???
+==422205==    by 0xED9596F: ???
+==422205==    by 0x1521F6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==422205==    by 0x1521F938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==422205==    by 0x151D5922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==422205==    by 0x1517A2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==422205==    by 0x1025E418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==422205==    by 0x101F7D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==422205==    by 0xEEEED38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==422205==    by 0xED602DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==422205==    by 0xED6032D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==422205==    by 0x18BA7F: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==422205==    by 0x184119: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==422205==    by 0x1873C4: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==422205==    by 0x1872BF: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==422205==    by 0x1878D3: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==422205==    by 0x181D55: main (TestSingleOdeWntCellCycleModel.cpp:18)
+==422205== 
+==422205== Open file descriptor 116:
+==422205==    <inherited from parent>
+==422205== 
+==422205== Open file descriptor 113:
+==422205==    <inherited from parent>
+==422205== 
+==422205== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestSingleOdeWntCellCycleModel_valgrind.txt
+==422205==    <inherited from parent>
+==422205== 
+==422205== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==422205==    <inherited from parent>
+==422205== 
+==422205== 
+==422205== HEAP SUMMARY:
+==422205==     in use at exit: 858,179 bytes in 12,115 blocks
+==422205==   total heap usage: 271,728 allocs, 259,613 frees, 1,561,760,891 bytes allocated
+==422205== 
+==422205== LEAK SUMMARY:
+==422205==    definitely lost: 0 bytes in 0 blocks
+==422205==    indirectly lost: 0 bytes in 0 blocks
+==422205==      possibly lost: 0 bytes in 0 blocks
+==422205==    still reachable: 200 bytes in 5 blocks
+==422205==         suppressed: 857,979 bytes in 12,110 blocks
+==422205== Reachable blocks (those to which a pointer was found) are not shown.
+==422205== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==422205== 
+==422205== For lists of detected and suppressed errors, rerun with: -s
+==422205== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 23 from 23)
