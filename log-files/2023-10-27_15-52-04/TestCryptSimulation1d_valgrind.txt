@@ -1,0 +1,73 @@
+==531131== Memcheck, a memory error detector
+==531131== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==531131== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==531131== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/crypt/test/TestCryptSimulation1d -malloc_debug -malloc_dump -memory_info
+==531131== Parent PID: 522133
+==531131== 
+==531131== 
+==531131== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==531131== Open file descriptor 12:
+==531131==    at 0x115DA26D: pipe (pipe.c:29)
+==531131==    by 0x1A7A207D: ???
+==531131==    by 0x158F34CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==531131==    by 0x11227418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==531131==    by 0x111C0D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==531131==    by 0xFEB7D38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==531131==    by 0xFD2A153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==531131==    by 0xFD2A1A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==531131==    by 0x2253FF: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==531131==    by 0x21CB5F: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==531131==    by 0x2205D8: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==531131==    by 0x2204D3: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==531131==    by 0x220AE7: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==531131==    by 0x21B355: main (TestCryptSimulation1d.cpp:18)
+==531131== 
+==531131== Open file descriptor 8: /dev/shm/open_mpi.0000
+==531131==    at 0x115DEC0C: __open_nocancel (open64_nocancel.c:39)
+==531131==    by 0x11562BCF: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==531131==    by 0xFD5E822: ???
+==531131==    by 0xFD5E96F: ???
+==531131==    by 0x159986DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==531131==    by 0x15998938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==531131==    by 0x1594E922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==531131==    by 0x158F32DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==531131==    by 0x11227418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==531131==    by 0x111C0D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==531131==    by 0xFEB7D38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==531131==    by 0xFD2A153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==531131==    by 0xFD2A1A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==531131==    by 0x2253FF: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==531131==    by 0x21CB5F: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==531131==    by 0x2205D8: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==531131==    by 0x2204D3: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==531131==    by 0x220AE7: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==531131==    by 0x21B355: main (TestCryptSimulation1d.cpp:18)
+==531131== 
+==531131== Open file descriptor 115:
+==531131==    <inherited from parent>
+==531131== 
+==531131== Open file descriptor 112:
+==531131==    <inherited from parent>
+==531131== 
+==531131== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestCryptSimulation1d_valgrind.txt
+==531131==    <inherited from parent>
+==531131== 
+==531131== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==531131==    <inherited from parent>
+==531131== 
+==531131== 
+==531131== HEAP SUMMARY:
+==531131==     in use at exit: 857,975 bytes in 12,109 blocks
+==531131==   total heap usage: 4,123,658 allocs, 4,111,549 frees, 2,181,589,150 bytes allocated
+==531131== 
+==531131== LEAK SUMMARY:
+==531131==    definitely lost: 0 bytes in 0 blocks
+==531131==    indirectly lost: 0 bytes in 0 blocks
+==531131==      possibly lost: 0 bytes in 0 blocks
+==531131==    still reachable: 56 bytes in 3 blocks
+==531131==         suppressed: 857,919 bytes in 12,106 blocks
+==531131== Reachable blocks (those to which a pointer was found) are not shown.
+==531131== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==531131== 
+==531131== For lists of detected and suppressed errors, rerun with: -s
+==531131== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 19 from 19)
