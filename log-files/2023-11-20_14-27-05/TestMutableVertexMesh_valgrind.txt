@@ -1,0 +1,76 @@
+==482115== Memcheck, a memory error detector
+==482115== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==482115== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==482115== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/mesh/test/TestMutableVertexMesh -malloc_debug -malloc_dump -memory_info
+==482115== Parent PID: 481481
+==482115== 
+==482115== 
+==482115== FILE DESCRIPTORS: 10 open (3 std) at exit.
+==482115== Open file descriptor 12:
+==482115==    at 0x7DC326D: pipe (pipe.c:29)
+==482115==    by 0xFD3207D: ???
+==482115==    by 0xB6774CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==482115==    by 0x76CD418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==482115==    by 0x7666D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==482115==    by 0x635DD38: PetscInitialize (pinit.c:924)
+==482115==    by 0x61C3153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==482115==    by 0x61C31A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==482115==    by 0x1B5143: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==482115==    by 0x1AE9BD: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==482115==    by 0x1B27F6: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==482115==    by 0x1B2696: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==482115==    by 0x1B2D2D: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==482115==    by 0x1ACDE5: main (TestMutableVertexMesh.cpp:19)
+==482115== 
+==482115== Open file descriptor 8: /dev/shm/open_mpi.0000
+==482115==    at 0x7DC7C0C: __open_nocancel (open64_nocancel.c:39)
+==482115==    by 0x7D4BBCF: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==482115==    by 0x61FD822: ???
+==482115==    by 0x61FD96F: ???
+==482115==    by 0xB71C6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==482115==    by 0xB71C938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==482115==    by 0xB6D2922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==482115==    by 0xB6772DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==482115==    by 0x76CD418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==482115==    by 0x7666D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==482115==    by 0x635DD38: PetscInitialize (pinit.c:924)
+==482115==    by 0x61C3153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==482115==    by 0x61C31A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==482115==    by 0x1B5143: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==482115==    by 0x1AE9BD: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==482115==    by 0x1B27F6: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==482115==    by 0x1B2696: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==482115==    by 0x1B2D2D: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==482115==    by 0x1ACDE5: main (TestMutableVertexMesh.cpp:19)
+==482115== 
+==482115== Open file descriptor 126: /usr/share/ca-certificates/mozilla/HiPKI_Root_CA_-_G1.crt
+==482115==    <inherited from parent>
+==482115== 
+==482115== Open file descriptor 118:
+==482115==    <inherited from parent>
+==482115== 
+==482115== Open file descriptor 115:
+==482115==    <inherited from parent>
+==482115== 
+==482115== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestMutableVertexMesh_valgrind.txt
+==482115==    <inherited from parent>
+==482115== 
+==482115== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==482115==    <inherited from parent>
+==482115== 
+==482115== 
+==482115== HEAP SUMMARY:
+==482115==     in use at exit: 838,052 bytes in 11,677 blocks
+==482115==   total heap usage: 66,916 allocs, 55,239 frees, 1,541,386,957 bytes allocated
+==482115== 
+==482115== LEAK SUMMARY:
+==482115==    definitely lost: 0 bytes in 0 blocks
+==482115==    indirectly lost: 0 bytes in 0 blocks
+==482115==      possibly lost: 0 bytes in 0 blocks
+==482115==    still reachable: 2,576 bytes in 3 blocks
+==482115==         suppressed: 835,476 bytes in 11,674 blocks
+==482115== Reachable blocks (those to which a pointer was found) are not shown.
+==482115== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==482115== 
+==482115== For lists of detected and suppressed errors, rerun with: -s
+==482115== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 37 from 37)
