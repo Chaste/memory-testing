@@ -1,0 +1,73 @@
+==821394== Memcheck, a memory error detector
+==821394== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==821394== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==821394== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/crypt/test/TestSimpleCellCycleModelsForCrypt -malloc_debug -malloc_dump -memory_info
+==821394== Parent PID: 812548
+==821394== 
+==821394== 
+==821394== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==821394== Open file descriptor 12:
+==821394==    at 0xFD1126D: pipe (pipe.c:29)
+==821394==    by 0x1A7A307D: ???
+==821394==    by 0x144E74CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==821394==    by 0xF95E418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==821394==    by 0xF8F7D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==821394==    by 0xE5EED38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==821394==    by 0xE461153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==821394==    by 0xE4611A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==821394==    by 0x186C33: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==821394==    by 0x17F28B: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==821394==    by 0x1824EA: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==821394==    by 0x18238A: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==821394==    by 0x182A21: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==821394==    by 0x17BBB5: main (TestSimpleCellCycleModelsForCrypt.cpp:19)
+==821394== 
+==821394== Open file descriptor 8: /dev/shm/open_mpi.0000
+==821394==    at 0xFD15C0C: __open_nocancel (open64_nocancel.c:39)
+==821394==    by 0xFC99BCF: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==821394==    by 0xE495822: ???
+==821394==    by 0xE49596F: ???
+==821394==    by 0x1458C6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==821394==    by 0x1458C938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==821394==    by 0x14542922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==821394==    by 0x144E72DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==821394==    by 0xF95E418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==821394==    by 0xF8F7D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==821394==    by 0xE5EED38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==821394==    by 0xE461153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==821394==    by 0xE4611A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==821394==    by 0x186C33: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==821394==    by 0x17F28B: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==821394==    by 0x1824EA: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==821394==    by 0x18238A: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==821394==    by 0x182A21: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==821394==    by 0x17BBB5: main (TestSimpleCellCycleModelsForCrypt.cpp:19)
+==821394== 
+==821394== Open file descriptor 115:
+==821394==    <inherited from parent>
+==821394== 
+==821394== Open file descriptor 112:
+==821394==    <inherited from parent>
+==821394== 
+==821394== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestSimpleCellCycleModelsForCrypt_valgrind.txt
+==821394==    <inherited from parent>
+==821394== 
+==821394== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==821394==    <inherited from parent>
+==821394== 
+==821394== 
+==821394== HEAP SUMMARY:
+==821394==     in use at exit: 858,099 bytes in 12,114 blocks
+==821394==   total heap usage: 761,881 allocs, 749,767 frees, 1,577,027,457 bytes allocated
+==821394== 
+==821394== LEAK SUMMARY:
+==821394==    definitely lost: 0 bytes in 0 blocks
+==821394==    indirectly lost: 0 bytes in 0 blocks
+==821394==      possibly lost: 0 bytes in 0 blocks
+==821394==    still reachable: 120 bytes in 4 blocks
+==821394==         suppressed: 857,979 bytes in 12,110 blocks
+==821394== Reachable blocks (those to which a pointer was found) are not shown.
+==821394== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==821394== 
+==821394== For lists of detected and suppressed errors, rerun with: -s
+==821394== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 23 from 23)
