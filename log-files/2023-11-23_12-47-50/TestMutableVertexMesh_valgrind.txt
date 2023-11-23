@@ -1,0 +1,73 @@
+==774425== Memcheck, a memory error detector
+==774425== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==774425== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==774425== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/mesh/test/TestMutableVertexMesh -malloc_debug -malloc_dump -memory_info
+==774425== Parent PID: 773799
+==774425== 
+==774425== 
+==774425== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==774425== Open file descriptor 12:
+==774425==    at 0x7A7326D: pipe (pipe.c:29)
+==774425==    by 0xFDFA07D: ???
+==774425==    by 0xB7224CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==774425==    by 0x76C2418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==774425==    by 0x765BD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==774425==    by 0x6352D38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==774425==    by 0x61C3153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==774425==    by 0x61C31A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==774425==    by 0x1B509F: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==774425==    by 0x1AE97D: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==774425==    by 0x1B2752: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==774425==    by 0x1B25F2: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==774425==    by 0x1B2C89: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==774425==    by 0x1ACDA5: main (TestMutableVertexMesh.cpp:19)
+==774425== 
+==774425== Open file descriptor 8: /dev/shm/open_mpi.0000
+==774425==    at 0x7A77C0C: __open_nocancel (open64_nocancel.c:39)
+==774425==    by 0x79FBBCF: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==774425==    by 0x61F7822: ???
+==774425==    by 0x61F796F: ???
+==774425==    by 0xB7C76DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==774425==    by 0xB7C7938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==774425==    by 0xB77D922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==774425==    by 0xB7222DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==774425==    by 0x76C2418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==774425==    by 0x765BD7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==774425==    by 0x6352D38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==774425==    by 0x61C3153: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==774425==    by 0x61C31A1: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==774425==    by 0x1B509F: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==774425==    by 0x1AE97D: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==774425==    by 0x1B2752: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==774425==    by 0x1B25F2: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==774425==    by 0x1B2C89: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==774425==    by 0x1ACDA5: main (TestMutableVertexMesh.cpp:19)
+==774425== 
+==774425== Open file descriptor 115:
+==774425==    <inherited from parent>
+==774425== 
+==774425== Open file descriptor 112:
+==774425==    <inherited from parent>
+==774425== 
+==774425== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestMutableVertexMesh_valgrind.txt
+==774425==    <inherited from parent>
+==774425== 
+==774425== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==774425==    <inherited from parent>
+==774425== 
+==774425== 
+==774425== HEAP SUMMARY:
+==774425==     in use at exit: 860,443 bytes in 12,113 blocks
+==774425==   total heap usage: 67,194 allocs, 55,081 frees, 1,544,120,794 bytes allocated
+==774425== 
+==774425== LEAK SUMMARY:
+==774425==    definitely lost: 0 bytes in 0 blocks
+==774425==    indirectly lost: 0 bytes in 0 blocks
+==774425==      possibly lost: 0 bytes in 0 blocks
+==774425==    still reachable: 2,576 bytes in 3 blocks
+==774425==         suppressed: 857,867 bytes in 12,110 blocks
+==774425== Reachable blocks (those to which a pointer was found) are not shown.
+==774425== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==774425== 
+==774425== For lists of detected and suppressed errors, rerun with: -s
+==774425== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 20 from 20)
