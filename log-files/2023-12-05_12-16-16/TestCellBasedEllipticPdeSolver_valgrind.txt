@@ -1,0 +1,73 @@
+==953861== Memcheck, a memory error detector
+==953861== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==953861== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==953861== Command: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/cell_based/test/TestCellBasedEllipticPdeSolver -malloc_debug -malloc_dump -memory_info
+==953861== Parent PID: 952536
+==953861== 
+==953861== 
+==953861== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==953861== Open file descriptor 12:
+==953861==    at 0x10D4426D: pipe (pipe.c:29)
+==953861==    by 0x1977107D: ???
+==953861==    by 0x14D174CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==953861==    by 0x11238418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==953861==    by 0x111D1D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==953861==    by 0xF64ED38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==953861==    by 0xF5252DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==953861==    by 0xF52532D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==953861==    by 0x13C87E: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==953861==    by 0x1379F3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==953861==    by 0x13A536: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==953861==    by 0x13A431: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==953861==    by 0x13AA45: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==953861==    by 0x1361F5: main (TestCellBasedEllipticPdeSolver.cpp:18)
+==953861== 
+==953861== Open file descriptor 8: /dev/shm/open_mpi.0000
+==953861==    at 0x10D48C0C: __open_nocancel (open64_nocancel.c:39)
+==953861==    by 0x10CCCBCF: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==953861==    by 0x108D8822: ???
+==953861==    by 0x108D896F: ???
+==953861==    by 0x14DBC6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==953861==    by 0x14DBC938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==953861==    by 0x14D72922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==953861==    by 0x14D172DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==953861==    by 0x11238418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==953861==    by 0x111D1D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==953861==    by 0xF64ED38: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.15.5)
+==953861==    by 0xF5252DF: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==953861==    by 0xF52532D: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==953861==    by 0x13C87E: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==953861==    by 0x1379F3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==953861==    by 0x13A536: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==953861==    by 0x13A431: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==953861==    by 0x13AA45: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==953861==    by 0x1361F5: main (TestCellBasedEllipticPdeSolver.cpp:18)
+==953861== 
+==953861== Open file descriptor 115:
+==953861==    <inherited from parent>
+==953861== 
+==953861== Open file descriptor 112:
+==953861==    <inherited from parent>
+==953861== 
+==953861== Open file descriptor 4: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestCellBasedEllipticPdeSolver_valgrind.txt
+==953861==    <inherited from parent>
+==953861== 
+==953861== Open file descriptor 3: /home/gh/actions-runner/_work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==953861==    <inherited from parent>
+==953861== 
+==953861== 
+==953861== HEAP SUMMARY:
+==953861==     in use at exit: 857,987 bytes in 12,112 blocks
+==953861==   total heap usage: 64,016 allocs, 51,904 frees, 1,543,912,540 bytes allocated
+==953861== 
+==953861== LEAK SUMMARY:
+==953861==    definitely lost: 0 bytes in 0 blocks
+==953861==    indirectly lost: 0 bytes in 0 blocks
+==953861==      possibly lost: 0 bytes in 0 blocks
+==953861==    still reachable: 24 bytes in 2 blocks
+==953861==         suppressed: 857,963 bytes in 12,110 blocks
+==953861== Reachable blocks (those to which a pointer was found) are not shown.
+==953861== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==953861== 
+==953861== For lists of detected and suppressed errors, rerun with: -s
+==953861== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 23 from 23)
