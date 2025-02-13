@@ -1,0 +1,73 @@
+==44027== Memcheck, a memory error detector
+==44027== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==44027== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==44027== Command: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/heart/test/TestCardiacSimulationArchiver -malloc_debug -malloc_dump -memory_info
+==44027== Parent PID: 24057
+==44027== 
+==44027== 
+==44027== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==44027== Open file descriptor 12:
+==44027==    at 0xBFBA07D: pipe (pipe.c:29)
+==44027==    by 0x1432F07D: ???
+==44027==    by 0xFB364CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==44027==    by 0xC337418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==44027==    by 0xC2D0D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==44027==    by 0xA671D38: PetscInitialize (pinit.c:924)
+==44027==    by 0xA4E11D9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==44027==    by 0xA4E1227: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==44027==    by 0x207DA8: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==44027==    by 0x200F5B: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==44027==    by 0x204A44: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==44027==    by 0x2048E4: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==44027==    by 0x204F7B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==44027==    by 0x1FF1D5: main (TestCardiacSimulationArchiver.cpp:19)
+==44027== 
+==44027== Open file descriptor 8: /dev/shm/open_mpi.0000
+==44027==    at 0xBFBEA1C: __open_nocancel (open64_nocancel.c:39)
+==44027==    by 0xBF42BCF: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==44027==    by 0xA521822: ???
+==44027==    by 0xA52196F: ???
+==44027==    by 0xFBDB6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==44027==    by 0xFBDB938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==44027==    by 0xFB91922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==44027==    by 0xFB362DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==44027==    by 0xC337418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==44027==    by 0xC2D0D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==44027==    by 0xA671D38: PetscInitialize (pinit.c:924)
+==44027==    by 0xA4E11D9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==44027==    by 0xA4E1227: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==44027==    by 0x207DA8: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==44027==    by 0x200F5B: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==44027==    by 0x204A44: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==44027==    by 0x2048E4: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==44027==    by 0x204F7B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==44027==    by 0x1FF1D5: main (TestCardiacSimulationArchiver.cpp:19)
+==44027== 
+==44027== Open file descriptor 158:
+==44027==    <inherited from parent>
+==44027== 
+==44027== Open file descriptor 155:
+==44027==    <inherited from parent>
+==44027== 
+==44027== Open file descriptor 4: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestCardiacSimulationArchiver_valgrind.txt
+==44027==    <inherited from parent>
+==44027== 
+==44027== Open file descriptor 3: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==44027==    <inherited from parent>
+==44027== 
+==44027== 
+==44027== HEAP SUMMARY:
+==44027==     in use at exit: 618,761 bytes in 8,244 blocks
+==44027==   total heap usage: 2,894,954 allocs, 2,886,710 frees, 2,307,098,631 bytes allocated
+==44027== 
+==44027== LEAK SUMMARY:
+==44027==    definitely lost: 0 bytes in 0 blocks
+==44027==    indirectly lost: 0 bytes in 0 blocks
+==44027==      possibly lost: 0 bytes in 0 blocks
+==44027==    still reachable: 24 bytes in 2 blocks
+==44027==         suppressed: 618,737 bytes in 8,242 blocks
+==44027== Reachable blocks (those to which a pointer was found) are not shown.
+==44027== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==44027== 
+==44027== For lists of detected and suppressed errors, rerun with: -s
+==44027== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 138 from 34)
