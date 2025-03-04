@@ -1,0 +1,73 @@
+==27552== Memcheck, a memory error detector
+==27552== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==27552== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==27552== Command: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/cell_based/test/TestOnLatticeSimulationWithPdes -malloc_debug -malloc_dump -memory_info
+==27552== Parent PID: 24109
+==27552== 
+==27552== 
+==27552== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==27552== Open file descriptor 12:
+==27552==    at 0xFC8807D: pipe (pipe.c:29)
+==27552==    by 0x196B607D: ???
+==27552==    by 0x14CC94CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==27552==    by 0x11589418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==27552==    by 0x11522D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==27552==    by 0x10219D38: PetscInitialize (pinit.c:924)
+==27552==    by 0xF4A21D9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==27552==    by 0xF4A2227: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==27552==    by 0x135832: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==27552==    by 0x1303C3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==27552==    by 0x133048: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==27552==    by 0x132EE8: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==27552==    by 0x13357F: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==27552==    by 0x12E7B5: main (TestOnLatticeSimulationWithPdes.cpp:19)
+==27552== 
+==27552== Open file descriptor 8: /dev/shm/open_mpi.0000
+==27552==    at 0xFC8CA1C: __open_nocancel (open64_nocancel.c:39)
+==27552==    by 0xFC10BCF: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==27552==    by 0xF4DD822: ???
+==27552==    by 0xF4DD96F: ???
+==27552==    by 0x14D6E6DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==27552==    by 0x14D6E938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==27552==    by 0x14D24922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==27552==    by 0x14CC92DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==27552==    by 0x11589418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==27552==    by 0x11522D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==27552==    by 0x10219D38: PetscInitialize (pinit.c:924)
+==27552==    by 0xF4A21D9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==27552==    by 0xF4A2227: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==27552==    by 0x135832: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==27552==    by 0x1303C3: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==27552==    by 0x133048: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==27552==    by 0x132EE8: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==27552==    by 0x13357F: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==27552==    by 0x12E7B5: main (TestOnLatticeSimulationWithPdes.cpp:19)
+==27552== 
+==27552== Open file descriptor 158:
+==27552==    <inherited from parent>
+==27552== 
+==27552== Open file descriptor 155:
+==27552==    <inherited from parent>
+==27552== 
+==27552== Open file descriptor 4: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestOnLatticeSimulationWithPdes_valgrind.txt
+==27552==    <inherited from parent>
+==27552== 
+==27552== Open file descriptor 3: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==27552==    <inherited from parent>
+==27552== 
+==27552== 
+==27552== HEAP SUMMARY:
+==27552==     in use at exit: 618,281 bytes in 8,235 blocks
+==27552==   total heap usage: 2,400,123 allocs, 2,391,888 frees, 1,776,542,774 bytes allocated
+==27552== 
+==27552== LEAK SUMMARY:
+==27552==    definitely lost: 0 bytes in 0 blocks
+==27552==    indirectly lost: 0 bytes in 0 blocks
+==27552==      possibly lost: 0 bytes in 0 blocks
+==27552==    still reachable: 56 bytes in 3 blocks
+==27552==         suppressed: 618,225 bytes in 8,232 blocks
+==27552== Reachable blocks (those to which a pointer was found) are not shown.
+==27552== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==27552== 
+==27552== For lists of detected and suppressed errors, rerun with: -s
+==27552== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 33 from 33)
