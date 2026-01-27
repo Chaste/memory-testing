@@ -33,6 +33,7 @@ By default, we archive all records older than one year.
 2. From the root directory: `python archive_old.py`
 3. From the root directory: `python amend_history.py`
 4. CHECK THAT THE AMENDED HISTORY LOOKS GOOD
-5. Add origin back: `git remote add origin git@github.com:Chaste/memory-testing.git`
-6. DOUBLE CHECK EVERYTHING LOOKS GOOD
-7. `git push --force`
+5. Manually re-write the index: `python write_index.py`
+6. Add origin back: `git remote add origin git@github.com:Chaste/memory-testing.git`
+7. DOUBLE CHECK EVERYTHING LOOKS GOOD
+8. `git push --force`
