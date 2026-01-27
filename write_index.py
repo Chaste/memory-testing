@@ -1,22 +1,64 @@
 import dominate
 import pathlib
 import re
+import tarfile
 
+from dataclasses import dataclass
 from datetime import datetime
 from dominate.tags import *
 
 
-def get_list_of_log_file_directories() -> list[str]:
-    """Return a sorted list of valid log file directory names.
+@dataclass(frozen=True)
+class LogEntry:
+    display_name: str
+    date: datetime
+    kind: str
+    path: pathlib.Path
+    href: str
+
+
+def parse_log_datetime(name: str) -> datetime | None:
+    """Parse the log datetime from a directory or archive base name."""
+    try:
+        return datetime.strptime(name, '%Y-%m-%d_%H-%M-%S')
+    except ValueError:
+        return None
+
+
+def get_log_entries() -> list[LogEntry]:
+    """Return a sorted list of valid log entries (directories or tar.xz archives).
 
     Returns:
-        A list of strings of all valid log file directories (i.e. those that themselves contain an index.html file).
+        A list of LogEntry objects for all valid log directories and archives.
     """
 
     base_dir = pathlib.Path('log-files')
-    dirs_list = [path.name for path in base_dir.iterdir() if path.is_dir() and (path / 'index.html').is_file()]
+    entries: list[LogEntry] = []
 
-    return sorted(dirs_list, reverse=True)
+    for path in base_dir.iterdir():
+        if path.is_dir() and (path / 'index.html').is_file():
+            date = parse_log_datetime(path.name)
+            if date:
+                entries.append(LogEntry(
+                    display_name=path.name,
+                    date=date,
+                    kind='dir',
+                    path=path,
+                    href=f'{path.name}/index.html',
+                ))
+        elif path.is_file() and path.name.endswith('.tar.xz'):
+            base_name = path.name.removesuffix('.tar.xz')
+            date = parse_log_datetime(base_name)
+            if date:
+                entries.append(LogEntry(
+                    display_name=base_name,
+                    date=date,
+                    kind='archive',
+                    path=path,
+                    href=path.name,
+                ))
+
+    return sorted(entries, key=lambda entry: (entry.date, entry.display_name), reverse=True)
 
 
 def get_summary_numbers(file_content: str, regex: re.Pattern):
@@ -70,11 +112,41 @@ def get_overall_colour(green: int, orange: int, red: int) -> str:
     return 'white'
 
 
-def write_index_file(list_of_logs: list[str]) -> None:
+def read_index_html(entry: LogEntry) -> str:
+    """Read index.html content from a directory or a tar.xz archive."""
+    if entry.kind == 'dir':
+        with open(entry.path / 'index.html', 'r') as index_file:
+            return index_file.read()
+
+    if entry.kind == 'archive':
+        try:
+            with tarfile.open(entry.path, 'r:xz') as tar:
+                preferred_suffix = f'{entry.display_name}/index.html'
+                member = None
+                for candidate in tar.getmembers():
+                    if candidate.name == preferred_suffix:
+                        member = candidate
+                        break
+                    if member is None and candidate.name.endswith('/index.html'):
+                        member = candidate
+                if member is None:
+                    return ''
+                extracted = tar.extractfile(member)
+                if extracted is None:
+                    return ''
+                with extracted:
+                    return extracted.read().decode('utf-8', errors='replace')
+        except (tarfile.TarError, OSError):
+            return ''
+
+    return ''
+
+
+def write_index_file(list_of_logs: list[LogEntry]) -> None:
     """Write an index.html file containing hyperlinks to the log file directories contained in this directory.              
 
     Args:
-        list_of_logs: A list of strings of log file directories to put in the index file.
+        list_of_logs: A list of log file entries to put in the index file.
 
     Returns:
         None.
@@ -82,7 +154,7 @@ def write_index_file(list_of_logs: list[str]) -> None:
 
     doc = dominate.document(title='Index of Valgrind Memcheck output', lang='en')
 
-    dates = [datetime.strptime(x, '%Y-%m-%d_%H-%M-%S') for x in list_of_logs]
+    dates = [entry.date for entry in list_of_logs]
 
     unique_dates = {datetime(year=date.year, month=date.month, day=1) for date in dates}
     unique_dates = sorted(list(unique_dates), reverse=True)
@@ -113,18 +185,20 @@ def write_index_file(list_of_logs: list[str]) -> None:
                 h2(unique_date.strftime("%B %Y"))
 
                 with table().add(tbody()):
-                    for path, date in zip(list_of_logs, dates):
-                        if date.year == unique_date.year and date.month == unique_date.month:
-
-                            with open(f'log-files/{path}/index.html', 'r') as index_file:
-                                file_content = index_file.read()
+                    for entry in list_of_logs:
+                        if entry.date.year == unique_date.year and entry.date.month == unique_date.month:
+                            file_content = read_index_html(entry)
 
                             match = header_regex.search(file_content)
                             green, orange, red = get_summary_numbers(file_content, summary_regex)
                             colour = get_overall_colour(green, orange, red)
 
+                            display_name = entry.display_name
+                            if entry.kind == 'archive':
+                                display_name = f'{display_name} [archive]'
+
                             with tr(cls=f'tr-{colour}') as table_row:
-                                table_row.add(td(a(path, href=f'{path}/index.html')))
+                                table_row.add(td(a(display_name, href=entry.href)))
                                 table_row.add(td(f'{colour}'))
                                 if match:
                                     table_row.add(td(match.group(2)))
@@ -139,5 +213,5 @@ def write_index_file(list_of_logs: list[str]) -> None:
 
 if __name__ == "__main__":
 
-    list_of_logs = get_list_of_log_file_directories()
+    list_of_logs = get_log_entries()
     write_index_file(list_of_logs)
