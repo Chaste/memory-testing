@@ -120,9 +120,7 @@ def main() -> None:
 
     expire_and_gc()
 
-    print("\nHistory purge complete. Inspect repository, then force-push if satisfied:")
-    print("  git push --force --all")
-    print("  git push --force --tags")
+    print("\nHistory purge complete. Inspect repository!")
 
 
 if __name__ == "__main__":
