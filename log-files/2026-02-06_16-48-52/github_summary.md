@@ -1,0 +1,9 @@
+## Memtest output for commit [bd64812de5e89be58946fcd4adf27bfa6247f8fa](https://github.com/Chaste/Chaste/commit/bd64812de5e89be58946fcd4adf27bfa6247f8fa) on branch 391-inference-tools
+
+**Summary of 399 tests:**
+ - **🟢 green: 399 (omitted from summary)**
+ - **🟠 orange: 0**
+ - **🔴 red: 0**
+
+Download raw valgrind output for all tests at the bottom of the GitHub job Summary page, under `Artifacts -> memtest-files`
+
