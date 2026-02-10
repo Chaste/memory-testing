@@ -1,0 +1,9 @@
+## Memtest output for commit [8575af94e1b45b6798d1bacc96d8e894d05eae0d](https://github.com/Chaste/Chaste/commit/8575af94e1b45b6798d1bacc96d8e894d05eae0d) on branch VectorVisualisation
+
+**Summary of 399 tests:**
+ - **🟢 green: 399 (omitted from summary)**
+ - **🟠 orange: 0**
+ - **🔴 red: 0**
+
+Download raw valgrind output for all tests at the bottom of the GitHub job Summary page, under `Artifacts -> memtest-files`
+
