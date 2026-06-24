@@ -1,0 +1,9 @@
+## Memtest output for commit [cef20269f3adbb0a11f507801c094b8772df30f8](https://github.com/Chaste/Chaste/commit/cef20269f3adbb0a11f507801c094b8772df30f8) on branch copilot/scope-improve-xml-output
+
+**Summary of 400 tests:**
+ - **🟢 green: 400 (omitted from summary)**
+ - **🟠 orange: 0**
+ - **🔴 red: 0**
+
+Download raw valgrind output for all tests at the bottom of the GitHub job Summary page, under `Artifacts -> memtest-files`
+
