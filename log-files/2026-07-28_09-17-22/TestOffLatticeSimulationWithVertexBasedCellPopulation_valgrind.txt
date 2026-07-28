@@ -1,0 +1,73 @@
+==28110== Memcheck, a memory error detector
+==28110== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==28110== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==28110== Command: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/cell_based/test/TestOffLatticeSimulationWithVertexBasedCellPopulation -malloc_debug -malloc_dump -memory_info
+==28110== Parent PID: 25029
+==28110== 
+==28110== 
+==28110== FILE DESCRIPTORS: 9 open (3 std) at exit.
+==28110== Open file descriptor 12:
+==28110==    at 0x10E090BD: pipe (pipe.c:29)
+==28110==    by 0x196E507D: ???
+==28110==    by 0x14C9F4CB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==28110==    by 0x1096F418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==28110==    by 0x10908D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==28110==    by 0xF5FFD38: PetscInitialize (pinit.c:924)
+==28110==    by 0xF12A56F: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==28110==    by 0xF12A5BD: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==28110==    by 0x200F4F: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==28110==    by 0x1FAAF9: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==28110==    by 0x1FE464: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==28110==    by 0x1FE304: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==28110==    by 0x1FE99B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==28110==    by 0x1F8F15: main (TestOffLatticeSimulationWithVertexBasedCellPopulation.cpp:19)
+==28110== 
+==28110== Open file descriptor 8: /dev/shm/open_mpi.0000
+==28110==    at 0x10E0DA5C: __open_nocancel (open64_nocancel.c:39)
+==28110==    by 0x10D91B8F: shm_open@@GLIBC_2.34 (shm_open.c:40)
+==28110==    by 0xF161822: ???
+==28110==    by 0xF16196F: ???
+==28110==    by 0x14D446DC: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==28110==    by 0x14D44938: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==28110==    by 0x14CFA922: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.40.30.2)
+==28110==    by 0x14C9F2DB: orte_init (in /usr/lib/x86_64-linux-gnu/libopen-rte.so.40.30.2)
+==28110==    by 0x1096F418: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==28110==    by 0x10908D7A: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.30.2)
+==28110==    by 0xF5FFD38: PetscInitialize (pinit.c:924)
+==28110==    by 0xF12A56F: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==28110==    by 0xF12A5BD: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==28110==    by 0x200F4F: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==28110==    by 0x1FAAF9: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==28110==    by 0x1FE464: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==28110==    by 0x1FE304: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==28110==    by 0x1FE99B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==28110==    by 0x1F8F15: main (TestOffLatticeSimulationWithVertexBasedCellPopulation.cpp:19)
+==28110== 
+==28110== Open file descriptor 145:
+==28110==    <inherited from parent>
+==28110== 
+==28110== Open file descriptor 142:
+==28110==    <inherited from parent>
+==28110== 
+==28110== Open file descriptor 4: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/memtest/TestOffLatticeSimulationWithVertexBasedCellPopulation_valgrind.txt
+==28110==    <inherited from parent>
+==28110== 
+==28110== Open file descriptor 3: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/Testing/Temporary/LastTest.log.tmp
+==28110==    <inherited from parent>
+==28110== 
+==28110== 
+==28110== HEAP SUMMARY:
+==28110==     in use at exit: 35,142 bytes in 286 blocks
+==28110==   total heap usage: 10,143,397 allocs, 10,143,111 frees, 1,342,207,281 bytes allocated
+==28110== 
+==28110== LEAK SUMMARY:
+==28110==    definitely lost: 0 bytes in 0 blocks
+==28110==    indirectly lost: 0 bytes in 0 blocks
+==28110==      possibly lost: 0 bytes in 0 blocks
+==28110==    still reachable: 56 bytes in 3 blocks
+==28110==         suppressed: 35,086 bytes in 283 blocks
+==28110== Reachable blocks (those to which a pointer was found) are not shown.
+==28110== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==28110== 
+==28110== For lists of detected and suppressed errors, rerun with: -s
+==28110== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 30 from 30)
