@@ -1,0 +1,9 @@
+## Memtest output for commit [b2adc43ac4860399597e5778ad41fe38d28740fa](https://github.com/Chaste/Chaste/commit/b2adc43ac4860399597e5778ad41fe38d28740fa) on branch perf/avoid-rtti
+
+**Summary of 401 tests:**
+ - **🟢 green: 401 (omitted from summary)**
+ - **🟠 orange: 0**
+ - **🔴 red: 0**
+
+Download raw valgrind output for all tests at the bottom of the GitHub job Summary page, under `Artifacts -> memtest-files`
+
