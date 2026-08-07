@@ -1,0 +1,9 @@
+## Memtest output for commit [c716a49023eb40d891b4ef7846aaa9b7dd385c19](https://github.com/Chaste/Chaste/commit/c716a49023eb40d891b4ef7846aaa9b7dd385c19) on branch 244-consider-resurrecting-acceptance-tests
+
+**Summary of 401 tests:**
+ - **🟢 green: 401 (omitted from summary)**
+ - **🟠 orange: 0**
+ - **🔴 red: 0**
+
+Download raw valgrind output for all tests at the bottom of the GitHub job Summary page, under `Artifacts -> memtest-files`
+
