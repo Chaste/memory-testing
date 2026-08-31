@@ -1,0 +1,268 @@
+==12936== Memcheck, a memory error detector
+==12936== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==12936== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==12936== Command: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/crypt/test/TestOffLatticeCryptProjectionSimulation -malloc_debug -malloc_dump -memory_info
+==12936== Parent PID: 12806
+==12936== 
+==12936== 
+==12936== FILE DESCRIPTORS: 11 open (6 inherited) at exit.
+==12936== Open file descriptor 10: /dev/shm/open_mpi.0000
+==12936==    at 0x14B9A536: __open_nocancel (open64_nocancel.c:39)
+==12936==    by 0x14B1EBC3: shm_open@@GLIBC_2.34 (shm_open.c:46)
+==12936==    by 0x1A1C189E: opal_shmem_posix_shm_open (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A1C1A71: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A1C0C38: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A1C0F97: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A090159: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x143530E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435849F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x143592C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435018F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1438A627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x6A3A446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==12936==    by 0x142892D9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==12936==    by 0x14289327: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==12936==    by 0x402B9C3: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==12936==    by 0x40243A1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==12936==    by 0x402737E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==12936==    by 0x40271A2: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==12936==    by 0x402794B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==12936==    by 0x40223D8: main (TestOffLatticeCryptProjectionSimulation.cpp:19)
+==12936== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:__open_nocancel
+   fun:shm_open@@GLIBC_2.34
+   fun:opal_shmem_posix_shm_open
+   obj:/usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5
+   obj:/usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5
+   fun:opal_shmem_base_select
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==12936== Open file descriptor 9:
+==12936==    at 0x14BA896B: eventfd (syscall-template.S:120)
+==12936==    by 0x1A221188: evutil_eventfd_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A21F395: ??? (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A21F704: evthread_make_base_notifiable (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A21F9F1: event_base_new_with_config (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A1860D7: opal_event_base_create (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A1861E8: opal_event_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A090120: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x143530E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435849F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x143592C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435018F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1438A627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x6A3A446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==12936==    by 0x142892D9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==12936==    by 0x14289327: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==12936==    by 0x402B9C3: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==12936==    by 0x40243A1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==12936==    by 0x402737E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==12936==    by 0x40271A2: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==12936==    by 0x402794B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==12936==    by 0x40223D8: main (TestOffLatticeCryptProjectionSimulation.cpp:19)
+==12936== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:eventfd
+   fun:evutil_eventfd_
+   obj:/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1
+   fun:evthread_make_base_notifiable
+   fun:event_base_new_with_config
+   fun:opal_event_base_create
+   fun:opal_event_init
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==12936== Open file descriptor 8:
+==12936==    at 0x14B992BB: pipe2 (syscall-template.S:120)
+==12936==    by 0x1A220F87: evutil_make_internal_pipe_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A223579: evsig_init_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A223774: ??? (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A21F8AA: event_base_new_with_config (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A1860D7: opal_event_base_create (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A1861E8: opal_event_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A090120: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x143530E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435849F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x143592C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435018F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1438A627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x6A3A446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==12936==    by 0x142892D9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==12936==    by 0x14289327: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==12936==    by 0x402B9C3: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==12936==    by 0x40243A1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==12936==    by 0x402737E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==12936==    by 0x40271A2: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==12936==    by 0x402794B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==12936==    by 0x40223D8: main (TestOffLatticeCryptProjectionSimulation.cpp:19)
+==12936== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:pipe2
+   fun:evutil_make_internal_pipe_
+   fun:evsig_init_
+   obj:/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1
+   fun:event_base_new_with_config
+   fun:opal_event_base_create
+   fun:opal_event_init
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==12936== Open file descriptor 7:
+==12936==    at 0x14B992BB: pipe2 (syscall-template.S:120)
+==12936==    by 0x1A220F87: evutil_make_internal_pipe_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A223579: evsig_init_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A223774: ??? (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A21F8AA: event_base_new_with_config (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A1860D7: opal_event_base_create (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A1861E8: opal_event_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A090120: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x143530E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435849F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x143592C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435018F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1438A627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x6A3A446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==12936==    by 0x142892D9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==12936==    by 0x14289327: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==12936==    by 0x402B9C3: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==12936==    by 0x40243A1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==12936==    by 0x402737E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==12936==    by 0x40271A2: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==12936==    by 0x402794B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==12936==    by 0x40223D8: main (TestOffLatticeCryptProjectionSimulation.cpp:19)
+==12936== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:pipe2
+   fun:evutil_make_internal_pipe_
+   fun:evsig_init_
+   obj:/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1
+   fun:event_base_new_with_config
+   fun:opal_event_base_create
+   fun:opal_event_init
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==12936== Open file descriptor 5:
+==12936==    at 0x14BA946B: epoll_create1 (syscall-template.S:120)
+==12936==    by 0x1A2236FA: ??? (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A21F8AA: event_base_new_with_config (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==12936==    by 0x1A1860D7: opal_event_base_create (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A1861E8: opal_event_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x1A090120: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==12936==    by 0x143530E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435849F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x143592C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1435018F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x1438A627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==12936==    by 0x6A3A446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==12936==    by 0x142892D9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==12936==    by 0x14289327: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==12936==    by 0x402B9C3: PetscSetup::setUpWorld() (FakePetscSetup.hpp:70)
+==12936==    by 0x40243A1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==12936==    by 0x402737E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==12936==    by 0x40271A2: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==12936==    by 0x402794B: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==12936==    by 0x40223D8: main (TestOffLatticeCryptProjectionSimulation.cpp:19)
+==12936== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:epoll_create1
+   obj:/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1
+   fun:event_base_new_with_config
+   fun:opal_event_base_create
+   fun:opal_event_init
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==12936== 
+==12936== HEAP SUMMARY:
+==12936==     in use at exit: 128,957 bytes in 934 blocks
+==12936==   total heap usage: 1,391,938 allocs, 1,391,004 frees, 136,992,519 bytes allocated
+==12936== 
+==12936== LEAK SUMMARY:
+==12936==    definitely lost: 0 bytes in 0 blocks
+==12936==    indirectly lost: 0 bytes in 0 blocks
+==12936==      possibly lost: 0 bytes in 0 blocks
+==12936==    still reachable: 11,989 bytes in 45 blocks
+==12936==         suppressed: 116,968 bytes in 889 blocks
+==12936== Reachable blocks (those to which a pointer was found) are not shown.
+==12936== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12936== 
+==12936== For lists of detected and suppressed errors, rerun with: -s
+==12936== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 33 from 33)
