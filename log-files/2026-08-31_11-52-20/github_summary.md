@@ -1,0 +1,9 @@
+## Memtest output for commit [2e434ce71e079190a77349a56f29fa8a7e2f7a0d](https://github.com/Chaste/Chaste/commit/2e434ce71e079190a77349a56f29fa8a7e2f7a0d) on branch copilot/implement-full-cell-simulation-specification-xml
+
+**Summary of 402 tests:**
+ - **🟢 green: 402 (omitted from summary)**
+ - **🟠 orange: 0**
+ - **🔴 red: 0**
+
+Download raw valgrind output for all tests at the bottom of the GitHub job Summary page, under `Artifacts -> memtest-files`
+
