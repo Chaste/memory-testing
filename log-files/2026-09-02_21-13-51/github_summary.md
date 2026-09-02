@@ -1,0 +1,9 @@
+## Memtest output for commit [eb027d2c332d543df413a036838fc25794d19ae3](https://github.com/Chaste/Chaste/commit/eb027d2c332d543df413a036838fc25794d19ae3) on branch 623-speed-up-coverage-processing
+
+**Summary of 401 tests:**
+ - **🟢 green: 401 (omitted from summary)**
+ - **🟠 orange: 0**
+ - **🔴 red: 0**
+
+Download raw valgrind output for all tests at the bottom of the GitHub job Summary page, under `Artifacts -> memtest-files`
+
