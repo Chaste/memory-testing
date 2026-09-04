@@ -1,0 +1,9 @@
+## Memtest output for commit [686530da973b42561e62a6179bb4fea253fe11de](https://github.com/Chaste/Chaste/commit/686530da973b42561e62a6179bb4fea253fe11de) on branch cleanup/std-clamp
+
+**Summary of 403 tests:**
+ - **🟢 green: 403 (omitted from summary)**
+ - **🟠 orange: 0**
+ - **🔴 red: 0**
+
+Download raw valgrind output for all tests at the bottom of the GitHub job Summary page, under `Artifacts -> memtest-files`
+
