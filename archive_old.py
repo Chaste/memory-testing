@@ -4,7 +4,7 @@ Script to compress old log directories.
 - Run from repository root
 - Looks under ./log-files
 - Directory names assumed to be YYYY-MM-DD_HH-MM-SS, optionally suffixed with -<run id>
-- Directories older than 1 year are archived to .tar.xz
+- Directories older than 6 months are archived to .tar.xz
 - Assumes `tar` and `xz` are available
 """
 
@@ -15,7 +15,7 @@ import subprocess
 import tempfile
 
 LOG_ROOT = Path("log-files")
-DEFAULT_DAYS = 365
+DEFAULT_DAYS = 182
 
 
 def get_cutoff(days: int = DEFAULT_DAYS) -> datetime:

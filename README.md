@@ -29,7 +29,7 @@ To keep this repo (specifically, the working tree) relatively small, with plenty
 
 We, additionally, purge the history of the old text files, which helps keep the repository itself a manageable size.
 
-By default, we archive all records older than one year.
+By default, we archive all records older than six months.
 
 1. `pip install -r requirements.txt`
 2. From the root directory: `python archive_old.py`
