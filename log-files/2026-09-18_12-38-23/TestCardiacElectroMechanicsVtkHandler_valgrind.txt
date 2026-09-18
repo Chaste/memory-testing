@@ -1,0 +1,268 @@
+==17951== Memcheck, a memory error detector
+==17951== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==17951== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==17951== Command: /home/runner/work/Chaste/Chaste/Chaste/chaste-build-dir/heart/test/TestCardiacElectroMechanicsVtkHandler -malloc_debug -malloc_dump -memory_info
+==17951== Parent PID: 15866
+==17951== 
+==17951== 
+==17951== FILE DESCRIPTORS: 11 open (6 inherited) at exit.
+==17951== Open file descriptor 10: /dev/shm/open_mpi.0000
+==17951==    at 0xE1913B6: __open_nocancel (open64_nocancel.c:39)
+==17951==    by 0xE115943: shm_open@@GLIBC_2.34 (shm_open.c:46)
+==17951==    by 0x1364489E: opal_shmem_posix_shm_open (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x13644A71: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x13643C38: ??? (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x13643F97: opal_shmem_base_select (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x13513159: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0xE36F0E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE37449F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3752C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE36C18F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3A6627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0x87D2446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==17951==    by 0xDC952F9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==17951==    by 0xDC95347: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==17951==    by 0x40417F4: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==17951==    by 0x403B7F1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==17951==    by 0x403EC4E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==17951==    by 0x403EAE1: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==17951==    by 0x403F1DB: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==17951==    by 0x4039C48: main (TestCardiacElectroMechanicsVtkHandler.cpp:18)
+==17951== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:__open_nocancel
+   fun:shm_open@@GLIBC_2.34
+   fun:opal_shmem_posix_shm_open
+   obj:/usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5
+   obj:/usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5
+   fun:opal_shmem_base_select
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==17951== Open file descriptor 9:
+==17951==    at 0xE19F84B: eventfd (syscall-template.S:120)
+==17951==    by 0x136A4188: evutil_eventfd_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A2395: ??? (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A2704: evthread_make_base_notifiable (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A29F1: event_base_new_with_config (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136090D7: opal_event_base_create (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x136091E8: opal_event_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x13513120: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0xE36F0E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE37449F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3752C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE36C18F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3A6627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0x87D2446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==17951==    by 0xDC952F9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==17951==    by 0xDC95347: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==17951==    by 0x40417F4: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==17951==    by 0x403B7F1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==17951==    by 0x403EC4E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==17951==    by 0x403EAE1: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==17951==    by 0x403F1DB: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==17951==    by 0x4039C48: main (TestCardiacElectroMechanicsVtkHandler.cpp:18)
+==17951== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:eventfd
+   fun:evutil_eventfd_
+   obj:/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1
+   fun:evthread_make_base_notifiable
+   fun:event_base_new_with_config
+   fun:opal_event_base_create
+   fun:opal_event_init
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==17951== Open file descriptor 8:
+==17951==    at 0xE19013B: pipe2 (syscall-template.S:120)
+==17951==    by 0x136A3F87: evutil_make_internal_pipe_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A6579: evsig_init_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A6774: ??? (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A28AA: event_base_new_with_config (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136090D7: opal_event_base_create (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x136091E8: opal_event_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x13513120: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0xE36F0E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE37449F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3752C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE36C18F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3A6627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0x87D2446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==17951==    by 0xDC952F9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==17951==    by 0xDC95347: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==17951==    by 0x40417F4: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==17951==    by 0x403B7F1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==17951==    by 0x403EC4E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==17951==    by 0x403EAE1: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==17951==    by 0x403F1DB: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==17951==    by 0x4039C48: main (TestCardiacElectroMechanicsVtkHandler.cpp:18)
+==17951== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:pipe2
+   fun:evutil_make_internal_pipe_
+   fun:evsig_init_
+   obj:/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1
+   fun:event_base_new_with_config
+   fun:opal_event_base_create
+   fun:opal_event_init
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==17951== Open file descriptor 7:
+==17951==    at 0xE19013B: pipe2 (syscall-template.S:120)
+==17951==    by 0x136A3F87: evutil_make_internal_pipe_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A6579: evsig_init_ (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A6774: ??? (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A28AA: event_base_new_with_config (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136090D7: opal_event_base_create (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x136091E8: opal_event_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x13513120: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0xE36F0E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE37449F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3752C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE36C18F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3A6627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0x87D2446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==17951==    by 0xDC952F9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==17951==    by 0xDC95347: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==17951==    by 0x40417F4: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==17951==    by 0x403B7F1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==17951==    by 0x403EC4E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==17951==    by 0x403EAE1: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==17951==    by 0x403F1DB: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==17951==    by 0x4039C48: main (TestCardiacElectroMechanicsVtkHandler.cpp:18)
+==17951== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:pipe2
+   fun:evutil_make_internal_pipe_
+   fun:evsig_init_
+   obj:/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1
+   fun:event_base_new_with_config
+   fun:opal_event_base_create
+   fun:opal_event_init
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==17951== Open file descriptor 6:
+==17951==    at 0xE1A034B: epoll_create1 (syscall-template.S:120)
+==17951==    by 0x136A66FA: ??? (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136A28AA: event_base_new_with_config (in /usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1)
+==17951==    by 0x136090D7: opal_event_base_create (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x136091E8: opal_event_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0x13513120: opal_init (in /usr/lib/x86_64-linux-gnu/libopen-pal.so.80.0.5)
+==17951==    by 0xE36F0E7: ompi_rte_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE37449F: ??? (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3752C3: ompi_mpi_instance_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE36C18F: ompi_mpi_init (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0xE3A6627: PMPI_Init_thread (in /usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7)
+==17951==    by 0x87D2446: PetscInitialize (in /usr/lib/x86_64-linux-gnu/libpetsc_real.so.3.24.4)
+==17951==    by 0xDC952F9: PetscSetupUtils::InitialisePetsc() (PetscSetupUtils.cpp:80)
+==17951==    by 0xDC95347: PetscSetupUtils::CommonSetup() (PetscSetupUtils.cpp:88)
+==17951==    by 0x40417F4: PetscSetup::setUpWorld() (PetscSetupAndFinalize.hpp:61)
+==17951==    by 0x403B7F1: CxxTest::RealWorldDescription::setUp() (RealDescriptions.cpp:266)
+==17951==    by 0x403EC4E: CxxTest::TestRunner::runWorld() (TestRunner.h:43)
+==17951==    by 0x403EAE1: CxxTest::TestRunner::runAllTests(CxxTest::TestListener&) (TestRunner.h:23)
+==17951==    by 0x403F1DB: CxxTest::ErrorFormatter::run() (ErrorFormatter.h:47)
+==17951==    by 0x4039C48: main (TestCardiacElectroMechanicsVtkHandler.cpp:18)
+==17951== 
+{
+   <insert_a_suppression_name_here>
+   CoreError:FdNotClosed
+   fun:epoll_create1
+   obj:/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1
+   fun:event_base_new_with_config
+   fun:opal_event_base_create
+   fun:opal_event_init
+   fun:opal_init
+   fun:ompi_rte_init
+   obj:/usr/lib/x86_64-linux-gnu/libmpi.so.40.40.7
+   fun:ompi_mpi_instance_init
+   fun:ompi_mpi_init
+   fun:PMPI_Init_thread
+   fun:PetscInitialize
+   fun:_ZN15PetscSetupUtils15InitialisePetscEv
+   fun:_ZN15PetscSetupUtils11CommonSetupEv
+   fun:_ZN10PetscSetup10setUpWorldEv
+   fun:_ZN7CxxTest20RealWorldDescription5setUpEv
+   fun:_ZN7CxxTest10TestRunner8runWorldEv
+   fun:_ZN7CxxTest10TestRunner11runAllTestsERNS_12TestListenerE
+   fun:_ZN7CxxTest14ErrorFormatter3runEv
+   fun:main
+}
+==17951== 
+==17951== HEAP SUMMARY:
+==17951==     in use at exit: 128,729 bytes in 905 blocks
+==17951==   total heap usage: 184,063 allocs, 183,158 frees, 31,654,105 bytes allocated
+==17951== 
+==17951== LEAK SUMMARY:
+==17951==    definitely lost: 0 bytes in 0 blocks
+==17951==    indirectly lost: 0 bytes in 0 blocks
+==17951==      possibly lost: 0 bytes in 0 blocks
+==17951==    still reachable: 12,077 bytes in 45 blocks
+==17951==         suppressed: 116,652 bytes in 860 blocks
+==17951== Reachable blocks (those to which a pointer was found) are not shown.
+==17951== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==17951== 
+==17951== For lists of detected and suppressed errors, rerun with: -s
+==17951== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 36 from 36)
