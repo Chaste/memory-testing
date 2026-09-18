@@ -32,6 +32,15 @@ jobs:
         uses: actions/checkout@v7
         with:
           show-progress: 'false'
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.x'
+      - name: Generate log-files index
+        # Generated at deploy time (rather than committed by the CI that publishes
+        # results) so concurrent result-publishing runs never race on this file.
+        # write_index.py uses only the standard library: nothing to install.
+        run: python write_index.py
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Upload artifact

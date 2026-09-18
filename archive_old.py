@@ -3,7 +3,7 @@ Script to compress old log directories.
 
 - Run from repository root
 - Looks under ./log-files
-- Directory names assumed to be YYYY-MM-DD_HH-MM-SS
+- Directory names assumed to be YYYY-MM-DD_HH-MM-SS, optionally suffixed with -<run id>
 - Directories older than 1 year are archived to .tar.xz
 - Assumes `tar` and `xz` are available
 """
@@ -25,11 +25,11 @@ def get_cutoff(days: int = DEFAULT_DAYS) -> datetime:
 
 def parse_timestamp(name: str) -> Optional[datetime]:
     """
-    Parse a directory name of the form YYYY-MM-DD_HH-MM-SS.
-    Return a datetime on success, or None if the name does not match.
+    Parse a directory name of the form YYYY-MM-DD_HH-MM-SS(-<run id>).
+    Return a datetime on success, or None if the leading 19 characters do not match.
     """
     try:
-        return datetime.strptime(name, "%Y-%m-%d_%H-%M-%S")
+        return datetime.strptime(name[:19], "%Y-%m-%d_%H-%M-%S")
     except ValueError:
         return None
 

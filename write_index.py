@@ -1,11 +1,10 @@
-import dominate
 import pathlib
 import re
 import tarfile
 
 from dataclasses import dataclass
 from datetime import datetime
-from dominate.tags import *
+from html import escape
 
 
 @dataclass(frozen=True)
@@ -19,8 +18,10 @@ class LogEntry:
 
 def parse_log_datetime(name: str) -> datetime | None:
     """Parse the log datetime from a directory or archive base name."""
+    # Directory/archive base names are "<timestamp>-<run id>"; only the leading
+    # 19 characters (YYYY-MM-DD_HH-MM-SS) are the timestamp.
     try:
-        return datetime.strptime(name, '%Y-%m-%d_%H-%M-%S')
+        return datetime.strptime(name[:19], '%Y-%m-%d_%H-%M-%S')
     except ValueError:
         return None
 
@@ -95,14 +96,6 @@ def get_overall_colour(green: int, orange: int, red: int) -> str:
         A string containing the dominating colour for the table row background, prioritising red, then orange, then
         green, and defaulting to white in the unlikely event of no recognised statuses.
     """
-    # if red > 0:
-    #     return '#FFADAD'
-    # if orange > 0:
-    #     return '#FFD6A5'
-    # if green > 0:
-    #     return '#CAFFBF'
-    # return '#FFFFFF'
-
     if red > 0:
         return 'red'
     if orange > 0:
@@ -143,7 +136,7 @@ def read_index_html(entry: LogEntry) -> str:
 
 
 def write_index_file(list_of_logs: list[LogEntry]) -> None:
-    """Write an index.html file containing hyperlinks to the log file directories contained in this directory.              
+    """Write an index.html file containing hyperlinks to the log file directories contained in this directory.
 
     Args:
         list_of_logs: A list of log file entries to put in the index file.
@@ -152,7 +145,7 @@ def write_index_file(list_of_logs: list[LogEntry]) -> None:
         None.
     """
 
-    doc = dominate.document(title='Index of Valgrind Memcheck output', lang='en')
+    title = 'Index of Valgrind Memcheck output'
 
     dates = [entry.date for entry in list_of_logs]
 
@@ -167,48 +160,70 @@ def write_index_file(list_of_logs: list[LogEntry]) -> None:
     summary_pattern = r'green: (\d+).*orange: (\d+).*red: (\d+)'
     summary_regex = re.compile(summary_pattern)
 
-    with doc.head:
-        link(rel='stylesheet', href='style.css')
-        link(rel='preconnect', href='https://fonts.googleapis.com')
-        link(rel='preconnect', href='https://fonts.gstatic.com')
-        link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Inconsolata&display=swap')
+    sections = []
+    for unique_date in unique_dates:
+        rows = []
+        for entry in list_of_logs:
+            if entry.date.year == unique_date.year and entry.date.month == unique_date.month:
+                file_content = read_index_html(entry)
 
-    with doc:
+                match = header_regex.search(file_content)
+                green, orange, red = get_summary_numbers(file_content, summary_regex)
+                colour = get_overall_colour(green, orange, red)
 
-        with div(id='title'):
-            h1('Index of Valgrind Memcheck output')
+                display_name = entry.display_name
+                if entry.kind == 'archive':
+                    display_name = f'{display_name} [archive]'
 
-        with div(id='list-by-month'):
-            attr(cls='body')
-            
-            for unique_date in unique_dates:
-                h2(unique_date.strftime("%B %Y"))
+                if match:
+                    branch_cell = f'<td>{escape(match.group(2))}</td>'
+                    commit_url = f'https://github.com/Chaste/Chaste/commit/{escape(match.group(1))}'
+                    commit_cell = f'<td>\n              <a href="{commit_url}">{escape(match.group(1))}</a>\n            </td>'
+                else:
+                    branch_cell = '<td>unknown branch</td>'
+                    commit_cell = '<td>unknown commit</td>'
 
-                with table().add(tbody()):
-                    for entry in list_of_logs:
-                        if entry.date.year == unique_date.year and entry.date.month == unique_date.month:
-                            file_content = read_index_html(entry)
+                rows.append(
+                    f'          <tr class="tr-{colour}">\n'
+                    f'            <td>\n'
+                    f'              <a href="{escape(entry.href)}">{escape(display_name)}</a>\n'
+                    f'            </td>\n'
+                    f'            <td>{colour}</td>\n'
+                    f'            {branch_cell}\n'
+                    f'            {commit_cell}\n'
+                    f'          </tr>'
+                )
 
-                            match = header_regex.search(file_content)
-                            green, orange, red = get_summary_numbers(file_content, summary_regex)
-                            colour = get_overall_colour(green, orange, red)
+        sections.append(
+            f'      <h2>{escape(unique_date.strftime("%B %Y"))}</h2>\n'
+            f'      <table>\n'
+            f'        <tbody>\n' + '\n'.join(rows) + '\n'
+            f'        </tbody>\n'
+            f'      </table>'
+        )
 
-                            display_name = entry.display_name
-                            if entry.kind == 'archive':
-                                display_name = f'{display_name} [archive]'
-
-                            with tr(cls=f'tr-{colour}') as table_row:
-                                table_row.add(td(a(display_name, href=entry.href)))
-                                table_row.add(td(f'{colour}'))
-                                if match:
-                                    table_row.add(td(match.group(2)))
-                                    table_row.add(td(a(match.group(1), href=f'https://github.com/Chaste/Chaste/commit/{match.group(1)}')))
-                                else:
-                                    table_row.add(td("unknown branch"))
-                                    table_row.add(td("unknown commit"))
+    html = f'''<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{escape(title)}</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inconsolata&amp;display=swap">
+  </head>
+  <body>
+    <div id="title">
+      <h1>{escape(title)}</h1>
+    </div>
+    <div id="list-by-month" class="body">
+''' + '\n'.join(sections) + '''
+    </div>
+  </body>
+</html>
+'''
 
     with open('log-files/index.html', 'w') as html_file:
-        html_file.write(doc.render())
+        html_file.write(html)
 
 
 if __name__ == "__main__":

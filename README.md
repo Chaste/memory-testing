@@ -3,20 +3,22 @@
 Generated files from the memory testing CI.
 
 It is unlilely you should be interacting with this repository.
-Index files are added by the [Chaste memory testing workflow](https://github.com/Chaste/Chaste/blob/develop/.github/workflows/memory-testing.yml).
+Log directories and archives are added by the [Chaste memory testing workflow](https://github.com/Chaste/Chaste/blob/develop/.github/workflows/tier-1-memory-testing.yml).
+`log-files/index.html` is generated at GitHub Pages deploy time (see `.github/workflows/static.yml`) and is not committed.
 
 :warning: If fiddling with this manually is essential, then:
 
 ## Requirements
 
 - Python 3.11+ (tested)
-- `pip install -r requirements.txt`
+- `write_index.py` and `archive_old.py` use only the standard library.
+- The history-rewriting steps below need `pip install -r requirements.txt` (for `git-filter-repo`).
 
 ## Usage
 
 1. Place log directories (with `index.html`) or `.tar.xz` archives under `log-files/`.
 2. Run `python write_index.py`.
-3. Open `log-files/index.html` in a browser.
+3. Open `log-files/index.html` in a browser (it is gitignored, not committed).
 
 ## Archiving old files and re-writing history
 
@@ -34,9 +36,9 @@ By default, we archive all records older than one year.
 3. Check, and commit `.tar.xz` files
 4. From the root directory: `python amend_history.py`
 5. CHECK THAT THE AMENDED HISTORY LOOKS GOOD
-6. Manually re-write the index: `python write_index.py`
-7. Check, and commit `log-files/index.html`
-8. Add origin back: `git remote add origin git@github.com:Chaste/memory-testing.git`
-9. DOUBLE CHECK EVERYTHING LOOKS GOOD
-10. `git push --force --all`
-11. `git push --force --tags`
+6. Add origin back: `git remote add origin git@github.com:Chaste/memory-testing.git`
+7. DOUBLE CHECK EVERYTHING LOOKS GOOD
+8. `git push --force --all`
+9. `git push --force --tags`
+
+`log-files/index.html` will be regenerated automatically by the Pages deploy workflow on push; no need to rewrite or commit it manually.
